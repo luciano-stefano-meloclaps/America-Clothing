@@ -1,0 +1,42 @@
+.hero {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: whitesmoke;
+}
+
+.hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 8em;
+}
+
+.hero-overlay p {
+  font-size: 2.5em;
+  font-style: italic;
+}
+
+/* Responsive */
+@media only screen and (max-width: 480px) {
+  .hero-overlay h1 {
+    font-size: 3em;
+  }
+
+  .hero-overlay p {
+    font-size: 1em;
+  }
+}
