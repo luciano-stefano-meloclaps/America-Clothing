@@ -17,3 +17,23 @@ C:\Luisina TUP\Metodologia\prueba\BackendPPS\Infrastructure\obj\Debug\net7.0\ref
 C:\Luisina TUP\Metodologia\prueba\BackendPPS\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 C:\Luisina TUP\Metodologia\prueba\BackendPPS\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
 C:\Luisina TUP\Metodologia\prueba\BackendPPS\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Application.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Domain.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Application.pdb
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Domain.pdb
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.sourcelink.json
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll

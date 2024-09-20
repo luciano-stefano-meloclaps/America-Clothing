@@ -9,3 +9,15 @@ C:\Luisina TUP\Metodologia\prueba\BackendPPS\Domain\obj\Debug\net7.0\Domain.dll
 C:\Luisina TUP\Metodologia\prueba\BackendPPS\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Luisina TUP\Metodologia\prueba\BackendPPS\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Luisina TUP\Metodologia\prueba\BackendPPS\Domain\obj\Debug\net7.0\ref\Domain.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.pdb
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.sourcelink.json
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
+C:\Javi\Tup fac\4to Cuatrimestre\LC4\TrabajoPractico\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Application\\Application.csproj": {
+    "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\fliac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Application\\obj\\",
+        "projectPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\JaviPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fliac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JaviPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Domain\\Domain.csproj"
+              "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj"
               }
             }
           }
@@ -69,24 +68,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Domain\\Domain.csproj": {
+    "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\fliac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Domain\\obj\\",
+        "projectPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\JaviPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fliac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JaviPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -95,7 +94,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -134,24 +132,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\fliac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\JaviPC\\.nuget\\packages\\",
+        "outputPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fliac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JaviPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -160,15 +158,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\backendPPS\\BackendPPS\\Application\\Application.csproj"
+              "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Application\\Application.csproj": {
+                "projectPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Application\\Application.csproj"
               }
             }
           }
@@ -215,7 +212,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

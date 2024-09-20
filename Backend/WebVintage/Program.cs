@@ -1,4 +1,8 @@
+using Application.Interfaces;
+using Application.Services;
+using Domain.Interfaces;
 using Infrastructure.ApplicationDbContext;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +16,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<VintageDbContext>(options =>
 options.UseMySql(builder.Configuration.GetConnectionString("connection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.15-mysql")));
+
+#region
+builder.Services.AddScoped<IUserService, UserService>();
+#endregion
+
+#region Repositories
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+#endregion
 
 
 var app = builder.Build();
