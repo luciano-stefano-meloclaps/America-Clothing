@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj": {}
+    "C:\\Luisina TUP\\Metodologia\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj": {
+    "C:\\Luisina TUP\\Metodologia\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Luisina TUP\\Metodologia\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\JaviPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Javi\\Tup fac\\4to Cuatrimestre\\LC4\\TrabajoPractico\\ecommerce-vintage\\Backend\\Domain\\obj\\",
+        "projectPath": "C:\\Luisina TUP\\Metodologia\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Luisina TUP\\Metodologia\\ecommerce-vintage\\Backend\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\JaviPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.nuget.org/api/v2": {}
         },
         "frameworks": {
           "net7.0": {
@@ -38,11 +39,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -64,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
