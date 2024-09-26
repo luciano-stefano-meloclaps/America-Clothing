@@ -19,10 +19,14 @@ options.UseMySql(builder.Configuration.GetConnectionString("connection"), Micros
 
 #region
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ISaleOrderService, SaleOrderService>();
 #endregion
 
 #region Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ISaleOrderRepository, SaleOrderRepository>();
 #endregion
 
 
