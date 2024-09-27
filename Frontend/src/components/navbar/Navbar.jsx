@@ -1,6 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button"; // Importa el botón de Bootstrap
+import { Link } from "react-router-dom"; // Para manejar rutas con React Router
 
 function NavbarMain() {
   return (
@@ -25,6 +27,11 @@ function NavbarMain() {
               Contactanos
             </Nav.Link>
           </Nav>
+          <Link to="/register">
+            {" "}
+            {/* Agregamos un enlace al componente Register */}
+            <Button variant="primary">Registrarse</Button>
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

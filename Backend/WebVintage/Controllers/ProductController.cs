@@ -50,7 +50,7 @@ namespace WebVintage.Controllers
         public IActionResult Add([FromBody] ProductDto body)
         {
             var newProduct = _service.AddProduct(body);
-            return CreatedAtAction(nameof(GetByCode), new { code = newProduct }, $"Creado el Prducto con el código: {newProduct}");
+            return CreatedAtAction(nameof(GetByCode), new { code = newProduct }, $"Creado el Producto con el código: {newProduct}");
         }
 
         [HttpDelete("{code}")]
