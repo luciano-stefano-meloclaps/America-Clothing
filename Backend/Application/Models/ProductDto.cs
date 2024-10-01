@@ -8,6 +8,7 @@ namespace Application.Models
 {
     public class ProductDto
     {
+        public int Code { get; set; }
         public string Name { get; set; } = null!;
 
         public string Description { get; set; } = null!;
