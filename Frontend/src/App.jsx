@@ -18,6 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />{" "}
         {/* Ruta para el registro */}
       </Routes>
+      <ProductList />
       <Footer />
     </Router>
   );
