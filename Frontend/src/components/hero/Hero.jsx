@@ -23,7 +23,7 @@ const Hero = () => {
                 }}
               />
               <div className="hero-overlay">
-                <h1>Marca</h1>
+                <h1>American Clothing</h1>
                 <p>Donde la moda se encuentra con la nostalgia</p>
               </div>
             </div>
