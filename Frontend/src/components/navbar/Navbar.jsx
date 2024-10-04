@@ -27,10 +27,8 @@ function NavbarMain() {
               Contactanos
             </Nav.Link>
           </Nav>
-          <Link to="/register">
-            {" "}
-            {/* Agregamos un enlace al componente Register */}
-            <Button variant="primary">Registrarse</Button>
+          <Link to="/login">
+            <Button variant="primary" className="ms-3">Iniciar sesión</Button>
           </Link>
         </Navbar.Collapse>
       </Container>
