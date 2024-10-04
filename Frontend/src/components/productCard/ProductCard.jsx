@@ -6,7 +6,7 @@ const ProductCard = ({ title, text, img, code, deleteProduct }) => {
   return (
     <Card
       style={{
-        width: "18rem",
+        width: "25rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

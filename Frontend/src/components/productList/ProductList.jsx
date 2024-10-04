@@ -59,7 +59,7 @@ const ProductList = () => {
 
   return (
     //Pasar props
-    <div className="grid_container py-5 my-5 " id="gridcards">
+    <div className="grid_container py-5 my-5 bg-dark" id="gridcards">
       <h2 className="my-5 fs-1 color-accent-user font-tile text-center">
         Nuestra tienda{" "}
       </h2>
