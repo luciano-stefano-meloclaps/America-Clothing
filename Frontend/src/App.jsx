@@ -6,6 +6,8 @@ import NavbarMain from "./components/navbar/Navbar";
 import ProductList from "./components/productList/ProductList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importa Routes y Route
 import Register from "./components/register/Register";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
   return (
