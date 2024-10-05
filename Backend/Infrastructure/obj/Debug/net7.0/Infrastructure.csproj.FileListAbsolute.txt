@@ -57,3 +57,23 @@ C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre
 C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre\Laboratorio de Computacion IV\PPS\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre\Laboratorio de Computacion IV\PPS\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
 C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre\Laboratorio de Computacion IV\PPS\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Application.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Domain.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Application.pdb
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Domain.pdb
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.sourcelink.json
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll

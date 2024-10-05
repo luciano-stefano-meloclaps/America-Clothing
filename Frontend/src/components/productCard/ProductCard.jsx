@@ -1,8 +1,8 @@
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 
-//Destructuring props
-const ProductCard = ({ title, text, img, code, deleteProduct }) => {
+// Destructuring props
+const ProductCard = ({ title, text, img, size, stock, price }) => {
+  console.log(title);
   return (
     <Card
       style={{
@@ -19,11 +19,9 @@ const ProductCard = ({ title, text, img, code, deleteProduct }) => {
         <div>
           <Card.Title>{title}</Card.Title>
           <Card.Text style={{ marginBottom: "1rem" }}>{text}</Card.Text>
-        </div>
-        <div style={{ marginTop: "auto" }}>
-          <Button onClick={() => deleteProduct(code)} variant="dark">
-            Eliminar
-          </Button>
+          <Card.Text>Size: {size}</Card.Text> {/* Añadido /}
+          <Card.Text>Stock: {stock}</Card.Text> {/ Añadido /}
+          <Card.Text>Price: ${price}</Card.Text> {/ Añadido */}
         </div>
       </Card.Body>
     </Card>
