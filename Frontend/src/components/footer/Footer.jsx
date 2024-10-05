@@ -44,7 +44,7 @@ const Footer = () => {
               Política de Envío
             </a>
           </Col>
-          <Col md={3} className="text-center">
+          <Col md={3} className="text-center" id="quienes-somos">
             <h5 className="text-secondary">Contacto</h5>
             <p>americanclothing@gmail.com</p>
             <div>

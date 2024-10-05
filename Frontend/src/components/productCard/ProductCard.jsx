@@ -2,7 +2,6 @@ import Card from "react-bootstrap/Card";
 
 // Destructuring props
 const ProductCard = ({ title, text, img, size, stock, price }) => {
-  console.log(title);
   return (
     <Card
       style={{
@@ -19,9 +18,9 @@ const ProductCard = ({ title, text, img, size, stock, price }) => {
         <div>
           <Card.Title>{title}</Card.Title>
           <Card.Text style={{ marginBottom: "1rem" }}>{text}</Card.Text>
-          <Card.Text>Size: {size}</Card.Text> {/* Añadido /}
-          <Card.Text>Stock: {stock}</Card.Text> {/ Añadido /}
-          <Card.Text>Price: ${price}</Card.Text> {/ Añadido */}
+          <Card.Text>Size: {size}</Card.Text> {/* Añadido */}
+          <Card.Text>Stock: {stock}</Card.Text> {/* Añadido */}
+          <Card.Text>Price: ${price}</Card.Text> {/* Añadido */}
         </div>
       </Card.Body>
     </Card>
