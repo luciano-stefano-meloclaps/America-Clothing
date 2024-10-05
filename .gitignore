@@ -1,0 +1,23 @@
+# Ignorar las carpetas bin y obj generadas durante la compilación
+**/bin/
+**/obj/
+
+# Ignorar configuraciones específicas de Visual Studio
+.vs/
+
+# Archivos de depuración y configuraciones temporales
+*.log
+*.user
+*.suo
+*.pdb
+*.cache
+*.csproj.user
+*.nuget.g.props
+
+# Ignorar paquetes NuGet descargados
+packages/
+
+# Ignorar artefactos específicos de compilación
+*.dll
+*.exe
+*.json
