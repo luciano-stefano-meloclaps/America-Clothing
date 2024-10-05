@@ -33,3 +33,15 @@ C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre
 C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre\Laboratorio de Computacion IV\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre\Laboratorio de Computacion IV\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Users\mate_\OneDrive\Escritorio\Tecnicatura en Programación\4to Cuatrimestre\Laboratorio de Computacion IV\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.pdb
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.sourcelink.json
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll
