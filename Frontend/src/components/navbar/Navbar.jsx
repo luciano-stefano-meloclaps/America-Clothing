@@ -19,7 +19,7 @@ function NavbarMain() {
         className="py-2 bg-dark ps-5"
       >
         <Container>
-          <Navbar.Brand className="text-white-50 my-auto" href="#home">
+          <Navbar.Brand className="text-white-50 my-auto" href="/">
             <img src="public/game.png" alt="logo" width="38" height="38" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -28,7 +28,7 @@ function NavbarMain() {
             className="d-flex justify-content-around"
           >
             <Nav className="me-auto">
-              <Nav.Link className="text-white-50" href="#home">
+              <Nav.Link className="text-white-50" href="/">
                 Home
               </Nav.Link>
               <NavDropdown
@@ -36,21 +36,37 @@ function NavbarMain() {
                 title="Productos"
                 menuVariant="dark"
               >
-                <NavDropdown.Item href="#action/3.1">Camperas</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Jeans</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Buzos</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.5">Camisas</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.6">Bermudas</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.7">Vestidos</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/productos/Camperas">
+                  Camperas
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/productos/Jeans">
+                  Jeans
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/productos/Buzos">
+                  Buzos
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/productos/Camisas">
+                  Camisas
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/productos/Bermudas">
+                  Bermudas
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/productos/Vestidos">
+                  Vestidos
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.8">
+                <NavDropdown.Item as={Link} to="/productos/top">
                   Prendas top 🔥
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className="nav-item text-white-50" href="#link">
+
+              <Nav.Link
+                className="nav-item text-white-50"
+                href="#quienes-somos"
+              >
                 Quienes somos
               </Nav.Link>
-              <Nav.Link className="text-white-50" href="#link">
+              <Nav.Link className="text-white-50" href="#quienes-somos">
                 Contactanos
               </Nav.Link>
             </Nav>
