@@ -82,7 +82,7 @@ const ProductList = () => {
         <Row xs={1} md={4} className="g-5 p-5 m-5 row row-cols-md-4">
           {filteredProducts.map((product) => (
             <Col key={product.code}>
-              <ProductCard
+              <ProductCard  
                 title={product.name}
                 text={product.description}
                 img={product.img}
