@@ -6,7 +6,11 @@ import { Link } from "react-router-dom"; // Para manejar rutas con React Router
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Alert from "react-bootstrap/Alert";
 
+//import { APIContextProvider } from "./services/apiContext/api.context";
+
 function NavbarMain() {
+
+  
   return (
     <>
       <Alert className="m-0 p-1 " variant="warning" key="info">
@@ -71,6 +75,9 @@ function NavbarMain() {
               </Nav.Link>
             </Nav>
             <div className="d-flex">
+            <Link to="/cart" className="text-white me-3">  
+                🛒 Carrito
+              </Link>
               <Link to="/register">
                 <Button variant="light" className="me-2">
                   Registrar

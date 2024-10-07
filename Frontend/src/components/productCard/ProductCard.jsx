@@ -1,7 +1,9 @@
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
+
 
 // Destructuring props
-const ProductCard = ({ title, text, img, size, stock, price }) => {
+const ProductCard = ({ title, text, img, size, stock, price, code, product }) => {
   return (
     <Card
       style={{
@@ -21,6 +23,9 @@ const ProductCard = ({ title, text, img, size, stock, price }) => {
           <Card.Text>Size: {size}</Card.Text> {/* Añadido */}
           <Card.Text>Stock: {stock}</Card.Text> {/* Añadido */}
           <Card.Text>Price: ${price}</Card.Text> {/* Añadido */}
+          <Link to={`/productos/detalle/${code}`}>
+            <button>Ver producto</button>
+          </Link>
         </div>
       </Card.Body>
     </Card>
