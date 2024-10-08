@@ -40,13 +40,10 @@ export const APIContextProvider = ({ children }) => {
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
-  
-  
 
   const removeFromCart = (code) => {
     setCart((prevCart) => prevCart.filter((product) => product.code !== code));
   };
-  
 
   const putProduct = (product, token) => {
     // Este es para actualizar productos

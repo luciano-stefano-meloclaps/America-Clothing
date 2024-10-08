@@ -12,6 +12,7 @@ import {
   faTwitter,
   faWhatsapp,
   faLinkedin,
+  faCcAmex,
 } from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -98,23 +99,27 @@ const Footer = () => {
             <div>
               <FontAwesomeIcon
                 icon={faCcVisa}
-                className="mx-2 text-secondary"
+                className="mx-2 fs-3 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcMastercard}
-                className="mx-2 text-secondary"
+                className="mx-2 fs-3 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcPaypal}
-                className="mx-2 text-secondary"
+                className="mx-2 fs-3 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcApplePay}
-                className="mx-2 text-secondary"
+                className="mx-2 fs-3 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcAmazonPay}
-                className="mx-2 text-secondary"
+                className="mx-2 fs-3 text-secondary"
+              />
+              <FontAwesomeIcon
+                icon={faCcAmex}
+                className="mx-2 fs-3 text-secondary"
               />
             </div>
           </Col>
