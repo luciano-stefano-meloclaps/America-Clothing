@@ -1,0 +1,49 @@
+.about-us-section {
+  background: linear-gradient(360deg, #212529, #50362e);
+  color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.brand-name {
+  color: #ffc107;
+  font-weight: bold;
+  font-family: Caveat;
+  font-size: 2rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-text {
+  font-size: 1.1rem;
+}
+
+.lead {
+  font-size: 1.2rem;
+}
+
+.card-hover {
+  background: green; /* Fondo semi-transparente */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .card-hover {
+    margin-bottom: 20px;
+  }
+  .about-us-section {
+    padding: 20px;
+  }
+}
