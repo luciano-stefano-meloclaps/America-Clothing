@@ -54,7 +54,7 @@ const ContactUs = () => {
                   className="rounded"
                 />
                 <Form.Control.Feedback type="invalid">
-                  Por favor, ingresa un correo electrónico válido.
+                  Por favor, ingresa un email válido.
                 </Form.Control.Feedback>
               </Form.Group>
 

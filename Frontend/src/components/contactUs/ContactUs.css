@@ -1,6 +1,7 @@
 .contact-us-wrapper {
   min-height: 100vh;
   background-color: rgb(78, 53, 46);
+  padding-bottom: 5rem;
 }
 
 .contact-us-container {
