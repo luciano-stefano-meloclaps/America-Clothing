@@ -9,7 +9,7 @@ import {
   faTruck,
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
-import "./AboutUs.css"; // Importa el archivo CSS para estilos personalizados
+import "./AboutUs.css";
 
 const AboutUs = () => {
   return (
