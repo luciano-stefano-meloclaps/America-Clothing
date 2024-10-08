@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBullseye,
@@ -99,15 +99,6 @@ const AboutUs = () => {
           <p>
             Aprovecha nuestras opciones de pago en 3 y 6 cuotas sin interés, y
             hasta 30 cuotas con tarjeta de crédito.
-          </p>
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md={8} className="text-center">
-          <Image src="public/game.png" width={80} fluid className="mb-4" />
-          <p className="lead ">
-            Gracias por ser parte de nuestra comunidad. ¡Esperamos que disfrutes
-            de tu experiencia de compra con nosotros!
           </p>
         </Col>
       </Row>
