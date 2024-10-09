@@ -80,7 +80,7 @@ const Footer = () => {
                 className="mb-2"
                 required
               />
-              <Button variant="outline-light" type="submit">
+              <Button variant="outline-light" className="mt-2" type="submit">
                 Suscribirse
               </Button>
             </Form>
@@ -99,27 +99,27 @@ const Footer = () => {
             <div>
               <FontAwesomeIcon
                 icon={faCcVisa}
-                className="mx-2 fs-3 text-secondary"
+                className="mx-2 fs-4 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcMastercard}
-                className="mx-2 fs-3 text-secondary"
+                className="mx-2 fs-4 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcPaypal}
-                className="mx-2 fs-3 text-secondary"
+                className="mx-2 fs-4 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcApplePay}
-                className="mx-2 fs-3 text-secondary"
+                className="mx-2 fs-4 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcAmazonPay}
-                className="mx-2 fs-3 text-secondary"
+                className="mx-2 fs-4 text-secondary"
               />
               <FontAwesomeIcon
                 icon={faCcAmex}
-                className="mx-2 fs-3 text-secondary"
+                className="mx-2 fs-4 text-secondary"
               />
             </div>
           </Col>
