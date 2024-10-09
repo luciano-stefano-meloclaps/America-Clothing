@@ -13,7 +13,7 @@ function NavbarMain() {
   return (
     <>
       <Alert className="m-0 p-1" variant="warning" key="info">
-        Todas las compras por arriba de $30.000 son sin cargo! 🛒
+      🛒😎 Envio gratis para todas las compras arriba de $30.000! 😎🛒 
       </Alert>
       <Navbar
         expand="lg"

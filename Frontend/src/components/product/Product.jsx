@@ -49,11 +49,11 @@ const Product = ({ products }) => {
       </Row>
       <Row className="d-flex justify-content-center">
         <Col xs="auto" className="mb-2">
-          <Button variant="primary" onClick={handleAddToCart}>Agregar al carrito</Button>
+          <Button variant="light" onClick={handleAddToCart}>Agregar al carrito</Button>
         </Col>
         <Col xs="auto" className="mb-2">
           <Link to={`/productos/detalle/${product.code}`}>
-            <Button variant="secondary">Ver detalles</Button>
+            <Button variant="outline-light">Ver detalles</Button>
           </Link>
         </Col>
       </Row>
@@ -61,11 +61,11 @@ const Product = ({ products }) => {
       {/* Modal de confirmación */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Producto agregado</Modal.Title>
+          <Modal.Title>Producto agregado🛒</Modal.Title>
         </Modal.Header>
         <Modal.Body>El producto <strong>{product.description}</strong> ha sido agregado a tu carrito.</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseModal}>
+          <Button variant="dark" onClick={handleCloseModal}>
             Cerrar
           </Button>
         </Modal.Footer>
