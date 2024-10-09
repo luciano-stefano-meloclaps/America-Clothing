@@ -14,6 +14,7 @@ import axios from "axios";
 import { APIContextProvider } from "./services/apiContext/api.context"; // Importa el provider
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
 import AboutUs from "./components/aboutUs/AboutUs";
+import ContactUs from "./components/contactUs/ContactsUs";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -60,6 +61,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} /> {/* Ruta para el carrito */}
           <Route path="/aboutUs" element={<AboutUs />} />
+          {/* Ruta para Sobre Nosotros */}
+          <Route path="/contactUs" element={<ContactUs />} />
+          {/* Ruta para el formulario */}
         </Routes>
         <Footer />
       </Router>

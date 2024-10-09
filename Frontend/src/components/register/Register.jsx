@@ -83,7 +83,7 @@ const Register = () => {
 
   return (
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center ">
-      <h1 className="section-title text-light mb-4">Registro</h1>
+      <h1 className="section-title text-light mb-4 text-uppercase">Registro</h1>
       <Container
         className="contact-us-container p-5  my-5 rounded "
         style={{ maxWidth: "600px" }}
@@ -217,7 +217,11 @@ const Register = () => {
             />
           </Form.Group>
 
-          <Button variant="light" type="submit" className="w-100">
+          <Button
+            variant="light"
+            type="submit"
+            className=" shadow rounded w-100"
+          >
             Crear cuenta
           </Button>
         </Form>

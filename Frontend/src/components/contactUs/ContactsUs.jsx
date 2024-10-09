@@ -19,7 +19,7 @@ const ContactUs = () => {
 
   return (
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center">
-      <h1 className="section-title text-light mb-4">Contacto</h1>
+      <h1 className="section-title text-light mb-4 text-uppercase">Contacto</h1>
       <Container className="contact-us-container py-5 my-5 rounded">
         <Row className="m-3 m-md-5 px-3 px-md-5 justify-content-md-center">
           <Col xs={12} md={8}>
@@ -84,7 +84,7 @@ const ContactUs = () => {
               <Button
                 variant="light"
                 type="submit"
-                className="mt-4 fs-5 rounded"
+                className="mt-4 shadow rounded w-100"
               >
                 Enviar
               </Button>

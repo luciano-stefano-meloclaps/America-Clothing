@@ -14,9 +14,9 @@ import "./AboutUs.css";
 const AboutUs = () => {
   return (
     <Container fluid className="about-us-section bg-dark text-light py-5">
-      <Row className="justify-content-center mb-5">
+      <Row className="justify-content-center mb-4 ">
         <Col md={8} className="text-center">
-          <h1 className="mb-4 ">Sobre Nosotros</h1>
+          <h1 className="mb-4 text-uppercase ">Sobre Nosotros</h1>
           <p className="lead ">
             ¡Hey! Bienvenidos a{" "}
             <span className="brand-name">American Clothing</span>, tu tienda de

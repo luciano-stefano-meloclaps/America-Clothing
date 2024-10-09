@@ -1,19 +1,18 @@
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button"; // Importa el botón de Bootstrap
-import { Link } from "react-router-dom"; // Para manejar rutas con React Router
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Alert from "react-bootstrap/Alert";
-
-//import { APIContextProvider } from "./services/apiContext/api.context";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NavbarMain() {
-
-  
   return (
     <>
-      <Alert className="m-0 p-1 " variant="warning" key="info">
+      <Alert className="m-0 p-1" variant="warning" key="info">
         Todas las compras por arriba de $30.000 son sin cargo! 🛒
       </Alert>
       <Navbar
@@ -27,17 +26,13 @@ function NavbarMain() {
             <img src="public/game.png" alt="logo" width="38" height="38" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="d-flex justify-content-around"
-          >
-            <Nav className="me-auto">
-              <Nav.Link className="text-white-50" href="/">
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto flex-column flex-lg-row">
+              <Nav.Link className="text-light" href="/">
                 Home
               </Nav.Link>
               <NavDropdown
-                id="nav-productos-dropdown"
-                title="Productos"
+                title={<span style={{ color: "white" }}>Productos</span>}
                 menuVariant="dark"
               >
                 <NavDropdown.Item as={Link} to="/productos/Camperas">
@@ -63,28 +58,29 @@ function NavbarMain() {
                   Prendas top 🔥
                 </NavDropdown.Item>
               </NavDropdown>
-
-              <Nav.Link
-                className="nav-item text-white-50"
-                href="#quienes-somos"
-              >
+              <Nav.Link className="nav-item text-light" href="#quienes-somos">
                 Quienes somos
               </Nav.Link>
-              <Nav.Link className="text-white-50" href="#quienes-somos">
+              <Nav.Link className="text-light" href="#contactanos">
                 Contactanos
               </Nav.Link>
             </Nav>
-            <div className="d-flex">
-            <Link to="/cart" className="text-white me-3">  
-                🛒 Carrito
-              </Link>
+            <div className="d-flex flex-column flex-lg-row align-items-center">
               <Link to="/register">
-                <Button variant="light" className="me-2">
+                <Button variant="light" className="mb-2 mb-lg-0 ">
                   Registrar
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline-light">Iniciar sesión</Button>
+                <Button
+                  variant="outline-light"
+                  className="mx-lg-3 mb-2 mb-lg-0"
+                >
+                  Iniciar sesión
+                </Button>
+              </Link>
+              <Link to="/cart" className="text-white pt-1 fs-4">
+                <FontAwesomeIcon icon={faCartShopping} />
               </Link>
             </div>
           </Navbar.Collapse>
