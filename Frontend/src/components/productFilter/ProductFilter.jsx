@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const ProductFilter = ({ products, onSizeChange, onPriceChange }) => {
   const [sizeFilter, setSizeFilter] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
-  const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [tempPriceRange, setTempPriceRange] = useState({
     min: 0,
     max: Infinity,
@@ -23,10 +22,6 @@ const ProductFilter = ({ products, onSizeChange, onPriceChange }) => {
   const handlePriceChange = () => {
     setPriceRange(tempPriceRange); // Aplicar el rango de precio temporal
     onPriceChange(tempPriceRange); // Enviar el nuevo rango al padre
-  };
-
-  const toggleFilterVisibility = () => {
-    setIsFilterVisible((prev) => !prev);
   };
 
   const calculatePriceRange = () => {
@@ -50,50 +45,57 @@ const ProductFilter = ({ products, onSizeChange, onPriceChange }) => {
 
   return (
     <div>
-      <button onClick={toggleFilterVisibility}>
-        {isFilterVisible ? "Ocultar Filtros" : "Filtrar"}
+      <div>
+        <h3>Talle</h3>
+        {["S", "M", "L", "XL", "XXL"].map((size) => (
+          <button
+            key={size}
+            onClick={() => handleSizeChange(size)}
+            style={{
+              margin: "5px",
+              padding: "10px",
+              backgroundColor: sizeFilter.includes(size) ? "black" : "white",
+              color: sizeFilter.includes(size) ? "white" : "black",
+              border: "1px solid black",
+              borderRadius: "5px",
+            }}
+          >
+            {size} {sizeFilter.includes(size) ? "✓" : ""}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ marginTop: "20px" }}>
+        <h3>Precio</h3>
+        <input
+          type="number"
+          placeholder="Desde"
+          value={tempPriceRange.min}
+          onChange={(e) =>
+            setTempPriceRange({ ...tempPriceRange, min: e.target.value })
+          }
+          style={{ marginRight: "10px", padding: "5px" }}
+        />
+        <input
+          type="number"
+          placeholder="Hasta"
+          value={tempPriceRange.max}
+          onChange={(e) =>
+            setTempPriceRange({ ...tempPriceRange, max: e.target.value })
+          }
+          style={{ padding: "5px" }}
+        />
+        <button onClick={handlePriceChange} style={{ marginLeft: "10px" }}>
+          Aplicar Rango
+        </button>
+      </div>
+
+      <button onClick={resetFilters} style={{ marginTop: "20px" }}>
+        Limpiar
       </button>
-
-      {isFilterVisible && (
-        <div>
-          <div>
-            <h3>Talle</h3>
-            {["S", "M", "L", "XL", "XXL"].map((size) => (
-              <button key={size} onClick={() => handleSizeChange(size)}>
-                {size} ({sizeFilter.includes(size) ? "✓" : ""})
-              </button>
-            ))}
-          </div>
-
-          <div>
-            <h3>Precio</h3>
-            <p>
-              Rango de precios: Desde {min} hasta {max}
-            </p>
-            <input
-              type="number"
-              placeholder="Desde"
-              value={tempPriceRange.min}
-              onChange={(e) =>
-                setTempPriceRange({ ...tempPriceRange, min: e.target.value })
-              }
-            />
-            <input
-              type="number"
-              placeholder="Hasta"
-              value={tempPriceRange.max}
-              onChange={(e) =>
-                setTempPriceRange({ ...tempPriceRange, max: e.target.value })
-              }
-            />
-            <button onClick={handlePriceChange}>Aplicar Rango</button>
-          </div>
-
-          <button onClick={resetFilters}>Limpiar</button>
-        </div>
-      )}
     </div>
   );
 };
 
 export default ProductFilter;
+

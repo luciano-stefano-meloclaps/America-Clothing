@@ -1,10 +1,13 @@
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useAPI } from "../../services/apiContext/api.context"; // Importa el contexto
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useAPI } from '../../services/apiContext/api.context'; // Importa el contexto
 
-const Product = ({ products }) => { 
+const Product = ({ products }) => {
   const { productId } = useParams();
   const { addToCart } = useAPI(); // Función para agregar al carrito desde el contexto
+  const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
 
   // Encontrar el producto usando el ID pasado desde productCard
   const product = products.find((p) => p.code === parseInt(productId));
@@ -15,25 +18,62 @@ const Product = ({ products }) => {
 
   const handleAddToCart = () => {
     addToCart(product); // Agrega el producto al carrito
+    setShowModal(true); // Mostrar el modal
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Cierra el modal
   };
 
   return (
-    <div>
-      <h1>{product.name}</h1>
-      <p><strong>Talla:</strong> {product.size}</p>
-      <p><strong>Descripción:</strong> {product.description}</p>
-      <p><strong>Stock:</strong> {product.stock}</p>
-      
-      {/* Botón para agregar al carrito */}
-      <button onClick={handleAddToCart}>Agregar al carrito</button>
+    <Container fluid className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light">
+      <Row className="text-center mb-4">
+        <Col>
+          <h1>{product.name}</h1>
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Col>
+          <p><strong>Talla:</strong> {product.size}</p>
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Col>
+          <p><strong>Descripción:</strong> {product.description}</p>
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Col>
+          <p><strong>Stock:</strong> {product.stock}</p>
+        </Col>
+      </Row>
+      <Row className="d-flex justify-content-center">
+        <Col xs="auto" className="mb-2">
+          <Button variant="primary" onClick={handleAddToCart}>Agregar al carrito</Button>
+        </Col>
+        <Col xs="auto" className="mb-2">
+          <Link to={`/productos/detalle/${product.code}`}>
+            <Button variant="secondary">Ver detalles</Button>
+          </Link>
+        </Col>
+      </Row>
 
-      {/* Enlace a la página de detalles del producto */}
-      <Link to={`/productos/detalle/${product.code}`}>
-        <button>Ver detalles</button>
-      </Link>
-    </div>
+      {/* Modal de confirmación */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Producto agregado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>El producto <strong>{product.description}</strong> ha sido agregado a tu carrito.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleCloseModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Container>
   );
 };
 
 export default Product;
 
+ 

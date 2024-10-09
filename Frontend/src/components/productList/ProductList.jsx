@@ -5,6 +5,8 @@ import ProductCard from "../productCard/ProductCard";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ProductFilter from "../productFilter/ProductFilter";
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +15,10 @@ const ProductList = () => {
   const { category } = useParams(); // Captura la categoría desde la URL
   const [sizeFilter, setSizeFilter] = useState([]);
   const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
+  const [showFilters, setShowFilters] = useState(false);
+
+  const handleCloseFilters = () => setShowFilters(false);
+  const handleShowFilters = () => setShowFilters(true);
 
   // Fetch de todos los productos
   useEffect(() => {
@@ -66,13 +72,27 @@ const ProductList = () => {
   return (
     <div className="grid_container py-5 my-5 bg-dark text-white" id="gridcards">
       <h2 className="my-5 fs-1 color-accent-user font-tile text-center">
-        Nuestra tienda{" "}
+        American Clothing{" "}
       </h2>
-      <ProductFilter
-        products={products}
-        onSizeChange={setSizeFilter}
-        onPriceChange={setPriceRange}
-      />
+
+      <Button variant="secondary" onClick={handleShowFilters}>
+        Filtrar
+      </Button>
+
+      {/* Offcanvas para mostrar los filtros */}
+      <Offcanvas show={showFilters} onHide={handleCloseFilters}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Filtrar Productos</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <ProductFilter
+            products={products}
+            onSizeChange={setSizeFilter}
+            onPriceChange={setPriceRange}
+          />
+        </Offcanvas.Body>
+      </Offcanvas>
+
       {filteredProducts.length === 0 ? (
         <p>
           No tenemos resultados para tu búsqueda. Por favor, intentá con otros
@@ -100,3 +120,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+

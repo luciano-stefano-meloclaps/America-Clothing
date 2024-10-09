@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 // Destructuring props
 const ProductCard = ({ title, text, img, size, stock, price, code, product }) => {
   return (
-    <Card
+    <Card 
       style={{
-        width: "25rem",
+        width: "20rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         background: "burlywood",
         height: "100%",
+
       }}
     >
       <Card.Img variant="top" src={img} />
