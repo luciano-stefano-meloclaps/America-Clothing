@@ -15,6 +15,8 @@ import { APIContextProvider } from "./services/apiContext/api.context"; // Impor
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
 import AboutUs from "./components/aboutUs/AboutUs";
 import ContactUs from "./components/contactUs/ContactsUs";
+import Dashboard from "./components/dashboard/Dashboard";
+import Sidebar from "./components/sidebard/SideBar";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -60,10 +62,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} /> {/* Ruta para el carrito */}
+          {/* Ruta para el Sobre Nosotro */}
           <Route path="/aboutUs" element={<AboutUs />} />
           {/* Ruta para Sobre Nosotros */}
           <Route path="/contactUs" element={<ContactUs />} />
-          {/* Ruta para el formulario */}
+          {/* Ruta para el dashboard */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          {/* Ruta para el sidebar */}
+          <Route path="/sideBar" element={<Sidebar />} />
         </Routes>
         <Footer />
       </Router>
