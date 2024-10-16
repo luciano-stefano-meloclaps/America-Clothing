@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
             builder.WithOrigins("http://localhost:5173") // Verifica que esta URL sea la correcta
                    .AllowAnyMethod()
                    .AllowAnyHeader()
-                   .AllowCredentials(); // Solo necesario si envías cookies
+                   .AllowCredentials(); // Solo necesario si envas cookies
         });
 });
 
@@ -98,7 +98,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Usar la política CORS antes de los otros middlewares
-app.UseCors("AllowReactApp");
+app.UseCors("AllowReactApp"); // Aplica la política de CORS
 
 app.UseAuthentication();
 

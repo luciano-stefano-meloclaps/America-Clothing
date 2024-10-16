@@ -51,12 +51,14 @@ namespace Infrastructure.Services
             var credentials = new SigningCredentials(securityPassword, SecurityAlgorithms.HmacSha256);
 
             //Los claims son datos en clave->valor que nos permite guardar data del usuario.
-            var claimsForToken = new List<Claim>();
-            claimsForToken.Add(new Claim("sub", user.Id.ToString())); //"sub" es una key estándar que significa unique user identifier, es decir, si mandamos el id del usuario por convención lo hacemos con la key "sub".
-            claimsForToken.Add(new Claim("email", user.Email)); //Lo mismo para email y username, son las convenciones para email y nombre de usuario. Ustedes pueden usar lo que quieran, pero si alguien que no conoce la app
-            claimsForToken.Add(new Claim("username", user.Username)); //quiere usar la API por lo general lo que espera es que se estén usando estas keys.
-            claimsForToken.Add(new Claim("role", user.Usertype)); //Debería venir del usuario
-            //claimsForToken.Add(new Claim("role", credentialsRequest.UserType)); //Debería venir del usuario
+            var claimsForToken = new List<Claim>
+            {
+                new Claim("sub", user.Id.ToString()), // ID del usuario
+                new Claim("email", user.Email),       // Email del usuario
+                new Claim("username", user.Username), // Username
+                new Claim("role", user.Usertype),     // Rol del usuario
+                new Claim("name", user.Name) // Nombre de pila del usuario
+            };
 
             var jwtSecurityToken = new JwtSecurityToken( //agregar using System.IdentityModel.Tokens.Jwt; Acá es donde se crea el token con toda la data que le pasamos antes.
               _options.Issuer,

@@ -29,11 +29,11 @@ const Register = () => {
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
-    // Limpiar mensajes después de 5 segundos
+    // Limpiar mensajes después de 8 segundos
     const timer = setTimeout(() => {
       setError(null);
       setSuccess(null);
-    }, 5000);
+    }, 8000);
 
     return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
   }, [error, success]);
