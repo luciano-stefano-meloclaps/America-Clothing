@@ -10,6 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MainPage from "./components/mainPage/MainPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { AuthProvider } from './context/AuthContext'; 
+
 
 import { APIContextProvider } from "./services/apiContext/api.context"; // Importa el provider
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
@@ -39,34 +41,37 @@ function App() {
 
   return (
     <APIContextProvider>
-      <Router>
-        <NavbarMain />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route
-            path="/productos"
-            element={<ProductList products={products} />}
-          />{" "}
-          {/* Pasar productos */}
-          <Route
-            path="/productos/detalle/:productId"
-            element={<Product products={products} />}
-          />{" "}
-          {/* Pasamos los productos */}
-          <Route
-            path="/productos/:category"
-            element={<ProductList products={products} />}
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/cart" element={<Cart />} /> {/* Ruta para el carrito */}
-          <Route path="/aboutUs" element={<AboutUs />} />
-          {/* Ruta para Sobre Nosotros */}
-          <Route path="/contactUs" element={<ContactUs />} />
-          {/* Ruta para el formulario */}
-        </Routes>
-        <Footer />
-      </Router>
+      <AuthProvider>
+        <Router>
+          <NavbarMain />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route
+              path="/productos"
+              element={<ProductList products={products} />}
+            />{" "}
+            {/* Pasar productos */}
+            <Route
+              path="/productos/detalle/:productId"
+              element={<Product products={products} />}
+            />{" "}
+            {/* Pasamos los productos */}
+            <Route
+              path="/productos/:category"
+              element={<ProductList products={products} />}
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<Cart />} />{" "}
+            {/* Ruta para el carrito */}
+            <Route path="/aboutUs" element={<AboutUs />} />
+            {/* Ruta para Sobre Nosotros */}
+            <Route path="/contactUs" element={<ContactUs />} />
+            {/* Ruta para el formulario */}
+          </Routes>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </APIContextProvider>
   );
 }

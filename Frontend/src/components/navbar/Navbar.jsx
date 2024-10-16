@@ -1,19 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Alert from "react-bootstrap/Alert";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuth } from "../../context/AuthContext"; // Asegúrate de que esta ruta sea correcta
 
 function NavbarMain() {
+  const { isAuthenticated, logout, userFirstName } = useAuth();
+  const [showModal, setShowModal] = useState(false); 
+
+  const handleLogout = () => {
+    setShowModal(true); // Mostrar el modal cuando se haga clic en "Cerrar sesión"
+  };
+
+  const confirmLogout = () => {
+    logout(); // Cierra la sesión
+    setShowModal(false); // Ocultar el modal después de cerrar sesión
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Ocultar el modal sin cerrar sesión
+  };
+
   return (
     <>
-      <Alert className="m-0 p-1" variant="warning" key="info">
-      🛒😎 Envio gratis para todas las compras arriba de $30.000! 😎🛒 
+      <Alert className="m-0 p-1" variant="warning">
+        🛒😎 Envío gratis para todas las compras arriba de $30.000! 😎🛒
       </Alert>
       <Navbar
         expand="lg"
@@ -22,13 +40,13 @@ function NavbarMain() {
         className="py-2 bg-dark ps-5"
       >
         <Container>
-          <Navbar.Brand className="text-white-50 my-auto" href="/">
-            <img src="public/game.png" alt="logo" width="38" height="38" />
+          <Navbar.Brand as={Link} to="/" className="text-white-50 my-auto">
+            <img src="/game.png" alt="logo" width="38" height="38" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto flex-column flex-lg-row">
-              <Nav.Link className="text-light" href="/">
+              <Nav.Link as={Link} to="/" className="text-light">
                 Home
               </Nav.Link>
               <NavDropdown
@@ -58,27 +76,49 @@ function NavbarMain() {
                   Prendas top 🔥
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className="nav-item text-light" href="#quienes-somos">
+              <Nav.Link
+                as={Link}
+                to="#quienes-somos"
+                className="nav-item text-light"
+              >
                 Quienes somos
               </Nav.Link>
-              <Nav.Link className="text-light" href="#contactanos">
+              <Nav.Link as={Link} to="#contactanos" className="text-light">
                 Contactanos
               </Nav.Link>
             </Nav>
             <div className="d-flex flex-column flex-lg-row align-items-center">
-              <Link to="/register">
-                <Button variant="light" className="mb-2 mb-lg-0 ">
-                  Registrar
-                </Button>
-              </Link>
-              <Link to="/login">
-                <Button
-                  variant="outline-light"
-                  className="mx-lg-3 mb-2 mb-lg-0"
-                >
-                  Iniciar sesión
-                </Button>
-              </Link>
+              {!isAuthenticated ? (
+                <>
+                  <Link to="/register">
+                    <Button variant="light" className="mb-2 mb-lg-0">
+                      Registrar
+                    </Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button
+                      variant="outline-light"
+                      className="mx-lg-3 mb-2 mb-lg-0"
+                    >
+                      Iniciar sesión
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <span className="text-white mx-lg-3 mb-2 mb-lg-0">
+                    <strong>Hola, {userFirstName}!</strong>
+                  </span>
+
+                  <Button
+                    variant="outline-light"
+                    className="mx-lg-3 mb-2 mb-lg-0"
+                    onClick={handleLogout}
+                  >
+                    Cerrar sesión
+                  </Button>
+                </>
+              )}
               <Link to="/cart" className="text-white pt-1 fs-4">
                 <FontAwesomeIcon icon={faCartShopping} />
               </Link>
@@ -86,6 +126,22 @@ function NavbarMain() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {/* Modal de confirmación */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmar cierre de sesión</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>¿Estás seguro de que deseas cerrar sesión?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cancelar
+          </Button>
+          <Button variant="dark" onClick={confirmLogout}>
+            Cerrar sesión
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
