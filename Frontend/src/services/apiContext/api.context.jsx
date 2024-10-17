@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const APIContext = createContext();
 
@@ -22,21 +23,35 @@ export const APIContextProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  // Fetch para obtener usuarios desde la API
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get('https://localhost:7091/api/User'); // Endpoint de usuarios
+        setUsers(response.data); // Asigna la respuesta al estado de usuarios
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error al cargar los usuarios", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []); // Este efecto se ejecuta una vez al montar el componente
+
   const toggleLoading = (value) => {
     setIsLoading(value);
   };
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-      // Buscamos el producto en el carrito según su código
       const existingProduct = prevCart.find((p) => p.code === product.code);
       if (existingProduct) {
-        // Si ya existe, actualizamos la cantidad
         return prevCart.map((p) =>
           p.code === product.code ? { ...p, quantity: p.quantity + 1 } : p
         );
       }
-      // Si no existe, lo agregamos al carrito con quantity: 1
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
@@ -46,14 +61,13 @@ export const APIContextProvider = ({ children }) => {
   };
 
   const putProduct = (product, token) => {
-    // Este es para actualizar productos
+    // Lógica para actualizar productos
   };
 
   return (
     <APIContext.Provider
       value={{
         isLoading,
-        toggleLoading,
         users,
         setUsers,
         sales,

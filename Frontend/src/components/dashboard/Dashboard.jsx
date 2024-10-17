@@ -1,63 +1,43 @@
 import React from "react";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faUserShield,
-  faUserTie,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faUserShield, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../sidebard/SideBar";
+import { useAPI } from "../../services/apiContext/api.context";
 
 const Dashboard = () => {
+  const { users, isLoading } = useAPI(); // Accede a los usuarios y el estado de carga
+
+  const getRoleIcon = (role) => {
+    switch (role) {
+      case 'admin':
+        return <FontAwesomeIcon icon={faUserShield} />;
+      case 'client':
+        return <FontAwesomeIcon icon={faUser} />;
+      case 'seller':
+        return <FontAwesomeIcon icon={faUserTie} />;
+      default:
+        return null;
+    }
+  };
+
+  if (isLoading) {
+    return <p>Cargando...</p>; // Indicador de carga
+  }
+
   return (
     <div className="min-vh-100 bg-dark d-flex flex-column">
       <Container fluid className="flex-grow-1">
         <Row className="h-100">
           <Col md={2}>
-            <Sidebar /> {/* Barrra lateral*/}
+            <Sidebar /> {/* Barra lateral */}
           </Col>
           <Col md={10} className="mt-3">
-            <h1 className="text-info mb-5">Dashboard</h1>
-            <Row className="text-info pt-5">
-              {" "}
-              {/* Productos */}
-              <Col md={4}>
-                <Card bg="secondary" text="white" className="mb-3">
-                  <Card.Body>
-                    <Card.Title>Card Title 1</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content[^1^][1][^2^][2].
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={4}>
-                <Card bg="secondary" text="white" className="mb-3">
-                  <Card.Body>
-                    <Card.Title>Card Title 2</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content[^1^][1][^2^][2].
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={4}>
-                <Card bg="secondary" text="white" className="mb-3">
-                  <Card.Body>
-                    <Card.Title>Card Title 3</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content[^1^][1][^2^][2].
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
+            <h1 className="text-info mb-5">Panel de Control</h1>
+
             <Row className="text-info pt-5">
               <Col>
-                <h2 className="text-info mb-4">Usuarios</h2> {/* Usuarios */}
+                <h2 className="text-info mb-4">Usuarios</h2>
                 <Table striped bordered hover variant="dark">
                   <thead>
                     <tr>
@@ -70,36 +50,16 @@ const Dashboard = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>001</td>
-                      <td>Juan</td>
-                      <td>Pérez</td>
-                      <td>juan.perez@example.com</td>
-                      <td>
-                        <FontAwesomeIcon icon={faUserShield} /> Admin
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>002</td>
-                      <td>María</td>
-                      <td>López</td>
-                      <td>maria.lopez@example.com</td>
-                      <td>
-                        <FontAwesomeIcon icon={faUser} /> Usuario
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>003</td>
-                      <td>Carlos</td>
-                      <td>García</td>
-                      <td>carlos.garcia@example.com</td>
-                      <td>
-                        <FontAwesomeIcon icon={faUserTie} /> Vendedor
-                      </td>
-                    </tr>
+                    {users.map((user, index) => (
+                      <tr key={user.id}>
+                        <td>{index + 1}</td>
+                        <td>{user.id}</td>
+                        <td>{user.name}</td>
+                        <td>{user.lastName}</td>
+                        <td>{user.email}</td>
+                        <td>{getRoleIcon(user.usertype)} {user.role}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </Table>
               </Col>

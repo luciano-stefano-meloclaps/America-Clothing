@@ -1,25 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\WebVintage\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{0E68482A-5F5C-4EF3-B07F-7376C117F820}|..\\Infrastructure\\Infrastructure.csproj|c:\\users\\mate_\\onedrive\\escritorio\\tecnicatura en programaci\u00F3n\\4to cuatrimestre\\laboratorio de computacion iv\\pps\\ecommerce-vintage\\backend\\infrastructure\\services\\authenticateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|c:\\users\\mate_\\onedrive\\escritorio\\tecnicatura en programaci\u00F3n\\4to cuatrimestre\\laboratorio de computacion iv\\pps\\ecommerce-vintage\\backend\\webvintage\\controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|solutionrelative:controllers\\authenticatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\mate_\\onedrive\\escritorio\\tecnicatura en programaci\u00F3n\\4to cuatrimestre\\laboratorio de computacion iv\\pps\\ecommerce-vintage\\backend\\application\\models\\credentialsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|c:\\users\\mate_\\onedrive\\escritorio\\tecnicatura en programaci\u00F3n\\4to cuatrimestre\\laboratorio de computacion iv\\pps\\ecommerce-vintage\\backend\\webvintage\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EA6DFA6-E630-40EA-82E0-D8FEEE0D3D8E}|..\\Domain\\Domain.csproj|c:\\users\\mate_\\onedrive\\escritorio\\tecnicatura en programaci\u00F3n\\4to cuatrimestre\\laboratorio de computacion iv\\pps\\ecommerce-vintage\\backend\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -27,16 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -56,70 +30,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\WebVintage\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\WebVintage\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAAAGwAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T04:27:01.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CredentialsDto.cs",
-              "DocumentMoniker": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Application\\Models\\CredentialsDto.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Models\\CredentialsDto.cs",
-              "ToolTip": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Application\\Models\\CredentialsDto.cs",
-              "RelativeToolTip": "..\\Application\\Models\\CredentialsDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T03:38:52.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthenticateController.cs",
-              "DocumentMoniker": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\AuthenticateController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthenticateController.cs",
-              "ToolTip": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\AuthenticateController.cs",
-              "RelativeToolTip": "Controllers\\AuthenticateController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T03:37:17.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthenticateService.cs",
-              "DocumentMoniker": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Infrastructure\\Services\\AuthenticateService.cs",
-              "RelativeDocumentMoniker": "..\\Infrastructure\\Services\\AuthenticateService.cs",
-              "ToolTip": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Infrastructure\\Services\\AuthenticateService.cs",
-              "RelativeToolTip": "..\\Infrastructure\\Services\\AuthenticateService.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAwwDsAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T03:36:41.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "..\\Domain\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programaci\u00F3n\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Domain\\Entities\\User.cs",
-              "RelativeToolTip": "..\\Domain\\Entities\\User.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAUwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-12T03:35:21.58Z"
             }
           ]
         }

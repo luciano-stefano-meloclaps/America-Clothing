@@ -1,5 +1,9 @@
 CREATE DATABASE  IF NOT EXISTS `vintage_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 USE `vintage_db`;
+select * from user;
+UPDATE user
+SET usertype = 'admin'
+WHERE id = 1;
 -- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vintage_db
