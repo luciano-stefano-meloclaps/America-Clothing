@@ -1,85 +1,73 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  Form,
-  Button,
-  Container,
-  Alert,
-  Row,
-  Col,
-  Image,
-} from "react-bootstrap";
-import { useState } from "react";
+import { Form, Button, Container, Alert, Row, Col, Image } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../context/AuthContext";
+
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth(); // Usar AuthContext
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 8000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verificar que los campos no estén vacíos
     if (!email || !password) {
       setMessage("Por favor, completa todos los campos.");
       return;
     }
 
+    setLoading(true);
+
     try {
       const response = await axios.post(
         "https://localhost:7091/api/authenticate/authenticate",
-        {
-          email,
-          password,
-        }
+        { email, password }
       );
 
-      const token = response.data; // Asumiendo que tu API devuelve el token directamente
-      localStorage.setItem("token", token);
+      const token = response.data;
+      login(token); // Usar el método login de AuthContext
       console.log("Inicio de sesión exitoso.");
-
-      // Inicias sesion y te lleva a la pagina principal
       navigate("/");
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        setMessage(
-          "Credenciales inválidas. Por favor, verifica tu email y contraseña."
-        );
+        setMessage("Credenciales inválidas. Por favor, verifica tu email y contraseña.");
       } else {
-        setMessage(
-          "Ocurrió un error al intentar iniciar sesión. Por favor, intenta de nuevo más tarde."
-        );
+        setMessage("Ocurrió un error al intentar iniciar sesión. Por favor, intenta de nuevo más tarde.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center shadow">
-      <h1 className="section-title text-light mb-4 text-uppercase">
-        Iniciar Sesion
-      </h1>
-      <Container
-        className="contact-us-container p-5  my-5 rounded "
-        style={{ maxWidth: "600px" }}
-      >
+      <h1 className="section-title text-light mb-4 text-uppercase">Iniciar Sesion</h1>
+      <Container className="contact-us-container p-5 my-5 rounded " style={{ maxWidth: "600px" }}>
         <Row className="align-items-center justify-content-center text-center my-4">
           <Col xs="auto" className="pe-1">
             <Image src="public/game.png" width={50} fluid />
           </Col>
           <Col xs="auto">
-            <h1
-              className="text-light "
-              style={{ fontFamily: "Caveat", margin: 0 }}
-            >
-              American clothing
-            </h1>
+            <h1 className="text-light " style={{ fontFamily: "Caveat", margin: 0 }}>American clothing</h1>
           </Col>
         </Row>
-        {message && <Alert variant="info">{message}</Alert>}{" "}
-        {/* Mostrar mensaje si existe */}
+        {message && <Alert variant="info">{message}</Alert>}
         <Form onSubmit={handleSubmit} className=" p-4  ">
           <Form.Group controlId="email">
             <Form.Control
@@ -90,7 +78,6 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-
           <Form.Group controlId="password" className="mt-4  ">
             <Form.Control
               type="password"
@@ -100,7 +87,6 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-
           <Form.Group>
             <Form.Check
               className="text-light my-5"
@@ -110,13 +96,8 @@ function Login() {
               feedbackType="invalid"
             />
           </Form.Group>
-
-          <Button
-            variant="light"
-            type="submit"
-            className="mt-2 shadow rounded w-100"
-          >
-            Iniciar Sesión
+          <Button variant="light" type="submit" className="mt-2 shadow rounded w-100" disabled={loading}>
+            {loading ? "Cargando..." : "Iniciar Sesión"}
           </Button>
         </Form>
         <div className="text-center mt-3 text-light">
