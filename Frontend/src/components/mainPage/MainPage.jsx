@@ -3,6 +3,7 @@ import Hero from "../hero/Hero";
 import ProductList from "../productList/ProductList";
 import AboutUs from "../aboutUs/AboutUs";
 import ContactUs from "../contactUs/ContactsUs";
+import Dashboard from "../dashboard/Dashboard";
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
       <ProductList />
       <AboutUs />
       <ContactUs />
+      <Dashboard />
     </div>
   );
 };

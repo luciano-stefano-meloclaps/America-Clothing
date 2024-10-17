@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Alert from "react-bootstrap/Alert";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext"; // Asegúrate de que esta ruta sea correcta
 
@@ -121,6 +121,9 @@ function NavbarMain() {
               )}
               <Link to="/cart" className="text-white pt-1 fs-4">
                 <FontAwesomeIcon icon={faCartShopping} />
+              </Link>
+              <Link to="/dashboard" className="text-white pt-1 mx-2 fs-4">
+                <FontAwesomeIcon icon={faSliders} />
               </Link>
             </div>
           </Navbar.Collapse>

@@ -17,6 +17,8 @@ import { APIContextProvider } from "./services/apiContext/api.context"; // Impor
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
 import AboutUs from "./components/aboutUs/AboutUs";
 import ContactUs from "./components/contactUs/ContactsUs";
+import Dashboard from "./components/dashboard/Dashboard";
+import Sidebar from "./components/sidebard/SideBar";
 
 function App() {
   const [products, setProducts] = useState([]);
