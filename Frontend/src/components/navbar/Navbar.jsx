@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext"; // Asegúrate de que esta ruta sea correcta
 
 function NavbarMain() {
-  const { isAuthenticated, logout, userFirstName } = useAuth();
+  const { isAuthenticated, logout, userFirstName, userRole } = useAuth();
   const [showModal, setShowModal] = useState(false); 
 
   const handleLogout = () => {
@@ -122,9 +122,11 @@ function NavbarMain() {
               <Link to="/cart" className="text-white pt-1 fs-4">
                 <FontAwesomeIcon icon={faCartShopping} />
               </Link>
-              <Link to="/dashboard" className="text-white pt-1 mx-2 fs-4">
-                <FontAwesomeIcon icon={faSliders} />
-              </Link>
+              {userRole === "admin" && (
+                <Link to="/dashboard" className="text-white pt-1 mx-2 fs-4">
+                  <FontAwesomeIcon icon={faSliders} />
+                </Link>
+              )}
             </div>
           </Navbar.Collapse>
         </Container>
