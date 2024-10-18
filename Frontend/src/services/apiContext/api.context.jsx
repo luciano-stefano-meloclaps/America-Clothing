@@ -40,6 +40,27 @@ export const APIContextProvider = ({ children }) => {
     fetchUsers();
   }, []); // Este efecto se ejecuta una vez al montar el componente
 
+
+  // Carga de productos
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("https://localhost:7091/api/Product");
+        if (Array.isArray(response.data)) {
+          setProducts(response.data); // Guardamos los productos en el estado
+        } else {
+          throw new Error("La respuesta no es un array");
+        }
+      } catch (error) {
+        console.error("Error al cargar los productos", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+
+
   const toggleLoading = (value) => {
     setIsLoading(value);
   };
