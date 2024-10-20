@@ -1,0 +1,119 @@
+import React, { useState } from "react";
+import { Table, Button, Alert } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faUserShield,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
+import SearchBarUser from "../components/searchBarUser/SearchBarUser";
+
+const UserTable = ({ users }) => {
+  const [filteredUsers, setFilteredUsers] = useState(users);
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 10;
+
+  const getRoleIcon = (role) => {
+    switch (role) {
+      case "admin":
+        return <FontAwesomeIcon icon={faUserShield} />;
+      case "client":
+        return <FontAwesomeIcon icon={faUser} />;
+      case "seller":
+        return <FontAwesomeIcon icon={faUserTie} />;
+      default:
+        return null;
+    }
+  };
+
+  const handleSearch = (filters) => {
+    const { name, lastName, email } = filters;
+    const newFilteredUsers = users.filter((user) => {
+      return (
+        (!name || user.name.toLowerCase().includes(name.toLowerCase())) &&
+        (!lastName ||
+          user.lastName.toLowerCase().includes(lastName.toLowerCase())) &&
+        (!email || user.email.toLowerCase().includes(email.toLowerCase()))
+      );
+    });
+    setFilteredUsers(newFilteredUsers);
+    setCurrentPage(1); // Resetear a la primera página al buscar
+  };
+
+  const handleClear = () => {
+    setFilteredUsers(users);
+    setCurrentPage(1); // Resetear a la primera página al limpiar
+  };
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+  const currentStart = indexOfFirstUser + 1;
+  const currentEnd = Math.min(indexOfLastUser, filteredUsers.length);
+
+  return (
+    <div>
+      <h2 className="text-info mb-5">Usuarios</h2>
+
+      <SearchBarUser onSearch={handleSearch} onClear={handleClear} />
+
+      {currentUsers.length === 0 ? (
+        <Alert variant="info" className="text-center">
+          <h4>No tenemos resultados para tu búsqueda.</h4>
+          <p>Por favor, intentá con otros filtros.</p>
+        </Alert>
+      ) : (
+        <>
+          <h5 className="text-info">
+            Mostrando usuarios del {currentStart} al {currentEnd} &nbsp; &nbsp;
+            Total: {filteredUsers.length}
+          </h5>
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Rol</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentUsers.map((user, index) => (
+                <tr key={user.id}>
+                  <td>{indexOfFirstUser + index + 1}</td>
+                  <td>{user.id}</td>
+                  <td>{user.name}</td>
+                  <td>{user.lastName}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    {getRoleIcon(user.usertype)} {user.role}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <div className="d-flex justify-content-center mt-3">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <Button
+                key={index + 1}
+                variant={
+                  currentPage === index + 1 ? "primary" : "outline-primary"
+                }
+                onClick={() => setCurrentPage(index + 1)}
+                className="mx-1"
+              >
+                {index + 1}
+              </Button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default UserTable;
