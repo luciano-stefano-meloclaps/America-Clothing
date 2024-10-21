@@ -10,8 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MainPage from "./components/mainPage/MainPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AuthProvider } from './context/AuthContext'; 
-
+import { AuthProvider } from "./context/AuthContext";
 
 import { APIContextProvider } from "./services/apiContext/api.context"; // Importa el provider
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
@@ -19,6 +18,7 @@ import AboutUs from "./components/aboutUs/AboutUs";
 import ContactUs from "./components/contactUs/ContactsUs";
 import Dashboard from "./components/dashboard/Dashboard";
 import Sidebar from "./components/sidebard/SideBar";
+import ProductAdd from "./components/productAdd/ProductAdd";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -70,6 +70,7 @@ function App() {
             {/* Ruta para Sobre Nosotros */}
             <Route path="/contactUs" element={<ContactUs />} />
             {/* Ruta para el formulario */}
+            <Route path="/add-product" element={<ProductAdd />} />
           </Routes>
           <Footer />
         </Router>
