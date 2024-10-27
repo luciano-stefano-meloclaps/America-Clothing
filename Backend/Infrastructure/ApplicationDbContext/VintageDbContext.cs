@@ -26,7 +26,7 @@ public partial class VintageDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;port=3306;database=vintage_db;uid=root;password=root", ServerVersion.Parse("8.0.15-mysql"));
+        => optionsBuilder.UseMySql("server=localhost;port=3306;database=vintage_db;uid=root;pwd=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.15-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -41,12 +41,17 @@ public partial class VintageDbContext : DbContext
             entity.ToTable("product");
 
             entity.Property(e => e.Code)
-                .ValueGeneratedNever()
                 .HasColumnType("int(11)")
                 .HasColumnName("code");
+            entity.Property(e => e.Category)
+                .HasMaxLength(45)
+                .HasColumnName("category");
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .HasColumnName("description");
+            entity.Property(e => e.Image)
+                .HasMaxLength(500)
+                .HasColumnName("image");
             entity.Property(e => e.Name)
                 .HasMaxLength(45)
                 .HasColumnName("name");
@@ -56,6 +61,9 @@ public partial class VintageDbContext : DbContext
             entity.Property(e => e.Size)
                 .HasMaxLength(45)
                 .HasColumnName("size");
+            entity.Property(e => e.State)
+                .HasColumnType("tinyint(4)")
+                .HasColumnName("state");
             entity.Property(e => e.Stock)
                 .HasColumnType("int(11)")
                 .HasColumnName("stock");

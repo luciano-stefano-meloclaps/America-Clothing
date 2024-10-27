@@ -45,3 +45,14 @@ C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\D
 C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.dll
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.pdb
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.dll
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
+C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll
