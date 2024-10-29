@@ -1,10 +1,5 @@
 CREATE DATABASE  IF NOT EXISTS `vintage_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 USE `vintage_db`;
-select * from user;
-UPDATE user
-SET usertype = 'seller'
-WHERE id = 3;
-
 -- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vintage_db
@@ -30,12 +25,15 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `product` (
-  `code` int(11) NOT NULL,
+  `code` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `stock` int(11) DEFAULT NULL,
   `size` varchar(45) DEFAULT NULL,
+  `state` tinyint(4) NOT NULL,
+  `category` varchar(45) NOT NULL,
+  `image` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -89,8 +87,8 @@ CREATE TABLE `saleorderline` (
   `product_code` int(11) NOT NULL,
   `saleorder_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `saleorderline_product_productcodefk_idx` (`product_code`),
   KEY `saleorderline_saleorder_saleorderidfk_idx` (`saleorder_id`),
+  KEY `saleorderline_product_productcodefk_idx` (`product_code`),
   CONSTRAINT `saleorderline_product_productcodefk` FOREIGN KEY (`product_code`) REFERENCES `product` (`code`),
   CONSTRAINT `saleorderline_saleorder_saleorderidfk` FOREIGN KEY (`saleorder_id`) REFERENCES `saleorder` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -149,4 +147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-04 22:18:31
+-- Dump completed on 2024-10-27 17:55:59
