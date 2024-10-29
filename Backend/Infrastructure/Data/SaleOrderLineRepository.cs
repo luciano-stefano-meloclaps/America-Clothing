@@ -52,7 +52,7 @@ namespace Infrastructure.Data
                 .Include(sol => sol.ProductCodeNavigation)
                 .Include(sol => sol.Saleorder)
                 .ThenInclude(so => so.User)
-                .Where(sol => sol.Saleorder.ClientId == clientId)
+                .Where(sol => sol.Saleorder.User.Id == clientId)
                 .ToList();
         }
 

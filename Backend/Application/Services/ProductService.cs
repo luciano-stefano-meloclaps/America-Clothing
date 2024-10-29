@@ -43,6 +43,8 @@ namespace Application.Services
                 Price = request.Price,
                 Stock = request.Stock,
                 Size = request.Size,
+                Category = request.Category,
+                Image = request.Image,
                
             };
             return _repository.Add(product).Code;
