@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Infrastructure.ApplicationDbContext;
+namespace Domain.Entities;
 
 public partial class Product
 {

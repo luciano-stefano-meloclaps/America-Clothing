@@ -18,5 +18,11 @@ namespace Application.Models
         public int Stock { get; set; }
 
         public string Size { get; set; } = null!;
+
+        public string Category { get; set; } = null!;
+
+        public string? Image { get; set; }
+
+
     }
 }
