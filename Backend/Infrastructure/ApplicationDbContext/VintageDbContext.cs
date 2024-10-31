@@ -67,6 +67,10 @@ public partial class VintageDbContext : DbContext
             entity.Property(e => e.Stock)
                 .HasColumnType("int(11)")
                 .HasColumnName("stock");
+            entity.Property(e => e.Sold)
+               .HasColumnType("tinyint(1)")
+               .HasDefaultValue(false) // El sold y valor false por que no esta vendido
+               .HasColumnName("sold");
         });
 
         modelBuilder.Entity<Saleorder>(entity =>

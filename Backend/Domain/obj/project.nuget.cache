@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "irbajlR3D8RI02hne0Br8oRxdKgHeTJ1k90jOKWIqEXgAzgC66+LmODk8kKIMupVWt6uimwNPR3ODLdMAvnf3w==",
+  "dgSpecHash": "FTWQE0oMUoU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mate_\\OneDrive\\Escritorio\\Tecnicatura en Programación\\4to Cuatrimestre\\Laboratorio de Computacion IV\\PPS\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
