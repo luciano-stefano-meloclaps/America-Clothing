@@ -17,8 +17,7 @@ namespace Application.Models
         public string Email { get; set; } = null!;
 
         public string Password { get; set; } = null!;
-
-        //public string Usertype { get; set; } = null!;
+        public string Usertype { get; set; } = null!;
 
         public bool State { get; set; }
 

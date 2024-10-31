@@ -71,7 +71,7 @@ namespace WebVintage.Controllers
         }
 
         [HttpPut("{code}")]
-        public IActionResult UpdateProduct([FromRoute] int code, [FromBody] Product request)
+        public IActionResult UpdateProduct([FromRoute] int code, [FromBody] ProductDto request)
         {
 
             var existingProduct = _service.Get(code);

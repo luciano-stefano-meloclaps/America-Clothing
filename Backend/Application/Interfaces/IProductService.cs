@@ -10,11 +10,11 @@ namespace Application.Interfaces
 {
     public interface IProductService
     {
-        List<Product> GetAllProducts();
-        Product? Get(int code);
-        Product? GetProductsByName(string name);
+        List<ProductDto> GetAllProducts(); 
+        ProductDto? Get(int code); 
+        ProductDto? GetProductsByName(string name); 
         int AddProduct(ProductDto request);
-        void DeleteProduct(int id);
-        void UpdateProduct(int id, Product request);
+        void DeleteProduct(int code);
+        void UpdateProduct(int code, ProductDto request); 
     }
 }
