@@ -1,0 +1,14 @@
+.nav-link:hover,
+.nav-item:hover {
+  text-decoration: underline rgb(255, 235, 168) 2.2px;
+  text-underline-offset: 4px;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-brand:hover {
+  opacity: 0.7;
+}
+
+.modal-custom {
+  backdrop-filter: blur(5px);
+}
