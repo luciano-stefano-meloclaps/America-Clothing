@@ -23,6 +23,7 @@ public partial class Product
     public string Category { get; set; } = null!;
 
     public string? Image { get; set; }
+    public bool Sold { get; set; }
 
     public virtual ICollection<Saleorderline> Saleorderlines { get; set; } = new List<Saleorderline>();
 }
