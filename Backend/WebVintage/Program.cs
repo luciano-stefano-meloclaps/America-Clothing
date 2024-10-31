@@ -74,6 +74,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ISaleOrderService, SaleOrderService>();
 builder.Services.AddScoped<ISaleOrderLineService, SaleOrderLineService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 builder.Services.Configure<AuthenticateServiceOptions>(
     builder.Configuration.GetSection(AuthenticateServiceOptions.AuthenticateService));
