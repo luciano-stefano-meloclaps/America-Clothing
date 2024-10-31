@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import {
+  Container,
+  Row,
+  Col,
   Form,
   Button,
   Alert,
-  Container,
-  Col,
-  Row,
   Image,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,22 +20,21 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    state: true,
     address: "",
     phoneNumber: "",
   });
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [validated, setValidated] = useState(false);
 
   useEffect(() => {
-    // Limpiar mensajes después de 8 segundos
     const timer = setTimeout(() => {
       setError(null);
       setSuccess(null);
-    }, 8000);
+    }, 6000);
 
-    return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
+    return () => clearTimeout(timer);
   }, [error, success]);
 
   const handleChange = (e) => {
@@ -47,19 +46,25 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+      setValidated(true);
+      setError("Por favor, completa todos los campos correctamente.");
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       setError("Las contraseñas no coinciden.");
       return;
     }
 
-    // Prepara el objeto para el envío
     const userData = {
       name: formData.name,
       lastName: formData.lastName,
       username: formData.username,
       email: formData.email,
       password: formData.password,
-      state: formData.state,
       address: formData.address,
       phoneNumber: formData.phoneNumber,
     };
@@ -67,7 +72,7 @@ const Register = () => {
     try {
       const response = await axios.post(
         "https://localhost:7091/api/User",
-        userData // Asegúrate de enviar el objeto correcto
+        userData
       );
       console.log("Usuario registrado:", response.data);
       setSuccess("Usuario registrado con éxito");
@@ -85,7 +90,7 @@ const Register = () => {
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center ">
       <h1 className="section-title text-light mb-4 text-uppercase">Registro</h1>
       <Container
-        className="contact-us-container p-5  my-5 rounded "
+        className="contact-us-container p-5 my-5 rounded"
         style={{ maxWidth: "600px" }}
       >
         <Row className="align-items-center justify-content-center text-center">
@@ -101,18 +106,12 @@ const Register = () => {
             </h1>
           </Col>
         </Row>
-        <Form onSubmit={handleSubmit}>
-          {error && (
-            <Alert variant="danger" className="mt-3">
-              {error}
-            </Alert>
-          )}
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
           {success && (
             <Alert variant="success" className="mt-3">
               {success}
             </Alert>
           )}
-
           <Form.Group className="pt-5 mb-4">
             <Form.Control
               type="text"
@@ -122,9 +121,11 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa tu nombre.
+            </Form.Control.Feedback>
           </Form.Group>
 
-          
           <Form.Group className="mb-4">
             <Form.Control
               type="text"
@@ -134,9 +135,11 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa tu apellido.
+            </Form.Control.Feedback>
           </Form.Group>
 
-       
           <Form.Group className="mb-4">
             <Form.Control
               type="text"
@@ -146,6 +149,9 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa un nombre de usuario.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-4">
@@ -157,6 +163,9 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa un email válido.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-4">
@@ -168,6 +177,9 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa una contraseña.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-4">
@@ -179,8 +191,10 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, confirma tu contraseña.
+            </Form.Control.Feedback>
           </Form.Group>
-
 
           <Form.Group className="mb-4">
             <Form.Control
@@ -191,8 +205,10 @@ const Register = () => {
               onChange={handleChange}
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa tu dirección.
+            </Form.Control.Feedback>
           </Form.Group>
-
 
           <Form.Group className="mb-4">
             <Form.Control
@@ -203,25 +219,23 @@ const Register = () => {
               onChange={handleChange}
               required
             />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Check
-              className="text-light mb-5"
-              required
-              label="Aceptar los términos y condiciones"
-              feedback="Debes aceptar los términos y condiciones antes de enviar."
-              feedbackType="invalid"
-            />
+            <Form.Control.Feedback type="invalid">
+              Por favor, ingresa tu número de teléfono.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Button
             variant="light"
             type="submit"
-            className=" shadow rounded w-100"
+            className="shadow rounded w-100"
           >
             Crear cuenta
           </Button>
+          {error && (
+            <Alert variant="danger" className="mt-3">
+              {error}
+            </Alert>
+          )}
         </Form>
         <div>
           <Row className="text-center text-light mt-5">
