@@ -34,6 +34,7 @@ CREATE TABLE `product` (
   `state` tinyint(4) NOT NULL,
   `category` varchar(45) NOT NULL,
   `image` varchar(500) DEFAULT NULL,
+  `sold` tinyint(1) NOT NULL DEFAULT '0', -- Prueba para ver si se sube La columna sold
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -148,3 +149,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-10-27 17:55:59
+
