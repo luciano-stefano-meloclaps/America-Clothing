@@ -9,10 +9,11 @@ import { useAuth } from "../../context/AuthContext";
 
 const MainPage = () => {
   const {userRole} = useAuth();
+ // console.log("UserType:", userRole);
   return (
     <div>
-      {/* Si el usuario es admin, mostramos solo el Dashboard */}
-      {userRole === 'admin' ? (
+      {/* Si el usuario es admin o employee, mostramos solo el Dashboard */}
+      {userRole === 'admin'|| userRole === 'employee' ? (  // ACA LE DOY ACCESO ANTES ESTABA ADMIN NOMAS
         <Dashboard />
       ) : (
         // Si es cliente, mostramos los demás componentes
