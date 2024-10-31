@@ -10,5 +10,6 @@ namespace Application.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public List<SaleOrderLineDto> OrderLines { get; set; } = new List<SaleOrderLineDto>();
     }
 }

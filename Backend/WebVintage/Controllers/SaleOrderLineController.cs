@@ -61,7 +61,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ninguna venta con el ID: {saleOrderLine.SaleorderId}");
             }
 
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == saleOrder.UserId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == saleOrder.UserId))
             {
                 return Ok(saleOrderLine);
             }
@@ -72,7 +72,7 @@ namespace WebVintage.Controllers
         [HttpGet("by-product/{productId}")]
         public IActionResult GetAllByProduct([FromRoute] int productId)
         {
-            if (IsUserInRole("Admin"))
+            if (IsUserInRole("admin"))
             {
                 var product = _productService.Get(productId);
                 if (product == null)
@@ -101,7 +101,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ninguna venta con el ID: {orderId}");
             }
 
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == saleOrder.UserId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == saleOrder.UserId))
             {
                 var saleOrderDetails = _saleOrderLineService.GetAllBySaleOrder(orderId);
                 return Ok(saleOrderDetails);
@@ -125,7 +125,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ninguna venta con el ID: {dto.SaleOrderId}");
             }
 
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == existingSaleOrder.UserId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == existingSaleOrder.UserId))
             {
                 var saleOrderLineId = _saleOrderLineService.AddSaleOrderLine(dto);
                 return CreatedAtAction(nameof(GetById), new { id = saleOrderLineId }, $"Creado el Detalle de Venta con el ID: {saleOrderLineId}");
@@ -156,7 +156,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ninguna venta con el ID: {existingSaleOrderLine.SaleorderId}");
             }
 
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == existingSaleOrder.UserId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == existingSaleOrder.UserId))
             {
                 _saleOrderLineService.DeleteSaleOrderLine(id);
                 return Ok($"Detalle de venta con ID: {id} eliminado");
@@ -187,7 +187,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ninguna venta con el ID: {existingSaleOrderLine.SaleorderId}");
             }
 
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == existingSaleOrder.UserId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == existingSaleOrder.UserId))
             {
                 try
                 {

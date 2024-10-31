@@ -37,7 +37,7 @@ namespace Application.Services
         {
             var product = new Product()
             {
-                Code = request.Code,
+                //Code = request.Code,
                 Name = request.Name,
                 Description = request.Description,
                 Price = request.Price,

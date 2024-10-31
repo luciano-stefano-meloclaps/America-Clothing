@@ -66,19 +66,21 @@ export const APIContextProvider = ({ children }) => {
   };
 
   const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((p) => p.code === product.code);
-      if (existingProduct) {
-        return prevCart.map((p) =>
-          p.code === product.code ? { ...p, quantity: p.quantity + 1 } : p
-        );
-      }
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
+    const existingProduct = cart.find((p) => p.code === product.code);
+    if (existingProduct) {
+      return false; // Devuelve false si el producto ya existe
+    }
+  
+    setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]); // Agrega el nuevo producto
+    return true; // Devuelve true si el producto fue agregado
   };
-
+  
   const removeFromCart = (code) => {
     setCart((prevCart) => prevCart.filter((product) => product.code !== code));
+  };
+
+  const clearCart = () => {
+    setCart([]); // Vacía el carrito
   };
 
   const putProduct = (product, token) => {
@@ -101,6 +103,7 @@ export const APIContextProvider = ({ children }) => {
         setPurchaseHistory,
         addToCart,
         removeFromCart,
+        clearCart,
         putProduct,
       }}
     >

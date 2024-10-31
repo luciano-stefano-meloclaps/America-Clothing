@@ -21,17 +21,17 @@ namespace Infrastructure.Data
         public Saleorderline? GetById(int id)
         {
             return _context.Saleorderlines
-                .Include(sol => sol.ProductCodeNavigation)
-                .Include(sol => sol.Saleorder)
-                .ThenInclude(so => so.User)
+                //.Include(sol => sol.ProductCodeNavigation)
+                //.Include(sol => sol.Saleorder)
+                //.ThenInclude(so => so.User)
                 .SingleOrDefault(x => x.Id == id);
         }
         public List<Saleorderline> GetAllBySaleOrder(int orderId)
         {
             return _context.Saleorderlines
-                .Include(sol => sol.ProductCodeNavigation)
-                .Include(sol => sol.Saleorder)
-                .ThenInclude(so => so.User)
+                //.Include(sol => sol.ProductCodeNavigation)
+                //.Include(sol => sol.Saleorder)
+                //.ThenInclude(so => so.User)
                 .Where(sol => sol.SaleorderId == orderId)
                 .ToList();
         }
@@ -39,19 +39,19 @@ namespace Infrastructure.Data
         public List<Saleorderline> GetAllByProduct(int productId)
         {
             return _context.Saleorderlines
-                .Include(sol => sol.ProductCodeNavigation)
+                //.Include(sol => sol.ProductCodeNavigation)
                 .Where(sol => sol.ProductCode == productId)
-                .Include(sol => sol.Saleorder)
-                .ThenInclude(so => so.User)
+                //.Include(sol => sol.Saleorder)
+                //.ThenInclude(so => so.User)
                 .ToList();
         }
 
         public List<Saleorderline> GetAllByClient(int clientId)
         {
             return _context.Saleorderlines
-                .Include(sol => sol.ProductCodeNavigation)
-                .Include(sol => sol.Saleorder)
-                .ThenInclude(so => so.User)
+                //.Include(sol => sol.ProductCodeNavigation)
+                //.Include(sol => sol.Saleorder)
+                //.ThenInclude(so => so.User)
                 .Where(sol => sol.Saleorder.User.Id == clientId)
                 .ToList();
         }

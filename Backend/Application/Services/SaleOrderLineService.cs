@@ -82,18 +82,18 @@ namespace Application.Services
             };
 
             // Actualiza el stock del producto
-            var updatedProduct = new Product
-            {
-                Code = dto.ProductId,
-                Price = product.Price,
-                Stock = product.Stock - dto.Amount
-            };
+            //var updatedProduct = new Product
+            //{
+            //    Code = dto.ProductId,
+            //    Price = product.Price,
+            //    Stock = product.Stock - dto.Amount
+            //};
 
             // Pasar el id y el producto
-            _productService.UpdateProduct(dto.ProductId, updatedProduct);
+            //_productService.UpdateProduct(dto.ProductId, updatedProduct);
 
-            // Verificar y actualizar el estado del stock
-            product.Stock = updatedProduct.Stock;
+            //// Verificar y actualizar el estado del stock
+            //product.Stock = updatedProduct.Stock;
             //var stockStatus = product.StockStatus;
 
             return _repository.Add(saleOrderLine).Id;

@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Domain",
-    "\\Domain\\obj",
-    "\\Domain\\obj\\Debug",
-    "\\Domain\\obj\\Release",
     "\\WebVintage",
+    "\\WebVintage\\Controllers",
     "\\WebVintage\\obj",
     "\\WebVintage\\obj\\Debug",
     "\\WebVintage\\obj\\Release",
     "\\WebVintage\\Properties"
   ],
-  "SelectedNode": "\\WebVintage\\WebVintage.sln",
+  "SelectedNode": "\\WebVintage\\Controllers\\SaleOrderController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -73,6 +73,7 @@ builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntentica
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ISaleOrderService, SaleOrderService>();
+builder.Services.AddScoped<ISaleOrderLineService, SaleOrderLineService>();
 
 builder.Services.Configure<AuthenticateServiceOptions>(
     builder.Configuration.GetSection(AuthenticateServiceOptions.AuthenticateService));
@@ -83,6 +84,7 @@ builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ISaleOrderRepository, SaleOrderRepository>();
+builder.Services.AddScoped<ISaleOrderLineRepository, SaleOrderLineRepository>();
 #endregion
 
 
