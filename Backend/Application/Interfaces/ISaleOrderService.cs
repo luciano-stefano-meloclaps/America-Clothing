@@ -12,7 +12,7 @@ namespace Application.Interfaces
     {
         List<Saleorder> GetAllByClient(int UserId);
         Saleorder? GetById(int id);
-        int AddSaleOrder(SaleOrderDto dto);
+        Saleorder AddSaleOrder(SaleOrderDto saleOrderDto);
         void DeleteSaleOrder(int id);
         void UpdateSaleOrder(int id, SaleOrderDto dto);
 

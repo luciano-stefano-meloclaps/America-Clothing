@@ -7,7 +7,8 @@ import { useAPI } from '../../services/apiContext/api.context'; // Importa el co
 const Product = ({ products }) => {
   const { productId } = useParams();
   const { addToCart } = useAPI(); // Función para agregar al carrito desde el contexto
-  const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
+  const [showModal, setShowModal] = useState(false); // Estado para controlar el modal de éxito
+  const [showErrorModal, setShowErrorModal] = useState(false); // Estado para controlar el modal de error
 
   // Encontrar el producto usando el ID pasado desde productCard
   const product = products.find((p) => p.code === parseInt(productId));
@@ -17,12 +18,20 @@ const Product = ({ products }) => {
   }
 
   const handleAddToCart = () => {
-    addToCart(product); // Agrega el producto al carrito
-    setShowModal(true); // Mostrar el modal
+    const success = addToCart(product); // Agrega el producto al carrito
+    if (success) {
+      setShowModal(true); // Mostrar el modal de éxito solo si se agregó con éxito
+    } else {
+      setShowErrorModal(true); // Mostrar el modal de error si el producto ya está en el carrito
+    }
   };
 
   const handleCloseModal = () => {
-    setShowModal(false); // Cierra el modal
+    setShowModal(false); // Cierra el modal de éxito
+  };
+
+  const handleCloseErrorModal = () => {
+    setShowErrorModal(false); // Cierra el modal de error
   };
 
   return (
@@ -70,10 +79,23 @@ const Product = ({ products }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Modal de error */}
+      <Modal show={showErrorModal} onHide={handleCloseErrorModal}>
+        <Modal.Header closeButton className="bg-danger text-light">
+          <Modal.Title>Error al agregar producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="bg-danger text-light">
+          Este producto ya está en el carrito. Cada prenda es única, por lo que no se puede agregar más de una vez.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="light" onClick={handleCloseErrorModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
 
 export default Product;
-
- 

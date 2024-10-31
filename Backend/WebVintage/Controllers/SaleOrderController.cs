@@ -33,7 +33,7 @@ namespace WebVintage.Controllers
         }
 
 
-        [HttpGet("{clientId}")]
+        [HttpGet("client/{clientId}")]
         public IActionResult GetAllByClient([FromRoute] int clientId)
         {
             var userId = GetUserId();
@@ -41,7 +41,7 @@ namespace WebVintage.Controllers
             {
                 return Forbid();
             }
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == clientId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == clientId))
             {
                 var saleOrders = _saleOrderService.GetAllByClient(clientId);
                 return Ok(saleOrders);
@@ -52,33 +52,36 @@ namespace WebVintage.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
-            if (IsUserInRole("Admin"))
-            {
+            //if (IsUserInRole("Admin"))
+            //{
                 var saleOrder = _saleOrderService.GetById(id);
                 if (saleOrder == null)
                 {
                     return NotFound($"No se encontró ninguna venta con el ID: {id}");
                 }
                 return Ok(saleOrder);
-            }
-            return Forbid();
+            //}
+            //return Forbid();
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] SaleOrderDto dto)
         {
-            var userId = GetUserId();
-            if (userId == null)
-            {
-                return Forbid();
-            }
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == dto.UserId))
-            {
+            //var userId = GetUserId();
+            //if (userId == null)
+            //{
+            //    return Forbid();
+            //}
+            //if (IsUserInRole("admin") || (IsUserInRole("client") && userId == dto.UserId))
+            //{
                 var saleOrder = _saleOrderService.AddSaleOrder(dto);
-                return CreatedAtAction(nameof(GetById), new { id = saleOrder }, $"Creada la Venta con el ID: {saleOrder}");
-            }
-            return Forbid();
+                return CreatedAtAction(nameof(GetById), new { id = saleOrder.Id }, $"Creada la Venta con el ID: {saleOrder.Id}");
+
+            //}
+            //return Forbid();
         }
+
+
 
         [HttpDelete("{id}")]
         public IActionResult DeleteSaleOrder([FromRoute] int id)
@@ -94,7 +97,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ninguna venta con el ID: {id}");
             }
 
-            if (IsUserInRole("Admin") || (IsUserInRole("Client") && userId == existingSaleOrder.UserId))
+            if (IsUserInRole("admin") || (IsUserInRole("client") && userId == existingSaleOrder.UserId))
             {
                 _saleOrderService.DeleteSaleOrder(id);
                 return Ok($"Venta con ID: {id} eliminada");
@@ -106,7 +109,7 @@ namespace WebVintage.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateSaleOrder([FromRoute] int id, [FromBody] SaleOrderDto dto)
         {
-            if (IsUserInRole("Admin"))
+            if (IsUserInRole("admin"))
             {
                 // Verificar si existe el Admin con el ID proporcionado
                 var existingSaleOrder = _saleOrderService.GetById(id);

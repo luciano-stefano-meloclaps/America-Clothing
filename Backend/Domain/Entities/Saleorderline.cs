@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 
 namespace Domain.Entities;
@@ -18,6 +19,6 @@ public partial class Saleorderline
     public int SaleorderId { get; set; }
 
     public virtual Product ProductCodeNavigation { get; set; } = null!;
-
+    [JsonIgnore]
     public virtual Saleorder Saleorder { get; set; } = null!;
 }

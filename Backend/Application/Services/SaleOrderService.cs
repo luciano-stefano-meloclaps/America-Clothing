@@ -13,10 +13,12 @@ namespace Application.Services
     public class SaleOrderService : ISaleOrderService
     {
         private readonly ISaleOrderRepository _repository;
+        private readonly IProductRepository _productRepository;
 
-        public SaleOrderService(ISaleOrderRepository repository)
+        public SaleOrderService(ISaleOrderRepository repository, IProductRepository productRepository)
         {
             _repository = repository;
+            _productRepository = productRepository;
         }
         public List<Saleorder> GetAllByClient(int UserId)
         {
@@ -28,15 +30,34 @@ namespace Application.Services
             return _repository.GetById(id);
         }
 
-        public int AddSaleOrder(SaleOrderDto dto)
+        public Saleorder AddSaleOrder(SaleOrderDto saleOrderDto)
         {
-            var saleOrder = new Saleorder()
+            var saleOrder = new Saleorder
             {
-                UserId = dto.UserId,
-            };
-            return _repository.Add(saleOrder).Id;
-        }
+                UserId = saleOrderDto.UserId,
+                Saleorderlines = saleOrderDto.OrderLines.Select(line =>
+                {
+                    // Obtener el precio del producto usando el repositorio
+                    var product = _productRepository.Get(line.ProductId);
+                    if (product == null)
+                    {
+                        throw new Exception($"Producto con ID {line.ProductId} no encontrado.");
+                    }
 
+                    return new Saleorderline // Retorna el objeto Saleorderline
+                    {
+                        ProductCode = line.ProductId,
+                        Amount = line.Amount,
+                        UnitPrice = product.Price
+                    };
+                }).ToList()
+            };
+
+            // Agregar la orden de venta al repositorio
+            _repository.Add(saleOrder);
+
+            return saleOrder; // Retorna el objeto Saleorder completo
+        }
 
         public void DeleteSaleOrder(int id)
         {

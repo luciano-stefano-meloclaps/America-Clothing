@@ -124,7 +124,7 @@ const Register = () => {
             />
           </Form.Group>
 
-          {/* Redundante
+          
           <Form.Group className="mb-4">
             <Form.Control
               type="text"
@@ -135,9 +135,8 @@ const Register = () => {
               required
             />
           </Form.Group>
-          */}
 
-          {/* Redundante
+       
           <Form.Group className="mb-4">
             <Form.Control
               type="text"
@@ -148,7 +147,6 @@ const Register = () => {
               required
             />
           </Form.Group>
-          */}
 
           <Form.Group className="mb-4">
             <Form.Control
@@ -183,7 +181,7 @@ const Register = () => {
             />
           </Form.Group>
 
-          {/* Redundante
+
           <Form.Group className="mb-4">
             <Form.Control
               type="text"
@@ -194,7 +192,7 @@ const Register = () => {
               required
             />
           </Form.Group>
-            */}
+
 
           <Form.Group className="mb-4">
             <Form.Control

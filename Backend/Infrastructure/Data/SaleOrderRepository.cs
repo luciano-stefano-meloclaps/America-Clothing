@@ -18,12 +18,12 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public List<Saleorder> GetAllByClient(int clientId) //todas por cliente
+        public List<Saleorder> GetAllByClient(int clientId)
         {
             return _context.Saleorders
-                .Include(so => so.User)
-                .Include(so => so.Saleorderlines)
-                .ThenInclude(so => so.ProductCode)
+                //.Include(so => so.User) // Incluye la relación con el usuario
+                //.Include(so => so.Saleorderlines) // Incluye la colección de líneas de pedido
+                //.ThenInclude(sol => sol.ProductCodeNavigation) // Incluye la relación con el producto a través de la propiedad de navegación correcta
                 .Where(r => r.UserId == clientId)
                 .ToList();
         }
@@ -31,10 +31,11 @@ namespace Infrastructure.Data
         public Saleorder? GetById(int id)
         {
             return _context.Saleorders
-                .Include(r => r.User)
-                .Include(r => r.Saleorderlines)
-                .ThenInclude(so => so.ProductCode)
+                //.Include(r => r.User)
+                //.Include(r => r.Saleorderlines)
+                //.ThenInclude(sol => sol.ProductCodeNavigation)
                 .SingleOrDefault(x => x.Id == id);
         }
+
     }
 }
