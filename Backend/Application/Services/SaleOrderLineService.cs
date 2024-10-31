@@ -139,7 +139,7 @@ namespace Application.Services
             }
 
             // Actualizar el stock del producto
-            var updatedProduct = new Product
+            var updatedProduct = new ProductDto
             {
                 Price = product.Price,
                 Stock = product.Stock - amountDifference

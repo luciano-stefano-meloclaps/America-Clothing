@@ -35,7 +35,24 @@ namespace Application.Services
             return _repository.Get(name);
         }
 
-        public int AddUser(UserDto request)
+        /* public int AddUser(UserDto request)
+         {
+             var user = new User()
+             {
+                 Name = request.Name,
+                 LastName = request.LastName,
+                 Username = request.Username,
+                 Email = request.Email,
+                 Password = request.Password,
+                 Usertype = "Client",
+                 State = true,
+                 Address = request.Address,
+                 PhoneNumber = request.PhoneNumber,
+             };
+             return _repository.Add(user).Id;
+         }
+        */
+        public int AddUser(UserDto request, string userType = "Client") 
         {
             var user = new User()
             {
@@ -44,7 +61,24 @@ namespace Application.Services
                 Username = request.Username,
                 Email = request.Email,
                 Password = request.Password,
-                Usertype = "Client",
+                Usertype = userType,
+                State = true,
+                Address = request.Address,
+                PhoneNumber = request.PhoneNumber,
+            };
+            return _repository.Add(user).Id;
+        }
+
+        public int AddAdminUser(UserDto request)
+        {
+            var user = new User()
+            {
+                Name = request.Name,
+                LastName = request.LastName,
+                Username = request.Username,
+                Email = request.Email,
+                Password = request.Password,
+                Usertype = request.Usertype, 
                 State = true,
                 Address = request.Address,
                 PhoneNumber = request.PhoneNumber,
@@ -71,6 +105,7 @@ namespace Application.Services
                 userToUpdate.Username = request.Username;
                 userToUpdate.Email = request.Email;
                 userToUpdate.Password = request.Password;
+                userToUpdate.Usertype = request.Usertype;
                 userToUpdate.Address = request.Address;
                 userToUpdate.PhoneNumber = request.PhoneNumber;
 

@@ -49,10 +49,25 @@ namespace WebVintage.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Add([FromBody] UserDto body)
+        public IActionResult AddUser([FromBody] UserDto body)
         {
-            var newClient = _service.AddUser(body);
-            return CreatedAtAction(nameof(GetById), new { id = newClient }, $"Creado el Cliente con el ID: {newClient}");
+            if (body == null)
+            {
+                return BadRequest("El cuerpo de la solicitud no puede ser nulo.");
+            }
+
+            var newClientId = _service.AddUser(body); // Usa el método con el tipo de usuario predeterminado
+            return CreatedAtAction(nameof(GetById), new { id = newClientId }, $"Creado el Cliente con el ID: {newClientId}");
+        }
+
+
+        [HttpPost("admin")]
+        [Authorize(Roles = "admin")] // Solo permite acceso a los usuarios con rol "admin"
+        public IActionResult AddAdminUser([FromBody] UserDto body)
+        {
+   
+            var newUserId = _service.AddAdminUser(body);
+            return CreatedAtAction(nameof(GetById), new { id = newUserId }, $"Creado el Usuario con el ID: {newUserId}");
         }
 
         [HttpDelete("{id}")]

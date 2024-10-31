@@ -13,7 +13,9 @@ namespace Application.Interfaces
         List<User> GetAllUsers();
         User? Get(int id);
         User? Get(string name);
-        int AddUser(UserDto request);
+        int AddUser(UserDto request, string userType = "Client");
+        int AddAdminUser(UserDto request);
+
         void DeleteUser(int id);
         void UpdateUser(int id, User request);
     }
