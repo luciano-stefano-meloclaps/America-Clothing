@@ -18,6 +18,7 @@ namespace Infrastructure.Data
             _context = context;
         }
 
+
         public Saleorderline? GetById(int id)
         {
             return _context.Saleorderlines

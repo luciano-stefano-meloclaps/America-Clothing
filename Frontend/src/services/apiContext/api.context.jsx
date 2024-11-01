@@ -14,7 +14,7 @@ export const useAPI = () => {
 export const APIContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
-  const [sales, setSales] = useState([]);
+  const [saleOrders, setSaleOrders] = useState([]);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(cartValue ? cartValue : []);
   const [purchaseHistory, setPurchaseHistory] = useState([]);
@@ -59,6 +59,23 @@ export const APIContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
+// Fetch para obtener las SaleOrder
+
+useEffect(() => {
+  const fetchSaleOrders = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get("https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines"); // Endpoint de SaleOrders
+      setSaleOrders(response.data); // Guardamos las órdenes de venta en el estado
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error al cargar las órdenes de venta", error);
+      setIsLoading(false);
+    }
+  };
+
+  fetchSaleOrders();
+}, []);
 
 
   const toggleLoading = (value) => {
@@ -93,8 +110,8 @@ export const APIContextProvider = ({ children }) => {
         isLoading,
         users,
         setUsers,
-        sales,
-        setSales,
+        saleOrders,
+        setSaleOrders,
         products,
         setProducts,
         cart,

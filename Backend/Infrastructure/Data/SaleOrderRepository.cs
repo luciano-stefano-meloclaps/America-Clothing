@@ -18,6 +18,18 @@ namespace Infrastructure.Data
             _context = context;
         }
 
+
+        /// /////////////
+
+        public async Task<IEnumerable<Saleorder>> GetSaleOrdersWithLinesAsync()
+        {
+            return await _context.Saleorders
+                .Include(so => so.Saleorderlines)
+                .ToListAsync();
+        }
+
+        /// ////////////////////
+   
         public List<Saleorder> GetAllByClient(int clientId)
         {
             return _context.Saleorders

@@ -3,16 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\webvintage\\controllers\\saleordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|solutionrelative:controllers\\saleordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\services\\saleorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\interfaces\\isaleorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\models\\saleorderlinedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +23,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,54 +47,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\IUserService.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Interfaces\\IUserService.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\IUserService.cs",
-              "RelativeToolTip": "..\\Application\\Interfaces\\IUserService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T15:44:50.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserDto.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\UserDto.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Models\\UserDto.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\UserDto.cs",
-              "RelativeToolTip": "..\\Application\\Models\\UserDto.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBMAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:20:43.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\UserService.cs",
-              "RelativeToolTip": "..\\Application\\Services\\UserService.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAgwEcAAABJAAAA",
+              "Title": "SaleOrderController.cs",
+              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\SaleOrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SaleOrderController.cs",
+              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\SaleOrderController.cs",
+              "RelativeToolTip": "Controllers\\SaleOrderController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwB8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:05:47.56Z",
+              "WhenOpened": "2024-11-01T18:20:01.755Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AdminService.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\AdminService.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Services\\AdminService.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\AdminService.cs",
-              "RelativeToolTip": "..\\Application\\Services\\AdminService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAAANAAAA",
+              "Title": "SaleOrderLineDto.cs",
+              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\SaleOrderLineDto.cs",
+              "RelativeDocumentMoniker": "..\\Application\\Models\\SaleOrderLineDto.cs",
+              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\SaleOrderLineDto.cs",
+              "RelativeToolTip": "..\\Application\\Models\\SaleOrderLineDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:04:42.995Z"
+              "WhenOpened": "2024-11-01T18:18:44.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ISaleOrderService.cs",
+              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\ISaleOrderService.cs",
+              "RelativeDocumentMoniker": "..\\Application\\Interfaces\\ISaleOrderService.cs",
+              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\ISaleOrderService.cs",
+              "RelativeToolTip": "..\\Application\\Interfaces\\ISaleOrderService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T18:16:24.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SaleOrderService.cs",
+              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\SaleOrderService.cs",
+              "RelativeDocumentMoniker": "..\\Application\\Services\\SaleOrderService.cs",
+              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\SaleOrderService.cs",
+              "RelativeToolTip": "..\\Application\\Services\\SaleOrderService.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T18:02:45.385Z",
+              "EditorCaption": ""
             }
           ]
         }

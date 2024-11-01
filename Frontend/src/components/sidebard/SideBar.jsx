@@ -40,11 +40,11 @@ const Sidebar = ({ setView, userRole }) => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              href="#shipping"
+              href="#sales"
               className="text-white"
-              onClick={() => setView("shipping")}
+              onClick={() => setView("sales")}
             >
-              Envíos
+              Ventas
             </Nav.Link>
           </Nav.Item>
         </>
