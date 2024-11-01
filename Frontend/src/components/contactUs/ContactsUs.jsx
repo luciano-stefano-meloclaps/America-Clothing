@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import "./ContactUs.css";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //Documentacion de React Bootstrap
 const ContactUs = () => {
@@ -19,17 +21,11 @@ const ContactUs = () => {
 
   return (
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center">
-      <h1 className="section-title text-light mb-4 text-uppercase">Contacto</h1>
-      <main class= "">
-        <div class= "card bg-dark py-3">
-          <i class= "bi bi-whatsapp mx-auto icono pb3"></i>
-          <div class= "card-body d-flex flex-column alaign-items-center">
-            <h5 class= "card-title text-center pb-5">Whatsapp</h5>
-            <a href="https://api.whatsapp.com/send?phone=3364025085" class= "btn btn-light enviarmensaje fw-bold">Enviar Mensaje</a>
-          </div>
-        </div>
-      </main>
-      {/* <Container className="contact-us-container py-5 my-5 rounded">
+      <h1 className="section-title text-light mb-4 text-uppercase">
+        Contactanos!
+      </h1>
+
+      <Container className="contact-us-container py-5 my-5 rounded">
         <Row className="m-3 m-md-5 px-3 px-md-5 justify-content-md-center">
           <Col xs={12} md={8}>
             <Image src="public/game.png" width={40} fluid className="mb-2" />
@@ -114,10 +110,32 @@ const ContactUs = () => {
             </Col>
           </Row>
         </div>
-      </Container> */}
-
+      </Container>
+      <div>
+        <p className="text-light py-3 fs-5">
+          Sino envianos un mensaje por WhatsApp!
+        </p>
+        <main class="bg-black rounded main-wp">
+          <div class="card bg-black  mx-5 px-5">
+            <i class="bi bi-whatsapp mx-auto icono pb3"></i>
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title text-center text-success pb-5">Whatsapp</h5>
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                style={{ color: "#198754" }}
+                className="pb-5 icon-wp"
+              />
+              <a
+                href="https://api.whatsapp.com/send?phone=3364025085"
+                class="btn btn-success enviarmensaje fw-bold"
+              >
+                Enviar Mensaje
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
-    
   );
 };
 
