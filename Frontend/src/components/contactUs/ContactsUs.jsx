@@ -20,7 +20,16 @@ const ContactUs = () => {
   return (
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center">
       <h1 className="section-title text-light mb-4 text-uppercase">Contacto</h1>
-      <Container className="contact-us-container py-5 my-5 rounded">
+      <main class= "">
+        <div class= "card bg-dark py-3">
+          <i class= "bi bi-whatsapp mx-auto icono pb3"></i>
+          <div class= "card-body d-flex flex-column alaign-items-center">
+            <h5 class= "card-title text-center pb-5">Whatsapp</h5>
+            <a href="https://api.whatsapp.com/send?phone=3364025085" class= "btn btn-light enviarmensaje fw-bold">Enviar Mensaje</a>
+          </div>
+        </div>
+      </main>
+      {/* <Container className="contact-us-container py-5 my-5 rounded">
         <Row className="m-3 m-md-5 px-3 px-md-5 justify-content-md-center">
           <Col xs={12} md={8}>
             <Image src="public/game.png" width={40} fluid className="mb-2" />
@@ -105,8 +114,10 @@ const ContactUs = () => {
             </Col>
           </Row>
         </div>
-      </Container>
+      </Container> */}
+
     </div>
+    
   );
 };
 
