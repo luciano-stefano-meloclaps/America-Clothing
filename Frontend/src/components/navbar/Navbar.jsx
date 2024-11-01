@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,10 +10,11 @@ import Alert from "react-bootstrap/Alert";
 import { faCartShopping, faSliders } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext"; // Asegúrate de que esta ruta sea correcta
+import "./Navbar.css";
 
 function NavbarMain() {
   const { isAuthenticated, logout, userFirstName, userRole } = useAuth();
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
 
   const handleLogout = () => {
     setShowModal(true); // Mostrar el modal cuando se haga clic en "Cerrar sesión"
@@ -76,14 +77,10 @@ function NavbarMain() {
                   Prendas top 🔥
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link
-                as={Link}
-                to="#quienes-somos"
-                className="nav-item text-light"
-              >
+              <Nav.Link as={Link} to="/AboutUs" className="nav-item text-light">
                 Quienes somos
               </Nav.Link>
-              <Nav.Link as={Link} to="#contactanos" className="text-light">
+              <Nav.Link as={Link} to="/ContactUs" className="text-light">
                 Contactanos
               </Nav.Link>
             </Nav>
@@ -133,16 +130,20 @@ function NavbarMain() {
       </Navbar>
 
       {/* Modal de confirmación */}
-      <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal
+        className="modal-custom"
+        show={showModal}
+        onHide={handleCloseModal}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Confirmar cierre de sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body>¿Estás seguro de que deseas cerrar sesión?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
+          <Button variant="dark" onClick={handleCloseModal}>
             Cancelar
           </Button>
-          <Button variant="dark" onClick={confirmLogout}>
+          <Button variant="outline-danger" onClick={confirmLogout}>
             Cerrar sesión
           </Button>
         </Modal.Footer>
