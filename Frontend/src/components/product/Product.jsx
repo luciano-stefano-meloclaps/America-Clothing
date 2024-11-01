@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useAPI } from '../../services/apiContext/api.context'; // Importa el contexto
+import React, { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useAPI } from "../../services/apiContext/api.context"; // Importa el contexto
+import modelIMG from "../../assets/modelIMG.jpg"; // Importar IMG
 
 const Product = ({ products }) => {
   const { productId } = useParams();
@@ -35,7 +36,15 @@ const Product = ({ products }) => {
   };
 
   return (
-    <Container fluid className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light">
+    <Container
+      fluid
+      className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light"
+    >
+      <Row className="text-center mb-4">
+        <Col>
+          <Card.Img variant="top" src={modelIMG} className="img-rounded w-50" />
+        </Col>
+      </Row>
       <Row className="text-center mb-4">
         <Col>
           <h1>{product.name}</h1>
@@ -43,28 +52,36 @@ const Product = ({ products }) => {
       </Row>
       <Row className="mb-3">
         <Col>
-          <p><strong>Talla:</strong> {product.size}</p>
+          <p>
+            <strong>Talla:</strong> {product.size}
+          </p>
         </Col>
       </Row>
       <Row className="mb-3">
         <Col>
-          <p><strong>Descripción:</strong> {product.description}</p>
+          <p>
+            <strong>Descripción:</strong> {product.description}
+          </p>
         </Col>
       </Row>
       <Row className="mb-3">
         <Col>
-          <p><strong>Stock:</strong> {product.stock}</p>
+          <p>
+            <strong>Stock:</strong> {product.stock}
+          </p>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
         <Col xs="auto" className="mb-2">
-          <Button variant="light" onClick={handleAddToCart}>Agregar al carrito</Button>
+          <Button variant="light" onClick={handleAddToCart}>
+            Agregar al carrito
+          </Button>
         </Col>
-        <Col xs="auto" className="mb-2">
+        {/*  <Col xs="auto" className="mb-2">
           <Link to={`/productos/detalle/${product.code}`}>
             <Button variant="outline-light">Ver detalles</Button>
           </Link>
-        </Col>
+        </Col>*/}
       </Row>
 
       {/* Modal de confirmación */}
@@ -72,7 +89,10 @@ const Product = ({ products }) => {
         <Modal.Header closeButton>
           <Modal.Title>Producto agregado🛒</Modal.Title>
         </Modal.Header>
-        <Modal.Body>El producto <strong>{product.description}</strong> ha sido agregado a tu carrito.</Modal.Body>
+        <Modal.Body>
+          El producto <strong>{product.description}</strong> ha sido agregado a
+          tu carrito.
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="dark" onClick={handleCloseModal}>
             Cerrar
@@ -86,10 +106,11 @@ const Product = ({ products }) => {
           <Modal.Title>Error al agregar producto</Modal.Title>
         </Modal.Header>
         <Modal.Body className="bg-danger text-light">
-          Este producto ya está en el carrito. Cada prenda es única, por lo que no se puede agregar más de una vez.
+          Este producto ya está en el carrito. Cada prenda es única, por lo que
+          no se puede agregar más de una vez.
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="light" onClick={handleCloseErrorModal}>
+        <Modal.Footer className="bg-danger">
+          <Button variant="dark" onClick={handleCloseErrorModal}>
             Cerrar
           </Button>
         </Modal.Footer>

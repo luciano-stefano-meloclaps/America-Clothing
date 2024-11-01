@@ -7,6 +7,9 @@ import Row from "react-bootstrap/Row";
 import ProductFilter from "../productFilter/ProductFilter";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+//FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -70,13 +73,21 @@ const ProductList = () => {
   }
 
   return (
-    <div className="grid_container py-5 my-5 bg-dark text-white" id="gridcards">
-      <h2 className="my-5 fs-1 color-accent-user font-tile text-center">
+    <div
+      className="grid_container min-vh-100 py-5 text-light  bg-dark"
+      id="gridcards"
+    >
+      <h1 className="my-5 color-accent-user font-tile text-center">
         American Clothing{" "}
-      </h2>
+      </h1>
 
-      <Button variant="secondary" onClick={handleShowFilters}>
-        Filtrar
+      <Button
+        variant="light"
+        size="lg"
+        className="px-3"
+        onClick={handleShowFilters}
+      >
+        Filtrar <FontAwesomeIcon icon={faFilter} className="ms-2" />
       </Button>
 
       {/* Offcanvas para mostrar los filtros */}
@@ -99,10 +110,10 @@ const ProductList = () => {
           filtros.
         </p>
       ) : (
-        <Row xs={1} md={4} className="g-5 p-5 m-5 row row-cols-md-4">
+        <Row xs={1} md={3} className="g-5 p-5 m-5 row row-cols-md-3">
           {filteredProducts.map((product) => (
             <Col key={product.code}>
-              <ProductCard  
+              <ProductCard
                 title={product.name}
                 text={product.description}
                 img={product.img}
@@ -120,4 +131,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
