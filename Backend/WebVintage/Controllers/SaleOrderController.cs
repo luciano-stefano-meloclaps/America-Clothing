@@ -31,7 +31,12 @@ namespace WebVintage.Controllers
             }
             return null;
         }
-
+        [HttpGet("GetSaleOrdersWithLines")]
+        public async Task<ActionResult<IEnumerable<SaleOrderWithLinesDto>>> GetSaleOrdersWithLines()
+        {
+            var saleOrders = await _saleOrderService.GetSaleOrdersWithLinesAsync();
+            return Ok(saleOrders);
+        }
 
         [HttpGet("client/{clientId}")]
         public IActionResult GetAllByClient([FromRoute] int clientId)

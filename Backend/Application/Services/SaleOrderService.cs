@@ -20,6 +20,28 @@ namespace Application.Services
             _repository = repository;
             _productRepository = productRepository;
         }
+
+        public async Task<IEnumerable<SaleOrderWithLinesDto>> GetSaleOrdersWithLinesAsync()
+        {
+            var saleOrders = await _repository.GetSaleOrdersWithLinesAsync();
+
+            return saleOrders.Select(so => new SaleOrderWithLinesDto
+            {
+                SaleOrderId = so.Id,
+                Date = so.Date,
+                UserId = so.UserId,
+                Lines = so.Saleorderlines.Select(line => new SaleOrderLineDto
+                {
+                    SaleOrderLineId = line.Id,
+                    Amount = line.Amount,
+                    UnitPrice = line.UnitPrice,
+                    ProductId = line.ProductCode,
+                    SaleOrderId = line.SaleorderId
+                }).ToList()
+            });
+        }
+
+
         public List<Saleorder> GetAllByClient(int UserId)
         {
             return _repository.GetAllByClient(UserId);

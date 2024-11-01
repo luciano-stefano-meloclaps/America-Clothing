@@ -11,5 +11,7 @@ namespace Domain.Interfaces
     {
         List<Saleorder> GetAllByClient(int clientId);
         Saleorder? GetById(int id);
+
+        Task<IEnumerable<Saleorder>> GetSaleOrdersWithLinesAsync();
     }
 }
