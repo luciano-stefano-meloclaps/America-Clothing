@@ -3,30 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\models\\admindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\webvintage\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0E68482A-5F5C-4EF3-B07F-7376C117F820}|..\\Infrastructure\\Infrastructure.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\infrastructure\\applicationdbcontext\\vintagedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\webvintage\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D528D6B-ED2A-41F2-B727-2F34DF5CB080}|WebVintage.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06DEA564-078B-4EA3-8803-E4D3BE4B5C53}|..\\Application\\Application.csproj|c:\\users\\fliac\\onedrive\\escritorio\\ecommerce-vintage\\ecommerce-vintage\\backend\\application\\interfaces\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,12 +47,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "..\\Application\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "..\\Application\\Interfaces\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T15:44:50.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UserDto.cs",
               "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\UserDto.cs",
               "RelativeDocumentMoniker": "..\\Application\\Models\\UserDto.cs",
               "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\UserDto.cs",
               "RelativeToolTip": "..\\Application\\Models\\UserDto.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAAnAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBMAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T21:20:43.144Z",
               "EditorCaption": ""
@@ -74,45 +73,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminDto.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\AdminDto.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Models\\AdminDto.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Models\\AdminDto.cs",
-              "RelativeToolTip": "..\\Application\\Models\\AdminDto.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:31:49.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IAdminService.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\IAdminService.cs",
-              "RelativeDocumentMoniker": "..\\Application\\Interfaces\\IAdminService.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Interfaces\\IAdminService.cs",
-              "RelativeToolTip": "..\\Application\\Interfaces\\IAdminService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:06:08.262Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "..\\Application\\Services\\UserService.cs",
               "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\UserService.cs",
               "RelativeToolTip": "..\\Application\\Services\\UserService.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAgwDAAAAArAAAA",
+              "ViewState": "AQIAADIAAAAAAAAAAAAgwEcAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T21:05:47.56Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "AdminService.cs",
               "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Application\\Services\\AdminService.cs",
               "RelativeDocumentMoniker": "..\\Application\\Services\\AdminService.cs",
@@ -120,47 +93,7 @@
               "RelativeToolTip": "..\\Application\\Services\\AdminService.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:04:42.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T20:34:10.61Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\WebVintage\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwB4AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T20:33:49.37Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "VintageDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Infrastructure\\ApplicationDbContext\\VintageDbContext.cs",
-              "RelativeDocumentMoniker": "..\\Infrastructure\\ApplicationDbContext\\VintageDbContext.cs",
-              "ToolTip": "C:\\Users\\fliac\\OneDrive\\Escritorio\\Ecommerce-Vintage\\ecommerce-vintage\\Backend\\Infrastructure\\ApplicationDbContext\\VintageDbContext.cs",
-              "RelativeToolTip": "..\\Infrastructure\\ApplicationDbContext\\VintageDbContext.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAEcAAABXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T02:25:26.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T21:04:42.995Z"
             }
           ]
         }

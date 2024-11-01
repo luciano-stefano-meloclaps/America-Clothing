@@ -62,7 +62,7 @@ function Login() {
       if (error.response && error.response.status === 401) {
         setVariant("danger");
         setMessage(
-          "Credenciales inválidas. Por favor, verifica tu email y contraseña."
+          "Email y/o contraseña incorrectas. Por favor intente de nuevo."
         );
       } else {
         setVariant("danger");
@@ -97,7 +97,6 @@ function Login() {
             </h1>
           </Col>
         </Row>
-
         <Form
           noValidate
           validated={validated}
@@ -143,6 +142,14 @@ function Login() {
                 {message}
               </Alert>
             )}
+        </Form>
+
+        <Form>
+          {message && (
+            <Alert variant="danger" className="mx-4">
+              {message}
+            </Alert>
+          )}
         </Form>
         <div className="text-center mt-3 text-light">
           ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
