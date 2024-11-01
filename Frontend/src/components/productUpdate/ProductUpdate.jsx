@@ -1,76 +1,94 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import {
+  Container,
+  Row,
+  Col,
   Form,
   Button,
   Alert,
-  Container,
-  Col,
-  Row,
-  Image,
   Modal,
+  Image,
 } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
-const ProductAdd = () => {
+const ProductUpdate = () => {
+  const location = useLocation();
+  const { product } = location.state || {}; // Accede al producto desde el estado
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    price: "",
+    price: 0,
     stock: 1,
-    size: "", // Cambiar a vacío
-    category: "", // Cambiar a vacío
-    image: "", // Añadido campo de imagen
+    size: "",
+    category: "",
     state: 1,
     sold: false,
+    image: "",
   });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+
+  const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  const navigate = useNavigate();
-
+  // Cargar los datos del producto en el formulario
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setError(null);
-    }, 8000);
+    if (product) {
+      setFormData({
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        stock: product.stock,
+        size: product.size,
+        category: product.category,
+        state: product.state,
+        sold: product.sold,
+        image: product.image,
+      });
+    }
+  }, [product]);
 
-    return () => clearTimeout(timer);
-  }, [error]);
-
+  // Manejo de cambios en el formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const id = product?.code;
+    if (!id) {
+      setError("No se ha encontrado el ID del producto.");
+      console.log(id);
+      return;
+    }
+
     try {
-      const response = await axios.post(
-        "https://localhost:7091/api/Product",
+      const response = await axios.put(
+        `https://localhost:7091/api/Product/${id}`,
         formData
       );
-      console.log("Producto registrado:", response.data);
-      setSuccess(true);
       setShowModal(true);
     } catch (error) {
-      console.error("Error al registrar el producto:", error);
-      setError(
-        "Hubo un error al registrar el producto: " +
-          (error.response ? error.response.data : error.message)
-      );
+      console.error("Error al actualizar el producto:", error);
+      setError("Hubo un error al actualizar el producto.");
     }
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    navigate("/#products"); // Cambiado a "/#products"
-  };
+  const handleCloseModal = () => setShowModal(false);
+
+  // Asegúrate de manejar el caso en que no haya producto
+  if (!product) {
+    return <div>No se ha seleccionado ningún producto para actualizar.</div>;
+  }
 
   return (
     <div className="contact-us-wrapper bg-dark d-flex flex-column justify-content-center align-items-center">
       <h1 className="section-title text-light mb-4 text-uppercase">
-        Añadir Producto
+        Actualizar Producto
       </h1>
       <Container
         className="contact-us-container p-5 my-5 rounded"
@@ -89,13 +107,14 @@ const ProductAdd = () => {
             </h1>
           </Col>
         </Row>
-        <Form onSubmit={handleSubmit}>
-          {error && (
-            <Alert variant="danger" className="mt-3">
-              {error}
-            </Alert>
-          )}
 
+        {error && (
+          <Alert variant="danger" className="mt-3">
+            {error}
+          </Alert>
+        )}
+
+        <Form onSubmit={handleSubmit}>
           <Row className="mb-4">
             <Col>
               <Form.Group>
@@ -144,7 +163,6 @@ const ProductAdd = () => {
                   name="stock"
                   value={formData.stock}
                   onChange={handleChange}
-                  disabled
                   required
                 />
               </Form.Group>
@@ -241,16 +259,16 @@ const ProductAdd = () => {
             type="submit"
             className="shadow rounded w-100"
           >
-            Añadir Producto
+            Actualizar Producto
           </Button>
         </Form>
 
         {/* Modal de confirmación */}
         <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Producto agregado</Modal.Title>
+            <Modal.Title>Producto actualizado</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Producto agregado exitosamente</Modal.Body>
+          <Modal.Body>Producto actualizado exitosamente</Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleCloseModal}>
               Aceptar
@@ -262,4 +280,4 @@ const ProductAdd = () => {
   );
 };
 
-export default ProductAdd;
+export default ProductUpdate;

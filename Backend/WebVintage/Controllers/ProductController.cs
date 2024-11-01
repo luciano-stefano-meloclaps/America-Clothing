@@ -33,7 +33,7 @@ namespace WebVintage.Controllers
             }
             return Ok(product);
         }
-
+        /*
         [HttpGet("{name}")]
         public IActionResult GetProductsByName([FromRoute] string name)
         {
@@ -45,7 +45,7 @@ namespace WebVintage.Controllers
 
             return Ok(product);
         }
-
+        */
         [HttpPost]
         public IActionResult Add([FromBody] ProductDto body)
         {

@@ -6,7 +6,7 @@ import {
   faUserShield,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
-import SearchBarUser from "../components/searchBarUser/SearchBarUser";
+import SearchBarUser from "../searchBarUser/SearchBarUser";
 
 const UserTable = ({ users }) => {
   const [filteredUsers, setFilteredUsers] = useState(users);

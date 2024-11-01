@@ -1,48 +1,21 @@
 import React, { useState } from "react";
 import { Table, Alert, Button, Modal } from "react-bootstrap";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SearchBarProduct from "../searchBarProduct/SearchBarProduct";
 
 const ProductTable = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-  const [productToDelete, setProductToDelete] = useState(null);
   const productsPerPage = 10;
 
-  const navigate = useNavigate(); // Inicializa navigate aquí
+  const navigate = useNavigate();
 
   const onClickAddProduct = () => {
-    navigate("/add-product"); // Redirige al componente de añadir producto
+    navigate("/add-product");
   };
 
-  const handleDeleteClick = (product) => {
-    setProductToDelete(product);
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setProductToDelete(null);
-  };
-
-  const handleConfirmDelete = async () => {
-    if (productToDelete) {
-      try {
-        const response = await axios.delete(
-          `https://localhost:7091/api/Product/${productToDelete.code}`
-        );
-        console.log(response.data);
-        setFilteredProducts((prev) =>
-          prev.filter((product) => product.code !== productToDelete.code)
-        );
-      } catch (error) {
-        console.error("Error al eliminar el producto:", error);
-      } finally {
-        handleCloseModal();
-      }
-    }
+  const handleUpdateClick = (product) => {
+    navigate("/update-product", { state: { product } }); // Pasar el producto como estado
   };
 
   const handleSearch = (filters) => {
@@ -51,7 +24,7 @@ const ProductTable = ({ products }) => {
       return (
         (!name || product.name.toLowerCase().includes(name.toLowerCase())) &&
         (!size || product.size === size) &&
-        (!type || product.name === type) &&
+        (!type || product.category === type) &&
         (!price || product.price <= price)
       );
     });
@@ -98,32 +71,34 @@ const ProductTable = ({ products }) => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Cod Barra</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Talla</th>
                 <th>Precio</th>
+                <th>Categoría</th>
+                <th>Estado</th>
+                <th>Vendido</th>
                 <th>Modificar</th>
-                <th>Borrar</th>
               </tr>
             </thead>
             <tbody>
               {currentProducts.map((product, index) => (
-                <tr key={product.code}>
+                <tr key={`${product.code}-${index}`}>
                   <td>{indexOfFirstProduct + index + 1}</td>
-                  <td>{product.code}</td>
                   <td>{product.name}</td>
                   <td>{product.description}</td>
                   <td>{product.size}</td>
                   <td>${product.price}</td>
+                  <td>{product.category}</td>
                   <td>
-                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                    {product.state === 1 ? "Habilitado" : "Deshabilitado"}
                   </td>
+                  <td>{product.sold ? "Vendido" : "No vendido"}</td>
                   <td>
                     <i
-                      className="fa fa-trash"
+                      className="fa fa-pencil"
                       aria-hidden="true"
-                      onClick={() => handleDeleteClick(product)}
+                      onClick={() => handleUpdateClick(product)}
                       style={{ cursor: "pointer" }}
                     ></i>
                   </td>
@@ -145,24 +120,6 @@ const ProductTable = ({ products }) => {
               </Button>
             ))}
           </div>
-          {/* Modal de confirmación */}
-          <Modal show={showModal} onHide={handleCloseModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Eliminar Producto</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              ¿Está seguro que desea eliminar el producto{" "}
-              <strong>{productToDelete?.name}</strong>?
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="dark" onClick={handleCloseModal}>
-                Cerrar
-              </Button>
-              <Button variant="danger" onClick={handleConfirmDelete}>
-                Confirmar
-              </Button>
-            </Modal.Footer>
-          </Modal>
         </>
       )}
     </div>
