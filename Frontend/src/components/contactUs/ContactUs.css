@@ -35,3 +35,12 @@
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
+.main-wp:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.412);
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-wp {
+  height: 60px;
+}
