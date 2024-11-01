@@ -1,7 +1,8 @@
 /* ProductCard.css */
 
 .product-card {
-  width: 20rem;
+  width: 26rem;
+
   background: burlywood;
   display: flex;
   flex-direction: column;
@@ -9,18 +10,18 @@
   height: 100%;
   padding: 0;
   margin: 0;
+  border: 0;
 }
 
 .img-rounded {
-  border-radius: 4px;
-  width: calc(100% - 2rem);
-  margin: 1rem;
+  padding: 0;
+  margin: 0;
   height: auto;
+  border-radius: 0;
 }
 
 .title-card {
-  font-weight: bolder;
-  font-size: 4rem;
+  font-weight: 900;
   font-family: "Caveat", cursive;
 }
 
@@ -39,4 +40,16 @@
   width: calc(100% - 2rem);
   margin: 1rem;
   padding: 0.5rem;
+}
+
+.body-text {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(46, 44, 44);
+}
+.body-category {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(245, 245, 245, 0.67);
+  font-style: italic;
 }

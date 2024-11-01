@@ -85,12 +85,18 @@ const ProductFilter = ({ products, onSizeChange, onPriceChange }) => {
           }
           style={{ padding: "5px" }}
         />
-        <button onClick={handlePriceChange} style={{ marginLeft: "10px" }}>
+        <button
+          onClick={handlePriceChange}
+          style={{ marginLeft: "2px", marginTop: "10px" }}
+        >
           Aplicar Rango
         </button>
       </div>
 
-      <button onClick={resetFilters} style={{ marginTop: "20px" }}>
+      <button
+        onClick={resetFilters}
+        style={{ marginLeft: "2px", marginTop: "10px" }}
+      >
         Limpiar
       </button>
     </div>
@@ -98,4 +104,3 @@ const ProductFilter = ({ products, onSizeChange, onPriceChange }) => {
 };
 
 export default ProductFilter;
-
