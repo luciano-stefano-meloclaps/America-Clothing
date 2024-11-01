@@ -27,6 +27,7 @@ namespace Application.Services
         {
             return _repository.Get().Select(product => new ProductDto
             {
+                Code = product.Code,
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
@@ -45,6 +46,7 @@ namespace Application.Services
             if (product == null) return null;
             return new ProductDto
             {
+                Code = product.Code,
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,

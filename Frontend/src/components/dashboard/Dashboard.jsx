@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Sidebar from "../sidebard/SideBar";
 import { useAPI } from "../../services/apiContext/api.context";
-import UserTable from "../../userTable/UserTable";
+import UserTable from "../userTable/UserTable";
 import ProductTable from "../productTable/ProductTable";
 import { useAuth } from "../../context/AuthContext";
 
@@ -10,7 +10,7 @@ const Dashboard = () => {
   const { users, products } = useAPI();
   const { userRole } = useAuth();
   const [view, setView] = useState("users");
- // console.log("UserType:", userRole);
+  // console.log("UserType:", userRole);
   return (
     <div className="min-vh-100 bg-dark d-flex flex-column">
       <Container fluid className="flex-grow-1">
@@ -42,4 +42,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
