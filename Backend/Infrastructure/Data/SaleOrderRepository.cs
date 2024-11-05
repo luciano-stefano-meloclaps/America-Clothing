@@ -25,6 +25,7 @@ namespace Infrastructure.Data
         {
             return await _context.Saleorders
                 .Include(so => so.Saleorderlines)
+                //.ThenInclude(sol => sol.ProductCodeNavigation) // Incluir la relación con el producto aquí
                 .ToListAsync();
         }
 

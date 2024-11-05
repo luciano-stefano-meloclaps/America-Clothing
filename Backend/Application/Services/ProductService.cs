@@ -86,10 +86,10 @@ namespace Application.Services
                 Name = request.Name,
                 Description = request.Description,
                 Price = request.Price,
-                Stock = request.Stock,
+                // Stock = request.Stock,
                 Size = request.Size,
-                State = request.State,
-                Sold = request.Sold,
+                // State = request.State,
+                // Sold = request.Sold,
                 Category = request.Category,
                 Image = request.Image,
 
