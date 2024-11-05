@@ -19,5 +19,6 @@ namespace Application.Models
         public decimal UnitPrice { get; set; }
      //   public int ProductCode { get; set; }
         public int SaleOrderId { get; set; }
+        //public string ProductName { get; set; } // Propiedad para traer el nombre del producto
     }
 }

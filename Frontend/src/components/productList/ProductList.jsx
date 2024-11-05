@@ -24,23 +24,31 @@ const ProductList = () => {
   const handleShowFilters = () => setShowFilters(true);
 
   // Fetch de todos los productos
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("https://localhost:7091/api/Product");
-        if (Array.isArray(response.data)) {
-          setProducts(response.data);
-          setFilteredProducts(response.data); // Muestra todos los productos inicialmente
-        } else {
-          throw new Error("La respuesta no es un array");
-        }
-      } catch (error) {
-        console.error("Disculpe, no se pudieron cargar los productos.", error);
-        setError(error.message);
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("https://localhost:7091/api/Product");
+      if (Array.isArray(response.data)) {
+        const availableProducts = response.data.filter(
+          (product) => product.state === 1
+        );
+        setProducts(availableProducts);
+        setFilteredProducts(availableProducts);
+      } else {
+        throw new Error("La respuesta no es un array");
       }
-    };
+    } catch (error) {
+      console.error("Disculpe, no se pudieron cargar los productos.", error);
+      setError(error.message);
+    }
+  };
 
-    fetchProducts();
+  // Polling para actualizar productos automáticamente cada 5 segundos
+  useEffect(() => {
+    fetchProducts(); // Llamar a fetchProducts inmediatamente al montar el componente
+
+    const intervalId = setInterval(fetchProducts, 5000); // Polling cada 5 segundos
+
+    return () => clearInterval(intervalId); // Limpiar intervalo al desmontar el componente
   }, []);
 
   // Filtrado de productos basado en la categoría, tamaño y precio
@@ -104,8 +112,11 @@ const ProductList = () => {
         </Offcanvas.Body>
       </Offcanvas>
 
-      {filteredProducts.length === 0 ? (
-        <p>
+      {/* Condición para mostrar mensajes según la disponibilidad de productos */}
+      {products.length === 0 ? (
+        <p className="mt-4">No hay productos disponibles en este momento.</p>
+      ) : filteredProducts.length === 0 ? (
+        <p className="mt-4">
           No tenemos resultados para tu búsqueda. Por favor, intentá con otros
           filtros.
         </p>

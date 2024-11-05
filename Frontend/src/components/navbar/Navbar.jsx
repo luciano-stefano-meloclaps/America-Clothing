@@ -4,10 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Alert from "react-bootstrap/Alert";
-import { faCartShopping, faSliders } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faSliders, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext"; // Asegúrate de que esta ruta sea correcta
 import "./Navbar.css";
@@ -15,6 +15,7 @@ import "./Navbar.css";
 function NavbarMain() {
   const { isAuthenticated, logout, userFirstName, userRole } = useAuth();
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate(); // Inicializa el hook useNavigate
 
   const handleLogout = () => {
     setShowModal(true); // Mostrar el modal cuando se haga clic en "Cerrar sesión"
@@ -23,6 +24,7 @@ function NavbarMain() {
   const confirmLogout = () => {
     logout(); // Cierra la sesión
     setShowModal(false); // Ocultar el modal después de cerrar sesión
+    navigate('/');
   };
 
   const handleCloseModal = () => {
@@ -119,6 +121,11 @@ function NavbarMain() {
               <Link to="/cart" className="text-white pt-1 fs-4">
                 <FontAwesomeIcon icon={faCartShopping} />
               </Link>
+              {userRole === "client" && ( 
+                <Link to="/my-purchases" className="text-white pt-1 mx-2 fs-4">
+                  <FontAwesomeIcon icon={faShoppingBag} />
+                </Link>
+              )}
               {userRole === "admin" && (
                 <Link to="/dashboard" className="text-white pt-1 mx-2 fs-4">
                   <FontAwesomeIcon icon={faSliders} />

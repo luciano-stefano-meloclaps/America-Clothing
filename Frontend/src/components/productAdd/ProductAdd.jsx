@@ -17,12 +17,9 @@ const ProductAdd = () => {
     name: "",
     description: "",
     price: "",
-    stock: 1,
     size: "", // Cambiar a vacío
     category: "", // Cambiar a vacío
     image: "", // Añadido campo de imagen
-    state: 1,
-    sold: false,
   });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -48,7 +45,7 @@ const ProductAdd = () => {
     try {
       const response = await axios.post(
         "https://localhost:7091/api/Product",
-        formData
+        { ...formData, stock: 1, state: 1, sold: false } // Asignar valores predeterminados
       );
       console.log("Producto registrado:", response.data);
       setSuccess(true);
@@ -138,19 +135,6 @@ const ProductAdd = () => {
           <Row className="mb-4">
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Stock</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="stock"
-                  value={formData.stock}
-                  onChange={handleChange}
-                  disabled
-                  required
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
                 <Form.Label className="text-light">Tamaño</Form.Label>
                 <Form.Select
                   name="size"
@@ -193,34 +177,6 @@ const ProductAdd = () => {
           </Row>
 
           <Row className="mb-4">
-            <Col>
-              <Form.Group>
-                <Form.Label className="text-light">Estado</Form.Label>
-                <Form.Select
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value={1}>Habilitado</option>
-                  <option value={0}>Deshabilitado</option>
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
-                <Form.Label className="text-light">Vendido</Form.Label>
-                <Form.Select
-                  name="sold"
-                  value={formData.sold}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value={true}>Vendido</option>
-                  <option value={false}>No vendido</option>
-                </Form.Select>
-              </Form.Group>
-            </Col>
             <Col>
               <Form.Group>
                 <Form.Label className="text-light">Imagen</Form.Label>

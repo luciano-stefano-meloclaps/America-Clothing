@@ -18,6 +18,7 @@ import AboutUs from "./components/aboutUs/AboutUs";
 import ContactUs from "./components/contactUs/ContactsUs";
 import ProductAdd from "./components/productAdd/ProductAdd";
 import ProductUpdate from "./components/productUpdate/ProductUpdate";
+import Purchases from "./components/purchases/Purchases";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -71,6 +72,7 @@ function App() {
             {/* Ruta para el formulario */}
             <Route path="/add-product" element={<ProductAdd />} />
             <Route path="/update-product" element={<ProductUpdate />} />
+            <Route path="/my-purchases" element={<Purchases />}/>
           </Routes>
           <Footer />
         </Router>

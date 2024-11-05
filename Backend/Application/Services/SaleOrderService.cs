@@ -36,7 +36,8 @@ namespace Application.Services
                     Amount = line.Amount,
                     UnitPrice = line.UnitPrice,
                     ProductId = line.ProductCode,
-                    SaleOrderId = line.SaleorderId
+                    SaleOrderId = line.SaleorderId,
+                    //ProductName = line.ProductCodeNavigation.Name // Acceder al nombre del producto
                 }).ToList()
             });
         }
@@ -59,19 +60,27 @@ namespace Application.Services
                 UserId = saleOrderDto.UserId,
                 Saleorderlines = saleOrderDto.OrderLines.Select(line =>
                 {
-                    // Obtener el precio del producto usando el repositorio
+                    // Obtener el producto usando el repositorio
                     var product = _productRepository.Get(line.ProductId);
                     if (product == null)
                     {
                         throw new Exception($"Producto con ID {line.ProductId} no encontrado.");
                     }
 
-                    return new Saleorderline // Retorna el objeto Saleorderline
+                    // Crear y retornar el objeto Saleorderline
+                    var saleOrderLine = new Saleorderline
                     {
                         ProductCode = line.ProductId,
                         Amount = line.Amount,
                         UnitPrice = product.Price
                     };
+
+                    // Actualizar el estado del producto a vendido
+                    product.Sold = true;
+                    product.State = 0; // 0 = No disponible
+                    _productRepository.Update(product); // Actualizar el producto en el repositorio
+
+                    return saleOrderLine;
                 }).ToList()
             };
 
@@ -80,6 +89,7 @@ namespace Application.Services
 
             return saleOrder; // Retorna el objeto Saleorder completo
         }
+
 
         public void DeleteSaleOrder(int id)
         {
