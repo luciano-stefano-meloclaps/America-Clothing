@@ -280,3 +280,4 @@ C:\Luisina TUP\PPS\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\scopedc
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\WebVintage.csproj.CopyComplete
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\WebVintage.genruntimeconfig.cache
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\ref\WebVintage.dll
+C:\Users\fliac\OneDrive\Escritorio\Ecommerce-Vintage\ecommerce-vintage\Backend\WebVintage\bin\Debug\net7.0\CloudinaryDotNet.dll

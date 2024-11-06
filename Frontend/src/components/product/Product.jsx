@@ -34,15 +34,16 @@ const Product = ({ products }) => {
   const handleCloseErrorModal = () => {
     setShowErrorModal(false); // Cierra el modal de error
   };
-
+  // console.log(product);
   return (
+    
     <Container
       fluid
       className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light"
     >
       <Row className="text-center mb-4">
         <Col>
-          <Card.Img variant="top" src={modelIMG} className="img-rounded w-50" />
+          <Card.Img variant="top" src={product.image ? product.image : modelIMG}  className="img-rounded w-50" />
         </Col>
       </Row>
       <Row className="text-center mb-4">

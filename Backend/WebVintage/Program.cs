@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Application.Services;
+using CloudinaryDotNet;
 using Domain.Interfaces;
 using Infrastructure.ApplicationDbContext;
 using Infrastructure.Data;
@@ -68,7 +69,15 @@ builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntentica
         };
     });
 
+var cloudinaryConfig = builder.Configuration.GetSection("Cloudinary");
 
+var cloudinary = new Cloudinary(new Account(
+    cloudinaryConfig["CloudName"],
+    cloudinaryConfig["ApiKey"],
+    cloudinaryConfig["ApiSecret"]
+    ));
+
+builder.Services.AddSingleton(cloudinary);
 #region
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProductService, ProductService>();
