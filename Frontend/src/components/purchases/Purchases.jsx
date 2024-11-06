@@ -8,6 +8,7 @@ const Purchases = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Obtén el userId del contexto de autenticación
   const { userId } = useAuth();
 
   useEffect(() => {
@@ -18,11 +19,18 @@ const Purchases = () => {
           "https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines",
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,  // Corregido aquí
             },
           }
         );
-        setSaleOrders(response.data);
+
+        // Filtrar las órdenes para que solo se muestren las del usuario autenticado
+        const filteredOrders = response.data.filter(order => {
+          return Number(order.userId) === Number(userId);  // Convertimos ambos a números
+        });
+
+        setSaleOrders(filteredOrders);
+
       } catch (err) {
         setError("Error al cargar las órdenes de compra.");
         console.error("Error fetching sale orders with lines:", err);
@@ -32,8 +40,9 @@ const Purchases = () => {
     };
 
     fetchSaleOrdersWithLines();
-  }, []);
+  }, [userId]);  // Asegúrate de que el userId sea parte de las dependencias
 
+  // Función para calcular el total de la orden
   const calculateOrderTotal = (lines) => {
     return lines.reduce(
       (total, line) => total + line.unitPrice * line.amount,
@@ -41,6 +50,7 @@ const Purchases = () => {
     );
   };
 
+  // Función para formatear la fecha
   const formatDateTime = (dateTime) => {
     return dateTime
       ? dateTime.replace("T", " ").substring(0, 19)

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Table, Alert, Button, Modal } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Table, Alert, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import SearchBarProduct from "../searchBarProduct/SearchBarProduct";
+import axios from "axios";
 
-const ProductTable = ({ products }) => {
-  const [filteredProducts, setFilteredProducts] = useState(products);
+const ProductTable = () => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
 
@@ -15,8 +17,32 @@ const ProductTable = ({ products }) => {
   };
 
   const handleUpdateClick = (product) => {
-    navigate("/update-product", { state: { product } }); // Pasar el producto como estado
+    navigate("/update-product", { state: { product } });
   };
+
+// Fetch products from API
+const fetchProducts = async () => {
+  try {
+    const response = await axios.get("https://localhost:7091/api/Product");
+    if (Array.isArray(response.data)) {
+      // Quitar el filtro por estado para mostrar todos los productos
+      setProducts(response.data);
+      setFilteredProducts(response.data);
+    } else {
+      throw new Error("La respuesta no es un array");
+    }
+  } catch (error) {
+    console.error("No se pudieron cargar los productos.", error);
+  }
+};
+
+  // Polling effect
+  useEffect(() => {
+    fetchProducts(); // Fetch products on component mount
+    const intervalId = setInterval(fetchProducts, 5000); // Polling every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, []);
 
   const handleSearch = (filters) => {
     const { name, size, type, price } = filters;
@@ -51,9 +77,12 @@ const ProductTable = ({ products }) => {
   return (
     <div>
       <h2 className="text-info mb-5">Productos</h2>
-      <Button variant="primary" onClick={onClickAddProduct}>
-        Añadir Producto
-      </Button>
+
+      <div className="mb-3">
+        <Button variant="primary" onClick={onClickAddProduct}>
+          Añadir Producto
+        </Button>
+      </div>
 
       <SearchBarProduct onSearch={handleSearch} onClear={handleClear} />
       {currentProducts.length === 0 ? (

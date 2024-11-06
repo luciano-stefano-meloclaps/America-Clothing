@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Container,
@@ -14,6 +14,7 @@ import {
 
 const ProductUpdate = () => {
   const location = useLocation();
+  const navigate = useNavigate(); 
   const { product } = location.state || {}; // Accede al producto desde el estado
 
   const [formData, setFormData] = useState({
@@ -78,7 +79,10 @@ const ProductUpdate = () => {
     }
   };
 
-  const handleCloseModal = () => setShowModal(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigate("/#products"); // Redirige a la página de productos
+  };
 
   // Asegúrate de manejar el caso en que no haya producto
   if (!product) {
