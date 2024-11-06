@@ -24,6 +24,7 @@ const ProductAdd = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [file, setFile] = useState(null);
 
   const navigate = useNavigate();
 
@@ -40,13 +41,48 @@ const ProductAdd = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "https://localhost:7091/api/Product",
+  //       { ...formData, stock: 1, state: 1, sold: false } // Asignar valores predeterminados
+  //     );
+  //     console.log("Producto registrado:", response.data);
+  //     setSuccess(true);
+  //     setShowModal(true);
+  //   } catch (error) {
+  //     console.error("Error al registrar el producto:", error);
+  //     setError(
+  //       "Hubo un error al registrar el producto: " +
+  //         (error.response ? error.response.data : error.message)
+  //     );
+  //   }
+  // };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    const data = new FormData();
+    data.append("file", file); // Agregar archivo de imagen
+    data.append("name", formData.name);
+    data.append("description", formData.description);
+    data.append("price", formData.price);
+    data.append("size", formData.size);
+    data.append("category", formData.category);
+    data.append("stock", 1);
+    data.append("state", 1);
+    data.append("sold", false);
+  
     try {
-      const response = await axios.post(
-        "https://localhost:7091/api/Product",
-        { ...formData, stock: 1, state: 1, sold: false } // Asignar valores predeterminados
-      );
+      const response = await axios.post("https://localhost:7091/api/Product", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("Producto registrado:", response.data);
       setSuccess(true);
       setShowModal(true);
@@ -54,10 +90,12 @@ const ProductAdd = () => {
       console.error("Error al registrar el producto:", error);
       setError(
         "Hubo un error al registrar el producto: " +
-          (error.response ? error.response.data : error.message)
+        (error.response ? error.response.data : error.message)
       );
     }
   };
+
+
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -178,17 +216,16 @@ const ProductAdd = () => {
 
           <Row className="mb-4">
             <Col>
-              <Form.Group>
-                <Form.Label className="text-light">Imagen</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
-                  required
-                  placeholder="URL de la imagen"
-                />
-              </Form.Group>
+            <Form.Group>
+  <Form.Label className="text-light">Imagen</Form.Label>
+  <Form.Control
+    type="file"
+    name="image"
+    onChange={handleFileChange}
+    required
+  />
+</Form.Group>
+
             </Col>
           </Row>
 

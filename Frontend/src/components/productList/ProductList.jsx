@@ -11,6 +11,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -127,7 +129,7 @@ const ProductList = () => {
               <ProductCard
                 title={product.name}
                 text={product.description}
-                img={product.img}
+                img={product.image}
                 code={product.code}
                 size={product.size}
                 stock={product.stock}

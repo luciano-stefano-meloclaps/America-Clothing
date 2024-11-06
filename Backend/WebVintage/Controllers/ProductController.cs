@@ -4,6 +4,9 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+
 namespace WebVintage.Controllers
 {
     [Route("api/[controller]")]
@@ -12,9 +15,13 @@ namespace WebVintage.Controllers
     {
         private readonly IProductService _service;
 
-        public ProductController(IProductService service)
+        private readonly Cloudinary _cloudinary;
+
+        public ProductController(IProductService service, Cloudinary cloudinary)
         {
             _service = service;
+            _cloudinary = cloudinary;
+
         }
 
         [HttpGet]
@@ -47,11 +54,37 @@ namespace WebVintage.Controllers
         }
         */
         [HttpPost]
-        public IActionResult Add([FromBody] ProductDto body)
+        public async Task<IActionResult> Add([FromForm] ProductDto body, IFormFile file)
         {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("No file uploaded");
+            }
+
+            var uploadParams = new ImageUploadParams
+            {
+                File = new FileDescription(file.FileName, file.OpenReadStream()),
+                AssetFolder = "VintageImagen"
+            };
+
+            try
+            {
+                var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                if (uploadResult == null || string.IsNullOrEmpty(uploadResult.SecureUrl.ToString()))
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Error uploading file to Cloudinary");
+                }
+                body.Image = uploadResult.SecureUrl.ToString();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Cloudinary error: {ex.Message}");
+            }
+
             var newProduct = _service.AddProduct(body);
             return CreatedAtAction(nameof(GetByCode), new { code = newProduct }, $"Creado el Producto con el código: {newProduct}");
         }
+
 
         [HttpDelete("{code}")]
         public IActionResult DeleteProduct([FromRoute] int code)
