@@ -11,8 +11,6 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -59,7 +57,7 @@ const ProductList = () => {
 
     // Filtrar por categoría si existe
     if (category) {
-      filtered = filtered.filter((product) => product.name === category); // Asegúrate de que `product.category` sea correcto
+      filtered = filtered.filter((product) => product.category === category); // Asegúrate de que `product.category` sea correcto
     }
 
     // Filtrar por tamaño

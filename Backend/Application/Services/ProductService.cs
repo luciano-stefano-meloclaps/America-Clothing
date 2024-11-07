@@ -115,6 +115,7 @@ namespace Application.Services
                 productToUpdate.Description = request.Description;
                 productToUpdate.Price = request.Price;
                 productToUpdate.Stock = request.Stock;
+                productToUpdate.Size = request.Size;
                 productToUpdate.State = request.State;
                 productToUpdate.Sold = request.Sold;
                 productToUpdate.Category = request.Category;

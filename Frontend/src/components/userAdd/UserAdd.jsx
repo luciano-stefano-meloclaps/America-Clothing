@@ -65,7 +65,7 @@ const UserAdd = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    navigate("/#users"); // Cambiado a "/#users"
+    navigate("/#users");
   };
 
   const togglePasswordVisibility = () => {

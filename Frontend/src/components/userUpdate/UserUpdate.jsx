@@ -76,7 +76,7 @@ const UserUpdate = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    navigate("/user-table"); // Redirigir a la tabla de usuarios tras la actualización
+    navigate("/#users");
   };
 
   return (

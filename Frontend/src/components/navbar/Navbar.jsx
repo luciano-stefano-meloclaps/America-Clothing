@@ -126,8 +126,8 @@ function NavbarMain() {
                   <FontAwesomeIcon icon={faShoppingBag} />
                 </Link>
               )}
-              {userRole === "admin" && (
-                <Link to="/dashboard" className="text-white pt-1 mx-2 fs-4">
+              {userRole === "admin" || userRole === "employee" && (
+                <Link to="/" className="text-white pt-1 mx-2 fs-4">
                   <FontAwesomeIcon icon={faSliders} />
                 </Link>
               )}
