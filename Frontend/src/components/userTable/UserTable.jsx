@@ -6,12 +6,23 @@ import {
   faUserShield,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import SearchBarUser from "../searchBarUser/SearchBarUser";
 
 const UserTable = ({ users }) => {
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
+
+  const navigate = useNavigate();
+
+  const onClickAddUser = () => {
+    navigate("/add-user");
+  };
+
+  const onClickUpdateUser = (userId) => {
+    navigate(`/update-user/${userId}`);
+  };
 
   const getRoleIcon = (role) => {
     switch (role) {
@@ -57,6 +68,10 @@ const UserTable = ({ users }) => {
     <div>
       <h2 className="text-info mb-5">Usuarios</h2>
 
+      <Button variant="primary" onClick={onClickAddUser}>
+        Añadir Usuario
+      </Button>
+
       <SearchBarUser onSearch={handleSearch} onClear={handleClear} />
 
       {currentUsers.length === 0 ? (
@@ -78,6 +93,7 @@ const UserTable = ({ users }) => {
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
+                <th>Modificar</th>
                 <th>Rol</th>
               </tr>
             </thead>
@@ -89,6 +105,14 @@ const UserTable = ({ users }) => {
                   <td>{user.name}</td>
                   <td>{user.lastName}</td>
                   <td>{user.email}</td>
+                  <td>
+                    <i
+                      className="fa fa-pencil"
+                      aria-hidden="true"
+                      onClick={() => onClickUpdateUser(user.id)}
+                      style={{ cursor: "pointer" }}
+                    ></i>
+                  </td>
                   <td>
                     {getRoleIcon(user.usertype)} {user.role}
                   </td>

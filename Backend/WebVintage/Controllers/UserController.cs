@@ -62,8 +62,8 @@ namespace WebVintage.Controllers
 
 
         [HttpPost("admin")]
-        [Authorize(Roles = "admin")] // Solo permite acceso a los usuarios con rol "admin"
-        public IActionResult AddAdminUser([FromBody] UserDto body)
+        //[Authorize(Roles = "admin")] // Solo permite acceso a los usuarios con rol "admin"
+        public IActionResult AddAdminUser([FromBody] UserAdminDto body)
         {
    
             var newUserId = _service.AddAdminUser(body);
@@ -88,7 +88,7 @@ namespace WebVintage.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser([FromRoute] int id, [FromBody] User request)
+        public IActionResult UpdateUser([FromRoute] int id, [FromBody] UserAdminDto request)
         {
 
             var existingUser = _service.Get(id);
