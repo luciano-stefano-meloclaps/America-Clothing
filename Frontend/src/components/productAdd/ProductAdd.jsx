@@ -65,7 +65,7 @@ const ProductAdd = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const data = new FormData();
     data.append("file", file); // Agregar archivo de imagen
     data.append("name", formData.name);
@@ -76,13 +76,17 @@ const ProductAdd = () => {
     data.append("stock", 1);
     data.append("state", 1);
     data.append("sold", false);
-  
+
     try {
-      const response = await axios.post("https://localhost:7091/api/Product", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "https://localhost:7091/api/Product",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log("Producto registrado:", response.data);
       setSuccess(true);
       setShowModal(true);
@@ -90,12 +94,10 @@ const ProductAdd = () => {
       console.error("Error al registrar el producto:", error);
       setError(
         "Hubo un error al registrar el producto: " +
-        (error.response ? error.response.data : error.message)
+          (error.response ? error.response.data : error.message)
       );
     }
   };
-
-
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -216,16 +218,15 @@ const ProductAdd = () => {
 
           <Row className="mb-4">
             <Col>
-            <Form.Group>
-  <Form.Label className="text-light">Imagen</Form.Label>
-  <Form.Control
-    type="file"
-    name="image"
-    onChange={handleFileChange}
-    required
-  />
-</Form.Group>
-
+              <Form.Group>
+                <Form.Label className="text-light">Imagen</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="image"
+                  onChange={handleFileChange}
+                  required
+                />
+              </Form.Group>
             </Col>
           </Row>
 
