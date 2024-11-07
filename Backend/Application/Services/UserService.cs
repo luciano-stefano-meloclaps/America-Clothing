@@ -69,7 +69,7 @@ namespace Application.Services
             return _repository.Add(user).Id;
         }
 
-        public int AddAdminUser(UserDto request, string userType = "Admin")
+        public int AddAdminUser(UserAdminDto request)
         {
             var user = new User()
             {
@@ -78,7 +78,7 @@ namespace Application.Services
                 Username = request.Username,
                 Email = request.Email,
                 Password = request.Password,
-                Usertype = userType, 
+                Usertype = request.Usertype,
                 State = true,
                 Address = request.Address,
                 PhoneNumber = request.PhoneNumber,
@@ -95,7 +95,7 @@ namespace Application.Services
             }
         }
 
-        public void UpdateUser(int id, User request)
+        public void UpdateUser(int id, UserAdminDto request)
         {
             var userToUpdate = _repository.Get(id);
             if (userToUpdate != null)

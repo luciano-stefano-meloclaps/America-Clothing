@@ -115,11 +115,13 @@ const ContactUs = () => {
         <p className="text-light py-3 fs-5">
           Sino envianos un mensaje por WhatsApp!
         </p>
-        <main class="bg-black rounded main-wp">
-          <div class="card bg-black  mx-5 px-5">
-            <i class="bi bi-whatsapp mx-auto icono pb3"></i>
-            <div class="card-body d-flex flex-column align-items-center">
-              <h5 class="card-title text-center text-success pb-5">Whatsapp</h5>
+        <main className="bg-black rounded main-wp">
+          <div className="card bg-black  mx-5 px-5">
+            <i className="bi bi-whatsapp mx-auto icono pb3"></i>
+            <div className="card-body d-flex flex-column align-items-center">
+              <h5 className="card-title text-center text-success pb-5">
+                Whatsapp
+              </h5>
               <FontAwesomeIcon
                 icon={faWhatsapp}
                 style={{ color: "#198754" }}
@@ -127,7 +129,7 @@ const ContactUs = () => {
               />
               <a
                 href="https://api.whatsapp.com/send?phone=3364025085"
-                class="btn btn-success enviarmensaje fw-bold"
+                className="btn btn-success enviarmensaje fw-bold"
               >
                 Enviar Mensaje
               </a>
