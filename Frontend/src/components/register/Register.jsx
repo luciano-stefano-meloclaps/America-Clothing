@@ -7,12 +7,15 @@ import {
   Button,
   Alert,
   Image,
+  Modal,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom"; // Para la redirección
 import axios from "axios";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     lastName: "",
@@ -27,6 +30,7 @@ const Register = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [validated, setValidated] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -42,6 +46,11 @@ const Register = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    navigate("/login"); // Redirige a /login al cerrar el modal
   };
 
   const handleSubmit = async (e) => {
@@ -77,6 +86,7 @@ const Register = () => {
       console.log("Usuario registrado:", response.data);
       setSuccess("Usuario registrado con éxito");
       setError(null);
+      setShowModal(true); // Muestra el modal al registrar exitosamente
     } catch (error) {
       console.error("Error al registrar el usuario:", error);
       setError(
@@ -252,6 +262,19 @@ const Register = () => {
           </Row>
         </div>
       </Container>
+
+      {/* Modal de confirmación */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Usuario agregado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Usuario agregado exitosamente</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleCloseModal}>
+            Aceptar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -4,14 +4,18 @@ import Login from "./components/login/Login";
 import NavbarMain from "./components/navbar/Navbar";
 import ProductList from "./components/productList/ProductList";
 import Product from "./components/product/Product";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Register from "./components/register/Register";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainPage from "./components/mainPage/MainPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AuthProvider } from "./context/AuthContext";
-
 import { APIContextProvider } from "./services/apiContext/api.context"; // Importa el provider
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
 import AboutUs from "./components/aboutUs/AboutUs";
@@ -24,6 +28,16 @@ import UserUpdate from "./components/userUpdate/userUpdate";
 import UserTable from "./components/userTable/UserTable";
 import ProductTable from "./components/productTable/ProductTable";
 import Dashboard from "./components/dashboard/Dashboard";
+
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -50,6 +64,7 @@ function App() {
     <APIContextProvider>
       <AuthProvider>
         <Router>
+          <ScrollToTop />
           <NavbarMain />
           <Routes>
             <Route path="/" element={<MainPage />} />
@@ -71,9 +86,9 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/cart" element={<Cart />} />{" "}
             {/* Ruta para el carrito */}
-            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/aboutUs" element={<AboutUs />} />{" "}
             {/* Ruta para Sobre Nosotros */}
-            <Route path="/contactUs" element={<ContactUs />} />
+            <Route path="/contactUs" element={<ContactUs />} />{" "}
             {/* Ruta para el formulario */}
             <Route path="/add-product" element={<ProductAdd />} />
             <Route path="/update-product" element={<ProductUpdate />} />
