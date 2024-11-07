@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Button, Alert } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,9 +8,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import SearchBarUser from "../searchBarUser/SearchBarUser";
+import axios from "axios";
 
-const UserTable = ({ users }) => {
-  const [filteredUsers, setFilteredUsers] = useState(users);
+const UserTable = () => {
+  const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
 
@@ -36,6 +38,29 @@ const UserTable = ({ users }) => {
         return null;
     }
   };
+
+  // Fetch users from API
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("https://localhost:7091/api/User");
+      if (Array.isArray(response.data)) {
+        setUsers(response.data);
+        setFilteredUsers(response.data);
+      } else {
+        throw new Error("La respuesta no es un array");
+      }
+    } catch (error) {
+      console.error("No se pudieron cargar los usuarios.", error);
+    }
+  };
+
+  // Polling effect
+  useEffect(() => {
+    fetchUsers(); // Fetch users on component mount
+    const intervalId = setInterval(fetchUsers, 5000); // Polling every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, []);
 
   const handleSearch = (filters) => {
     const { name, lastName, email } = filters;
@@ -68,12 +93,13 @@ const UserTable = ({ users }) => {
     <div>
       <h2 className="text-info mb-5">Usuarios</h2>
 
-      <Button variant="primary" onClick={onClickAddUser}>
-        Añadir Usuario
-      </Button>
+      <div className="mb-3">
+        <Button variant="primary" onClick={onClickAddUser}>
+          Añadir Usuario
+        </Button>
+      </div>
 
       <SearchBarUser onSearch={handleSearch} onClear={handleClear} />
-
       {currentUsers.length === 0 ? (
         <Alert variant="info" className="text-center">
           <h4>No tenemos resultados para tu búsqueda.</h4>

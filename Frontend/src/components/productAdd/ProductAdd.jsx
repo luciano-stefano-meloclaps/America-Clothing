@@ -9,6 +9,7 @@ import {
   Row,
   Image,
   Modal,
+  Spinner,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +26,7 @@ const ProductAdd = () => {
   const [success, setSuccess] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -65,6 +67,7 @@ const ProductAdd = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Activar el estado de carga
 
     const data = new FormData();
     data.append("file", file); // Agregar archivo de imagen
@@ -96,6 +99,8 @@ const ProductAdd = () => {
         "Hubo un error al registrar el producto: " +
           (error.response ? error.response.data : error.message)
       );
+    } finally {
+      setLoading(false); // Desactivar el estado de carga
     }
   };
 
@@ -234,8 +239,22 @@ const ProductAdd = () => {
             variant="light"
             type="submit"
             className="shadow rounded w-100"
+            disabled={loading} // Deshabilitar el botón si loading es true
           >
-            Añadir Producto
+            {loading ? ( // Mostrar el spinner mientras se está cargando
+              <>
+                <Spinner
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="me-2"
+                />
+                Añadiendo...
+              </>
+            ) : (
+              "Añadir Producto"
+            )}
           </Button>
         </Form>
 

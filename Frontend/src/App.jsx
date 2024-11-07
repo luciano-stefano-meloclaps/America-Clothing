@@ -23,6 +23,7 @@ import UserAdd from "./components/userAdd/UserAdd";
 import UserUpdate from "./components/userUpdate/userUpdate";
 import UserTable from "./components/userTable/UserTable";
 import ProductTable from "./components/productTable/ProductTable";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   const [products, setProducts] = useState([]);

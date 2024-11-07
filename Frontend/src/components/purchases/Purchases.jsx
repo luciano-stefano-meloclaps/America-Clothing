@@ -19,18 +19,17 @@ const Purchases = () => {
           "https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines",
           {
             headers: {
-              Authorization: `Bearer ${token}`,  // Corregido aquí
+              Authorization: `Bearer ${token}`, // Corregido aquí
             },
           }
         );
 
         // Filtrar las órdenes para que solo se muestren las del usuario autenticado
-        const filteredOrders = response.data.filter(order => {
-          return Number(order.userId) === Number(userId);  // Convertimos ambos a números
+        const filteredOrders = response.data.filter((order) => {
+          return Number(order.userId) === Number(userId); // Convertimos ambos a números
         });
 
         setSaleOrders(filteredOrders);
-
       } catch (err) {
         setError("Error al cargar las órdenes de compra.");
         console.error("Error fetching sale orders with lines:", err);
@@ -40,7 +39,7 @@ const Purchases = () => {
     };
 
     fetchSaleOrdersWithLines();
-  }, [userId]);  // Asegúrate de que el userId sea parte de las dependencias
+  }, [userId]); // Asegúrate de que el userId sea parte de las dependencias
 
   // Función para calcular el total de la orden
   const calculateOrderTotal = (lines) => {
@@ -48,13 +47,6 @@ const Purchases = () => {
       (total, line) => total + line.unitPrice * line.amount,
       0
     );
-  };
-
-  // Función para formatear la fecha
-  const formatDateTime = (dateTime) => {
-    return dateTime
-      ? dateTime.replace("T", " ").substring(0, 19)
-      : "Fecha no disponible";
   };
 
   if (loading) return <Spinner animation="border" variant="primary" />;
@@ -73,7 +65,7 @@ const Purchases = () => {
                 <Card.Body>
                   <Card.Title>ID de Orden: {order.saleOrderId}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    Fecha: {formatDateTime(order.date)}
+                    Fecha: {new Date(order.date).toLocaleString()}
                   </Card.Subtitle>
                   <Card.Text>
                     Total: ${calculateOrderTotal(order.lines).toFixed(2)}
