@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useAPI } from "../../services/apiContext/api.context";
-import { useAuth } from '../../context/AuthContext';
-import { Button, Table, Image, Badge, Modal } from "react-bootstrap";
-import axios from 'axios';
+import { useAuth } from "../../context/AuthContext";
+import {
+  Button,
+  Table,
+  Image,
+  Badge,
+  Modal,
+  Container,
+  Form,
+  Row,
+  Col,
+} from "react-bootstrap";
+import axios from "axios";
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useAPI();
@@ -21,16 +31,19 @@ const Cart = () => {
   };
 
   const handleConfirmPurchase = async () => {
-    const orderLines = cart.map(product => ({
+    const orderLines = cart.map((product) => ({
       ProductId: product.code,
-      Amount: product.quantity
+      Amount: product.quantity,
     }));
 
     try {
-      const response = await axios.post('https://localhost:7091/api/SaleOrder', {
-        userId: Number(userId),
-        orderLines
-      });
+      const response = await axios.post(
+        "https://localhost:7091/api/SaleOrder",
+        {
+          userId: Number(userId),
+          orderLines,
+        }
+      );
       setShowOrderModal(false); // Cerrar el modal de confirmación
       setShowSuccessModal(true); // Mostrar modal de éxito
       clearCart(); // Limpiar el carrito después de una compra exitosa
@@ -46,10 +59,18 @@ const Cart = () => {
   const handleCloseErrorModal = () => setShowErrorModal(false); // Cerrar modal de error
 
   return (
-    <div className="bg-dark d-flex flex-column justify-content-center align-items-center w-100 min-vh-100">
+    //Modal Confirmacion Orden
+
+    <div className="bg-dark d-flex fs-5 flex-column justify-content-center align-items-center w-100 min-vh-100">
       {cart.length > 0 ? (
         <>
-          <Table striped hover responsive="sm" className="bg-white text-center" style={{ width: '100vw' }}>
+          <Table
+            striped
+            hover
+            responsive="sm"
+            className="table-dark text-white table-bordered justify-content-center align-items-center"
+            style={{ width: "90vw" }}
+          >
             <thead className="bg-light">
               <tr>
                 <th>Producto</th>
@@ -60,15 +81,16 @@ const Cart = () => {
                 <th>Acciones</th>
               </tr>
             </thead>
+
             <tbody>
               {cart.map((product) => (
                 <tr key={product.code}>
                   <td>
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center  justify-content-center ">
                       <Image
                         src={product.image}
                         roundedCircle
-                        style={{ width: '45px', height: '45px' }}
+                        style={{ width: "45px", height: "45px" }}
                       />
                       <div className="ms-3">
                         <p className="fw-bold mb-1">{product.name}</p>
@@ -84,7 +106,12 @@ const Cart = () => {
                   <td>${product.price}</td>
                   <td>${product.price * product.quantity}</td>
                   <td>
-                    <Button variant="danger" size="sm" className="btn-rounded" onClick={() => removeFromCart(product.code)}>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      className="btn-rounded"
+                      onClick={() => removeFromCart(product.code)}
+                    >
                       Eliminar
                     </Button>
                   </td>
@@ -95,7 +122,13 @@ const Cart = () => {
               <tr>
                 <td colSpan="4">Total</td>
                 <td colSpan="2">
-                  <b>${cart.reduce((total, item) => total + item.price * item.quantity, 0)}</b>
+                  <b>
+                    $
+                    {cart.reduce(
+                      (total, item) => total + item.price * item.quantity,
+                      0
+                    )}
+                  </b>
                 </td>
               </tr>
             </tfoot>
@@ -105,6 +138,7 @@ const Cart = () => {
           </Button>
         </>
       ) : (
+        //Mensaje de no hay prod
         <h1 className="text-white">No hay productos en el carrito</h1>
       )}
 
@@ -113,7 +147,9 @@ const Cart = () => {
         <Modal.Header closeButton>
           <Modal.Title>Inicia sesión</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Por favor, inicia sesión para completar tu compra.</Modal.Body>
+        <Modal.Body>
+          Por favor, inicia sesión para completar tu compra.
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="dark" onClick={handleCloseAuthModal}>
             Cerrar
@@ -123,12 +159,18 @@ const Cart = () => {
 
       {/* Modal de confirmación de compra */}
       <Modal show={showOrderModal} onHide={handleCloseOrderModal}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="bg-dark text-light">
           <Modal.Title>Confirmación de la Orden</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bg-dark text-light">
           <h5>Resumen de la compra:</h5>
-          <Table striped bordered hover responsive="sm" className="text-center">
+          <Table
+            striped
+            bordered
+            hover
+            responsive="sm"
+            className="text-center table-dark table-hover"
+          >
             <thead>
               <tr>
                 <th>Producto</th>
@@ -149,14 +191,69 @@ const Cart = () => {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="3"><strong>Total</strong></td>
-                <td><strong>${cart.reduce((total, item) => total + item.price * item.quantity, 0)}</strong></td>
+                <td colSpan="3">
+                  <strong>Total</strong>
+                </td>
+                <td>
+                  <strong>
+                    $
+                    {cart.reduce(
+                      (total, item) => total + item.price * item.quantity,
+                      0
+                    )}
+                  </strong>
+                </td>
               </tr>
             </tfoot>
           </Table>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseOrderModal}>
+        {/* Formulario de pago */}
+        <div className="px-3 p-0 bg-dark d-flex flex-column justify-content-center align-items-center">
+          <Container className=" py-3 px-4 mb-5 rounded">
+            <Row className="mb-4 p-0 text-center">
+              <Col xs={12} md={12}>
+                <Image
+                  src="public/game.png"
+                  width={40}
+                  fluid
+                  className="mb-2 text-center"
+                />
+              </Col>
+              <h5 className="text-white my-1">Completa los datos para pagar</h5>
+            </Row>
+
+            <Form>
+              <Form.Select className="my-3">
+                <option>Seleccione el tipo de tarjeta</option>
+                <option value="1">Debito</option>
+                <option value="2">Credito</option>
+              </Form.Select>
+              <Form.Group controlId="formCardNumber" className="py-3">
+                <Form.Control type="text" placeholder="Número de tarjeta" />
+              </Form.Group>
+
+              <Form.Group controlId="formName" className="py-3">
+                <Form.Control type="text" placeholder="Nombre y apellido" />
+              </Form.Group>
+
+              <Form.Group controlId="formAddress" className="py-3">
+                <Form.Control type="text" placeholder="Dirección de entrega" />
+              </Form.Group>
+
+              <Form.Group controlId="formExpiration" className="py-3">
+                <Form.Control type="text" placeholder="MM/AA" />
+              </Form.Group>
+
+              <Form.Group controlId="formCVV" className="py-3">
+                <Form.Control type="password" placeholder="CVV" />
+              </Form.Group>
+            </Form>
+          </Container>
+        </div>
+        {/* Fin de pago */}
+
+        <Modal.Footer className="bg-dark text-light">
+          <Button variant="outline-danger" onClick={handleCloseOrderModal}>
             Cancelar
           </Button>
           <Button variant="success" onClick={handleConfirmPurchase}>
@@ -183,7 +280,9 @@ const Cart = () => {
         <Modal.Header closeButton>
           <Modal.Title>Error en la compra</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Hubo un problema al realizar la compra. Inténtalo de nuevo.</Modal.Body>
+        <Modal.Body>
+          Hubo un problema al realizar la compra. Inténtalo de nuevo.
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleCloseErrorModal}>
             Cerrar
