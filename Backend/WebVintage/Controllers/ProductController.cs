@@ -104,19 +104,44 @@ namespace WebVintage.Controllers
         }
 
         [HttpPut("{code}")]
-        public IActionResult UpdateProduct([FromRoute] int code, [FromBody] ProductDto request)
+        public async Task<IActionResult> UpdateProduct([FromRoute] int code, [FromForm] ProductDto request, IFormFile file)
         {
-
             var existingProduct = _service.Get(code);
             if (existingProduct == null)
             {
                 return NotFound($"No se encontró ningún producto con el código: {code}");
             }
 
+            
+            if (file != null && file.Length > 0)
+            {
+                var uploadParams = new ImageUploadParams
+                {
+                    File = new FileDescription(file.FileName, file.OpenReadStream()),
+                    AssetFolder = "VintageImagen"
+                };
+
+                try
+                {
+                    var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    if (uploadResult == null || string.IsNullOrEmpty(uploadResult.SecureUrl.ToString()))
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError, "Error uploading file to Cloudinary");
+                    }
+                    
+                    request.Image = uploadResult.SecureUrl.ToString();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Cloudinary error: {ex.Message}");
+                }
+            }
+
+            
             _service.UpdateProduct(code, request);
             return Ok($"Producto con código: {code} actualizado correctamente");
-
         }
+
     }
 
 }

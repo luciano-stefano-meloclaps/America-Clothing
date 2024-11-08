@@ -15,7 +15,7 @@ import {
 const ProductUpdate = () => {
   const location = useLocation();
   const navigate = useNavigate(); 
-  const { product } = location.state || {}; // Accede al producto desde el estado
+  const { product } = location.state || {}; 
 
   const [formData, setFormData] = useState({
     name: "",
@@ -32,7 +32,7 @@ const ProductUpdate = () => {
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  // Cargar los datos del producto en el formulario
+
   useEffect(() => {
     if (product) {
       setFormData({
@@ -49,7 +49,7 @@ const ProductUpdate = () => {
     }
   }, [product]);
 
-  // Manejo de cambios en el formulario
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -58,19 +58,44 @@ const ProductUpdate = () => {
     }));
   };
 
+
+  const handleImageChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      image: e.target.files[0], 
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = product?.code;
     if (!id) {
       setError("No se ha encontrado el ID del producto.");
-      console.log(id);
       return;
+    }
+
+    const formDataToSend = new FormData();
+
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key)) {
+        formDataToSend.append(key, formData[key]);
+      }
+    }
+
+
+    if (formData.image) {
+      formDataToSend.append("file", formData.image); 
     }
 
     try {
       const response = await axios.put(
         `https://localhost:7091/api/Product/${id}`,
-        formData
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", 
+          },
+        }
       );
       setShowModal(true);
     } catch (error) {
@@ -81,10 +106,10 @@ const ProductUpdate = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    navigate("/#products"); // Redirige a la página de productos
+    navigate("/#products"); 
   };
 
-  // Asegúrate de manejar el caso en que no haya producto
+
   if (!product) {
     return <div>No se ha seleccionado ningún producto para actualizar.</div>;
   }
@@ -247,12 +272,10 @@ const ProductUpdate = () => {
               <Form.Group>
                 <Form.Label className="text-light">Imagen</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="file"
                   name="image"
-                  value={formData.image}
-                  onChange={handleChange}
+                  onChange={handleImageChange}
                   required
-                  placeholder="URL de la imagen"
                 />
               </Form.Group>
             </Col>
@@ -267,15 +290,17 @@ const ProductUpdate = () => {
           </Button>
         </Form>
 
-        {/* Modal de confirmación */}
+
         <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header closeButton>
             <Modal.Title>Producto actualizado</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Producto actualizado exitosamente</Modal.Body>
+          <Modal.Body>
+            El producto se actualizó correctamente.
+          </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={handleCloseModal}>
-              Aceptar
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Cerrar
             </Button>
           </Modal.Footer>
         </Modal>

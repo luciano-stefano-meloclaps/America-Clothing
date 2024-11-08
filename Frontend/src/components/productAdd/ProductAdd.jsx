@@ -43,24 +43,6 @@ const ProductAdd = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       "https://localhost:7091/api/Product",
-  //       { ...formData, stock: 1, state: 1, sold: false } // Asignar valores predeterminados
-  //     );
-  //     console.log("Producto registrado:", response.data);
-  //     setSuccess(true);
-  //     setShowModal(true);
-  //   } catch (error) {
-  //     console.error("Error al registrar el producto:", error);
-  //     setError(
-  //       "Hubo un error al registrar el producto: " +
-  //         (error.response ? error.response.data : error.message)
-  //     );
-  //   }
-  // };
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
