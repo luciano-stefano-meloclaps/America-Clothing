@@ -10,6 +10,7 @@ import {
   Alert,
   Modal,
   Image,
+  Spinner,
 } from "react-bootstrap";
 
 const ProductUpdate = () => {
@@ -31,7 +32,7 @@ const ProductUpdate = () => {
 
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
-
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -87,6 +88,8 @@ const ProductUpdate = () => {
       formDataToSend.append("file", formData.image); 
     }
 
+    setLoading(true); // Activar el estado de carga
+
     try {
       const response = await axios.put(
         `https://localhost:7091/api/Product/${id}`,
@@ -97,10 +100,12 @@ const ProductUpdate = () => {
           },
         }
       );
-      setShowModal(true);
+setShowModal(true);
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
       setError("Hubo un error al actualizar el producto.");
+    } finally {
+      setLoading(false); // Desactivar el estado de carga
     }
   };
 
@@ -285,8 +290,22 @@ const ProductUpdate = () => {
             variant="light"
             type="submit"
             className="shadow rounded w-100"
+            disabled={loading} // Deshabilitar el botón mientras se está cargando
           >
-            Actualizar Producto
+            {loading ? ( // Mostrar spinner de "actualizando" mientras se está procesando
+              <>
+                <Spinner
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="me-2"
+                />
+                Actualizando...
+              </>
+            ) : (
+              "Actualizar Producto"
+            )}
           </Button>
         </Form>
 
