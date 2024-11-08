@@ -79,10 +79,7 @@ function App() {
                 path="/update-product"
                 element={<ProtectedRoute requiredRole="admin"><ProductUpdate /></ProtectedRoute>}
               />
-              <Route
-                path="/cart"
-                element={<ProtectedRoute requiredRole="client"><Cart /></ProtectedRoute>}
-              />
+      
               <Route
                 path="/my-purchases"
                 element={<ProtectedRoute requiredRole="client"><Purchases /></ProtectedRoute>}
@@ -112,7 +109,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path="/cart" element={<Cart />} />{" "} */}
+            <Route path="/cart" element={<Cart />} />{" "}
             {/* Ruta para el carrito */}
             <Route path="/aboutUs" element={<AboutUs />} />{" "}
             {/* Ruta para Sobre Nosotros */}
