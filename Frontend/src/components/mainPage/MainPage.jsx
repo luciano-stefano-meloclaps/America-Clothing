@@ -6,14 +6,13 @@ import ContactUs from "../contactUs/ContactsUs";
 import Dashboard from "../dashboard/Dashboard";
 import { useAuth } from "../../context/AuthContext";
 
-
 const MainPage = () => {
-  const {userRole} = useAuth();
- // console.log("UserType:", userRole);
+  const { userRole } = useAuth();
+  // console.log("UserType:", userRole);
   return (
     <div>
       {/* Si el usuario es admin o employee, mostramos solo el Dashboard */}
-      {userRole === 'admin'|| userRole === 'employee' ? (  // ACA LE DOY ACCESO ANTES ESTABA ADMIN NOMAS
+      {userRole === "admin" || userRole === "employee" ? ( // ACA LE DOY ACCESO ANTES ESTABA ADMIN NOMAS
         <Dashboard />
       ) : (
         // Si es cliente, mostramos los demás componentes
@@ -26,7 +25,6 @@ const MainPage = () => {
       )}
     </div>
   );
-
 };
 
 export default MainPage;
