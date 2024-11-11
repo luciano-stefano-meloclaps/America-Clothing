@@ -302,36 +302,46 @@ const Cart = () => {
                 </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group controlId="formExpiration" className="py-3">
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="MM/AA"
-                  value={expiration}
-                  onChange={(e) => setExpiration(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Ingrese la fecha de expiración.
-                </Form.Control.Feedback>
-              </Form.Group>
+              <Row>
+                <Col xs={6} className="py-3">
+                  <Form.Group controlId="formExpiration">
+                    <Form.Control
+                      required
+                      type="text"
+                      placeholder="MM/AA"
+                      value={expiration}
+                      onChange={(e) => setExpiration(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese la fecha de expiración.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
 
-              <Form.Group controlId="formCVV" className="py-3">
-                <Form.Control
-                  required
-                  type="password"
-                  placeholder="CVV"
-                  value={cvv}
-                  onChange={(e) => setCvv(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Ingrese el CVV.
-                </Form.Control.Feedback>
-              </Form.Group>
+                <Col xs={6} className="py-3">
+                  <Form.Group controlId="formCVV">
+                    <Form.Control
+                      required
+                      type="password"
+                      placeholder="CVV"
+                      value={cvv}
+                      onChange={(e) => setCvv(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese el CVV.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
+              </Row>
 
               <Button variant="info" type="submit">
                 Confirmar compra
               </Button>
-              <Button variant="outline-danger" onClick={handleCloseOrderModal}>
+              <Button
+                variant="outline-danger"
+                className="m-3 my-2"
+                onClick={handleCloseOrderModal}
+              >
                 Cancelar
               </Button>
             </Form>
