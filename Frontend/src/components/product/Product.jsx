@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Button, Modal, Card, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import { useAPI } from "../../services/apiContext/api.context";
 import modelIMG from "../../assets/modelIMG.jpg";
 
-const Product = ({ products }) => {
+const Product = () => {
   const { productId } = useParams();
   const { addToCart } = useAPI();
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
 
-  const product = products.find((p) => p.code === parseInt(productId));
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(`https://localhost:7091/api/Product/${productId}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error al cargar el producto:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  if (!product) {
-    return <div>Producto no encontrado</div>;
-  }
+    fetchProduct();
+  }, [productId]);
 
   const handleAddToCart = () => {
     const success = addToCart(product);
@@ -26,37 +39,37 @@ const Product = ({ products }) => {
     }
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  const handleCloseModal = () => setShowModal(false);
+  const handleCloseErrorModal = () => setShowErrorModal(false);
 
-  const handleCloseErrorModal = () => {
-    setShowErrorModal(false);
-  };
+  if (isLoading) {
+    return <div>Cargando producto...</div>;
+  }
+
+  if (!product) {
+    return <div>Producto no encontrado</div>;
+  }
 
   return (
-    <Container fluid
-    className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light">
+    <Container
+      fluid
+      className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light"
+    >
       <Row>
-        {/* Imagen del producto */}
         <Col md={6} className="text-center">
-          <Card.Img src={product.image ? product.image : modelIMG} className="img-fluid rounded" />
+          <Card.Img src={product.image || modelIMG} className="img-fluid rounded" />
         </Col>
 
-        {/* Detalles del producto */}
         <Col md={6} className="mt-5">
           <h2 className="fw-bold">{product.name}</h2>
           <p className="mb-3">{product.description}</p>
           <h3 className="fw-bold">$ {product.price.toLocaleString()}</h3>
 
-          {/* Información de pago y descuentos */}
           <p className="mb-3 mt-5">Hasta <strong>3 cuotas SIN interés</strong> con tarjeta de DÉBITO</p>
           <p className="mb-3">12 cuotas sin interés de <strong>${(product.price / 12).toFixed(2)}</strong></p>
           <p className="mb-3"><strong>10% de descuento</strong> pagando con Transferencia</p>
-
           <h4 className="fw-bold mt-5">Talle: {product.size}</h4>
 
-          {/* Botón para agregar al carrito */}
           <Button
             variant="light"
             className="w-50 py-2 my-3 fw-bold mt-5"
@@ -67,7 +80,6 @@ const Product = ({ products }) => {
         </Col>
       </Row>
 
-      {/* Modal de confirmación */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Producto agregado 🛒</Modal.Title>
@@ -82,7 +94,6 @@ const Product = ({ products }) => {
         </Modal.Footer>
       </Modal>
 
-      {/* Modal de error */}
       <Modal show={showErrorModal} onHide={handleCloseErrorModal}>
         <Modal.Header closeButton className="bg-danger text-light">
           <Modal.Title>Error al agregar producto</Modal.Title>
@@ -101,4 +112,3 @@ const Product = ({ products }) => {
 };
 
 export default Product;
-

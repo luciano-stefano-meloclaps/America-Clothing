@@ -1,17 +1,17 @@
 import React, { useState, useContext } from "react";
 import { Table, DropdownButton, Dropdown } from "react-bootstrap";
-import { useAPI } from "../../services/apiContext/api.context"; 
+import { useAPI } from "../../services/apiContext/api.context";
 
 const SaleOrderTable = ({ saleOrders }) => {
   const [expandedRows, setExpandedRows] = useState([]);
-  const { products, users } = useAPI(); 
-  const [status, setStatus] = useState({}); 
+  const { products, users } = useAPI();
+  const [status, setStatus] = useState({});
 
   const toggleRow = (saleOrderId) => {
     setExpandedRows((prevExpandedRows) =>
       prevExpandedRows.includes(saleOrderId)
-        ? prevExpandedRows.filter((id) => id !== saleOrderId) 
-        : [...prevExpandedRows, saleOrderId] 
+        ? prevExpandedRows.filter((id) => id !== saleOrderId)
+        : [...prevExpandedRows, saleOrderId]
     );
   };
 
@@ -41,6 +41,21 @@ const SaleOrderTable = ({ saleOrders }) => {
     }));
   };
 
+  const getButtonVariant = (status) => {
+    switch (status) {
+      case "Enviado":
+        return "info";
+      case "No enviado":
+        return "danger";
+      case "En preparación":
+        return "warning";
+      case "Recibido":
+        return "success";
+      default:
+        return "secondary";
+    }
+  };
+
   return (
     <div>
       <h2 className="text-info mb-4">Órdenes de Venta</h2>
@@ -52,14 +67,14 @@ const SaleOrderTable = ({ saleOrders }) => {
             <th>ID Cliente</th>
             <th>Nombre</th>
             <th>Dirección</th>
-            <th>Estado envio</th> 
+            <th>Estado envío</th>
           </tr>
         </thead>
         <tbody>
           {saleOrders.map((order) => {
             const userDetails = getUserDetails(order.userId);
             const orderStatus = status[order.saleOrderId] || "No enviado";
-            const buttonVariant = orderStatus === "Enviado" ? "success" : "danger";
+            const buttonVariant = getButtonVariant(orderStatus);
 
             return (
               <React.Fragment key={order.saleOrderId}>
@@ -72,13 +87,15 @@ const SaleOrderTable = ({ saleOrders }) => {
                   <td>
                     <DropdownButton
                       id={`dropdown-status-${order.saleOrderId}`}
-                      title={orderStatus} 
-                      variant={buttonVariant} 
-                      onClick={(e) => e.stopPropagation()} 
+                      title={orderStatus}
+                      variant={buttonVariant}
+                      onClick={(e) => e.stopPropagation()}
                       onSelect={(selectedStatus) => handleStatusChange(order.saleOrderId, selectedStatus)}
                     >
                       <Dropdown.Item eventKey="Enviado">Enviado</Dropdown.Item>
                       <Dropdown.Item eventKey="No enviado">No enviado</Dropdown.Item>
+                      <Dropdown.Item eventKey="En preparación">En preparación</Dropdown.Item>
+                      <Dropdown.Item eventKey="Recibido">Recibido</Dropdown.Item>
                     </DropdownButton>
                   </td>
                 </tr>
@@ -120,3 +137,4 @@ const SaleOrderTable = ({ saleOrders }) => {
 };
 
 export default SaleOrderTable;
+
