@@ -46,7 +46,7 @@ const ProductList = () => {
   useEffect(() => {
     fetchProducts(); // Llamar a fetchProducts inmediatamente al montar el componente
 
-    const intervalId = setInterval(fetchProducts, 5000); // Polling cada 5 segundos
+    const intervalId = setInterval(fetchProducts, 7000); // Polling cada 7 segundos
 
     return () => clearInterval(intervalId); // Limpiar intervalo al desmontar el componente
   }, []);
