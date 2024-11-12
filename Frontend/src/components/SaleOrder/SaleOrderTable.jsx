@@ -10,6 +10,12 @@ const SaleOrderTable = () => {
   const [status, setStatus] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
+  // Cargar el estado inicial desde localStorage para los estados amigooooo
+  useEffect(() => {
+    const savedStatus = JSON.parse(localStorage.getItem("saleOrderStatus")) || {};
+    setStatus(savedStatus);
+  }, []);
+
   const toggleRow = (saleOrderId) => {
     setExpandedRows((prevExpandedRows) =>
       prevExpandedRows.includes(saleOrderId)
@@ -40,10 +46,14 @@ const SaleOrderTable = () => {
   };
 
   const handleStatusChange = (saleOrderId, newStatus) => {
-    setStatus((prevStatus) => ({
-      ...prevStatus,
+    const updatedStatus = {
+      ...status,
       [saleOrderId]: newStatus,
-    }));
+    };
+    setStatus(updatedStatus);
+
+    // Guardar el estado en localStorageeee
+    localStorage.setItem("saleOrderStatus", JSON.stringify(updatedStatus));
   };
 
   const getButtonVariant = (status) => {
