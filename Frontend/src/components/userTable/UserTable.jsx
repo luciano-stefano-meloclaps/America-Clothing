@@ -32,7 +32,7 @@ const UserTable = () => {
         return <FontAwesomeIcon icon={faUserShield} />;
       case "client":
         return <FontAwesomeIcon icon={faUser} />;
-      case "seller":
+      case "employee":
         return <FontAwesomeIcon icon={faUserTie} />;
       default:
         return null;
@@ -45,7 +45,7 @@ const UserTable = () => {
       const response = await axios.get("https://localhost:7091/api/User");
       if (Array.isArray(response.data)) {
         setUsers(response.data);
-        setFilteredUsers(response.data);
+        setFilteredUsers(response.data); // Inicializar los usuarios filtrados
       } else {
         throw new Error("La respuesta no es un array");
       }
@@ -57,9 +57,9 @@ const UserTable = () => {
   // Polling effect
   useEffect(() => {
     fetchUsers(); // Fetch users on component mount
-    const intervalId = setInterval(fetchUsers, 5000); // Polling every 5 seconds
+    // const intervalId = setInterval(fetchUsers, 5000); // Polling every 5 seconds
 
-    return () => clearInterval(intervalId); // Cleanup on component unmount
+    // return () => clearInterval(intervalId); // Cleanup on component unmount
   }, []);
 
   const handleSearch = (filters) => {
@@ -77,10 +77,11 @@ const UserTable = () => {
   };
 
   const handleClear = () => {
-    setFilteredUsers(users);
+    setFilteredUsers(users); // Limpiar los filtros
     setCurrentPage(1); // Resetear a la primera página al limpiar
   };
 
+  // Lógica de paginación
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
@@ -150,9 +151,7 @@ const UserTable = () => {
             {Array.from({ length: totalPages }, (_, index) => (
               <Button
                 key={index + 1}
-                variant={
-                  currentPage === index + 1 ? "primary" : "outline-primary"
-                }
+                variant={currentPage === index + 1 ? "primary" : "outline-primary"}
                 onClick={() => setCurrentPage(index + 1)}
                 className="mx-1"
               >

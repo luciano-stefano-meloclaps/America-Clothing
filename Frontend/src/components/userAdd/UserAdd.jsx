@@ -9,6 +9,7 @@ import {
   Row,
   Modal,
   InputGroup,
+  Image,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
@@ -81,6 +82,19 @@ const UserAdd = () => {
         className="contact-us-container p-5 my-5 rounded"
         style={{ maxWidth: "600px" }}
       >
+        <Row className="align-items-center justify-content-center text-center">
+          <Col xs="auto" className="pe-1">
+            <Image src="/game.png" width={50} fluid />
+          </Col>
+          <Col xs="auto">
+            <h1
+              className="text-light"
+              style={{ fontFamily: "Caveat", margin: 0 }}
+            >
+              American clothing
+            </h1>
+          </Col>
+        </Row>
         <Form onSubmit={handleSubmit}>
           {error && (
             <Alert variant="danger" className="mt-3">
