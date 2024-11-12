@@ -3,13 +3,14 @@ import { Table, Alert, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import SearchBarProduct from "../searchBarProduct/SearchBarProduct";
 import axios from "axios";
+import { useAuth } from "../../context/AuthContext";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
-
+  const { userRole } = useAuth();
   const navigate = useNavigate();
 
   const onClickAddProduct = () => {
@@ -20,30 +21,27 @@ const ProductTable = () => {
     navigate("/update-product", { state: { product } });
   };
 
-// Fetch products from API
-const fetchProducts = async () => {
-  try {
-    const response = await axios.get("https://localhost:7091/api/Product");
-    if (Array.isArray(response.data)) {
-      // Quitar el filtro por estado para mostrar todos los productos
-      setProducts(response.data);
-      setFilteredProducts(response.data);
-    } else {
-      throw new Error("La respuesta no es un array");
+  // Fetch products from API (solo se ejecuta una vez cuando el componente se monta)
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("https://localhost:7091/api/Product");
+      if (Array.isArray(response.data)) {
+        setProducts(response.data);
+        setFilteredProducts(response.data); // Inicializar productos filtrados
+      } else {
+        throw new Error("La respuesta no es un array");
+      }
+    } catch (error) {
+      console.error("No se pudieron cargar los productos.", error);
     }
-  } catch (error) {
-    console.error("No se pudieron cargar los productos.", error);
-  }
-};
+  };
 
-  // Polling effect
+  // Llamar a fetchProducts al montar el componente
   useEffect(() => {
-    fetchProducts(); // Fetch products on component mount
-    const intervalId = setInterval(fetchProducts, 5000); // Polling every 5 seconds
+    fetchProducts();
+  }, []); // El array vacío asegura que solo se ejecute una vez
 
-    return () => clearInterval(intervalId); // Cleanup on component unmount
-  }, []);
-
+  // Filtrar productos basado en los filtros de búsqueda
   const handleSearch = (filters) => {
     const { name, size, type, price } = filters;
     const filtered = products.filter((product) => {
@@ -55,14 +53,15 @@ const fetchProducts = async () => {
       );
     });
     setFilteredProducts(filtered);
-    setCurrentPage(1);
+    setCurrentPage(1); // Resetear a la primera página
   };
 
   const handleClear = () => {
-    setFilteredProducts(products);
-    setCurrentPage(1);
+    setFilteredProducts(products); // Mostrar todos los productos
+    setCurrentPage(1); // Resetear a la primera página
   };
 
+  // Lógica de paginación
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(
@@ -78,13 +77,16 @@ const fetchProducts = async () => {
     <div>
       <h2 className="text-info mb-5">Productos</h2>
 
-      <div className="mb-3">
-        <Button variant="primary" onClick={onClickAddProduct}>
-          Añadir Producto
-        </Button>
-      </div>
+      {userRole !== "employee" && (
+        <div className="mb-3">
+          <Button variant="primary" onClick={onClickAddProduct}>
+            Añadir Producto
+          </Button>
+        </div>
+      )}
 
       <SearchBarProduct onSearch={handleSearch} onClear={handleClear} />
+
       {currentProducts.length === 0 ? (
         <Alert variant="info" className="text-center">
           <h4>No tenemos resultados para tu búsqueda.</h4>
@@ -107,7 +109,7 @@ const fetchProducts = async () => {
                 <th>Categoría</th>
                 <th>Estado</th>
                 <th>Vendido</th>
-                <th>Modificar</th>
+                {userRole !== "employee" && <th>Modificar</th>}
               </tr>
             </thead>
             <tbody>
@@ -123,14 +125,16 @@ const fetchProducts = async () => {
                     {product.state === 1 ? "Habilitado" : "Deshabilitado"}
                   </td>
                   <td>{product.sold ? "Vendido" : "No vendido"}</td>
-                  <td>
-                    <i
-                      className="fa fa-pencil"
-                      aria-hidden="true"
-                      onClick={() => handleUpdateClick(product)}
-                      style={{ cursor: "pointer" }}
-                    ></i>
-                  </td>
+                  {userRole !== "employee" && (
+                    <td>
+                      <i
+                        className="fa fa-pencil"
+                        aria-hidden="true"
+                        onClick={() => handleUpdateClick(product)}
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

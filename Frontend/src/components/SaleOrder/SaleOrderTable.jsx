@@ -31,7 +31,9 @@ const SaleOrderTable = ({ saleOrders }) => {
 
   const getUserDetails = (userId) => {
     const user = users.find((u) => u.id === userId);
-    return user ? { name: user.name, address: user.address } : { name: "Usuario no disponible", address: "-" };
+    return user
+      ? { name: user.name, address: user.address }
+      : { name: "Usuario no disponible", address: "-" };
   };
 
   const handleStatusChange = (saleOrderId, newStatus) => {
@@ -43,12 +45,12 @@ const SaleOrderTable = ({ saleOrders }) => {
 
   const getButtonVariant = (status) => {
     switch (status) {
-      case "Enviado":
-        return "info";
       case "No enviado":
         return "danger";
       case "En preparación":
         return "warning";
+      case "Enviado":
+        return "info";
       case "Recibido":
         return "success";
       default:
@@ -90,19 +92,33 @@ const SaleOrderTable = ({ saleOrders }) => {
                       title={orderStatus}
                       variant={buttonVariant}
                       onClick={(e) => e.stopPropagation()}
-                      onSelect={(selectedStatus) => handleStatusChange(order.saleOrderId, selectedStatus)}
+                      onSelect={(selectedStatus) =>
+                        handleStatusChange(order.saleOrderId, selectedStatus)
+                      }
                     >
+                      <Dropdown.Item eventKey="No enviado">
+                        No enviado
+                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="En preparación">
+                        En preparación
+                      </Dropdown.Item>
                       <Dropdown.Item eventKey="Enviado">Enviado</Dropdown.Item>
-                      <Dropdown.Item eventKey="No enviado">No enviado</Dropdown.Item>
-                      <Dropdown.Item eventKey="En preparación">En preparación</Dropdown.Item>
-                      <Dropdown.Item eventKey="Recibido">Recibido</Dropdown.Item>
+                      <Dropdown.Item eventKey="Recibido">
+                        Recibido
+                      </Dropdown.Item>
                     </DropdownButton>
                   </td>
                 </tr>
                 {expandedRows.includes(order.saleOrderId) && (
                   <tr>
                     <td colSpan="6">
-                      <Table striped bordered hover variant="secondary" size="sm">
+                      <Table
+                        striped
+                        bordered
+                        hover
+                        variant="secondary"
+                        size="sm"
+                      >
                         <thead>
                           <tr>
                             <th>Detalle</th>
@@ -137,4 +153,3 @@ const SaleOrderTable = ({ saleOrders }) => {
 };
 
 export default SaleOrderTable;
-

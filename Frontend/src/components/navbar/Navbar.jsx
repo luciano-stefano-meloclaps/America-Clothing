@@ -74,10 +74,6 @@ function NavbarMain() {
                 <NavDropdown.Item as={Link} to="/productos/Vestidos">
                   Vestidos
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/productos/top">
-                  Prendas top 🔥
-                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link as={Link} to="/AboutUs" className="nav-item text-light">
                 Quienes somos
