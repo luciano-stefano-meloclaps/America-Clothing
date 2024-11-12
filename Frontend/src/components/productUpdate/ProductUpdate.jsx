@@ -15,8 +15,8 @@ import {
 
 const ProductUpdate = () => {
   const location = useLocation();
-  const navigate = useNavigate(); 
-  const { product } = location.state || {}; 
+  const navigate = useNavigate();
+  const { product } = location.state || {};
 
   const [formData, setFormData] = useState({
     name: "",
@@ -50,7 +50,6 @@ const ProductUpdate = () => {
     }
   }, [product]);
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -59,11 +58,10 @@ const ProductUpdate = () => {
     }));
   };
 
-
   const handleImageChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      image: e.target.files[0], 
+      image: e.target.files[0],
     }));
   };
 
@@ -83,12 +81,11 @@ const ProductUpdate = () => {
       }
     }
 
-
     if (formData.image) {
-      formDataToSend.append("file", formData.image); 
+      formDataToSend.append("file", formData.image);
     }
 
-    setLoading(true); // Activar el estado de carga
+    setLoading(true);
 
     try {
       const response = await axios.put(
@@ -96,24 +93,23 @@ const ProductUpdate = () => {
         formDataToSend,
         {
           headers: {
-            "Content-Type": "multipart/form-data", 
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-setShowModal(true);
+      setShowModal(true);
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
       setError("Hubo un error al actualizar el producto.");
     } finally {
-      setLoading(false); // Desactivar el estado de carga
+      setLoading(false);
     }
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    navigate("/#products"); 
+    navigate("/#products");
   };
-
 
   if (!product) {
     return <div>No se ha seleccionado ningún producto para actualizar.</div>;
@@ -280,7 +276,6 @@ setShowModal(true);
                   type="file"
                   name="image"
                   onChange={handleImageChange}
-                  required
                 />
               </Form.Group>
             </Col>
@@ -290,9 +285,9 @@ setShowModal(true);
             variant="light"
             type="submit"
             className="shadow rounded w-100"
-            disabled={loading} // Deshabilitar el botón mientras se está cargando
+            disabled={loading}
           >
-            {loading ? ( // Mostrar spinner de "actualizando" mientras se está procesando
+            {loading ? (
               <>
                 <Spinner
                   animation="border"
@@ -308,7 +303,6 @@ setShowModal(true);
             )}
           </Button>
         </Form>
-
 
         <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header closeButton>

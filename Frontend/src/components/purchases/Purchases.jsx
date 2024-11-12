@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, ListGroup, Spinner, Alert, Container, Accordion, Row, Col } from "react-bootstrap";
 import { useAuth } from "../../context/AuthContext";
+import { useAPI } from "../../services/apiContext/api.context";
 
 const Purchases = () => {
   const [saleOrders, setSaleOrders] = useState([]);
@@ -9,6 +10,7 @@ const Purchases = () => {
   const [error, setError] = useState(null);
 
   const { userId } = useAuth();
+  const { products } = useAPI();
 
   useEffect(() => {
     const fetchSaleOrdersWithLines = async () => {
@@ -41,6 +43,12 @@ const Purchases = () => {
 
   const calculateOrderTotal = (lines) => {
     return lines.reduce((total, line) => total + line.unitPrice * line.amount, 0);
+  };
+
+
+  const getProductDetails = (productCode) => {
+    const product = products.find((p) => p.code === productCode);
+    return product ? { name: product.name, imageUrl: product.image } : { name: "Producto no encontrado", imageUrl: "" };
   };
 
   if (loading) return <Spinner animation="border" variant="primary" />;
@@ -87,16 +95,30 @@ const Purchases = () => {
                   <h5 className="fw-bold mt-2 text-center">Detalles de la Orden:</h5>
                   {order.lines && order.lines.length > 0 ? (
                     <ListGroup variant="flush" className="text-center">
-                      {order.lines.map((line) => (
-                        <ListGroup.Item
-                          key={line.saleOrderLineId}
-                          className="py-1 px-3 bg-dark text-white"
-                        >
-                          <p className="mb-1">Producto: {line.productId}</p>
-                          <p className="mb-1">Precio Unitario: ${line.unitPrice.toFixed(2)}</p>
-                          <p className="mb-1">Cantidad: {line.amount}</p>
-                        </ListGroup.Item>
-                      ))}
+                      {order.lines.map((line) => {
+                        const { name, imageUrl } = getProductDetails(line.productId); 
+                        return (
+                          <ListGroup.Item
+                            key={line.saleOrderLineId}
+                            className="py-1 px-3 bg-dark text-white"
+                          >
+                            <Row className="align-items-center">
+                              <Col xs={3}>
+                                {imageUrl ? (
+                                  <img src={imageUrl} alt={name} style={{ width: "100px", height: "100px", objectFit: "cover" }} />
+                                ) : (
+                                  <span>No image</span>
+                                )}
+                              </Col>
+                              <Col xs={9}>
+                                <p className="mb-1">Producto: {name}</p>
+                                <p className="mb-1">Precio Unitario: ${line.unitPrice.toFixed(2)}</p>
+                                <p className="mb-1">Cantidad: {line.amount}</p>
+                              </Col>
+                            </Row>
+                          </ListGroup.Item>
+                        );
+                      })}
                     </ListGroup>
                   ) : (
                     <p className="text-muted">No hay detalles disponibles para esta orden.</p>
@@ -112,3 +134,4 @@ const Purchases = () => {
 };
 
 export default Purchases;
+

@@ -1,11 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, DropdownButton, Dropdown } from "react-bootstrap";
 import { useAPI } from "../../services/apiContext/api.context";
+import axios from "axios";
 
-const SaleOrderTable = ({ saleOrders }) => {
+const SaleOrderTable = () => {
+  const [saleOrders, setSaleOrders] = useState([]);
   const [expandedRows, setExpandedRows] = useState([]);
   const { products, users } = useAPI();
   const [status, setStatus] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleRow = (saleOrderId) => {
     setExpandedRows((prevExpandedRows) =>
@@ -58,6 +61,24 @@ const SaleOrderTable = ({ saleOrders }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchSaleOrders = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get("https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines");
+        setSaleOrders(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error al cargar las órdenes de venta", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchSaleOrders();
+    const intervalId = setInterval(fetchSaleOrders, 30000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div>
       <h2 className="text-info mb-4">Órdenes de Venta</h2>
@@ -96,29 +117,17 @@ const SaleOrderTable = ({ saleOrders }) => {
                         handleStatusChange(order.saleOrderId, selectedStatus)
                       }
                     >
-                      <Dropdown.Item eventKey="No enviado">
-                        No enviado
-                      </Dropdown.Item>
-                      <Dropdown.Item eventKey="En preparación">
-                        En preparación
-                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="No enviado">No enviado</Dropdown.Item>
+                      <Dropdown.Item eventKey="En preparación">En preparación</Dropdown.Item>
                       <Dropdown.Item eventKey="Enviado">Enviado</Dropdown.Item>
-                      <Dropdown.Item eventKey="Recibido">
-                        Recibido
-                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="Recibido">Recibido</Dropdown.Item>
                     </DropdownButton>
                   </td>
                 </tr>
                 {expandedRows.includes(order.saleOrderId) && (
                   <tr>
                     <td colSpan="6">
-                      <Table
-                        striped
-                        bordered
-                        hover
-                        variant="secondary"
-                        size="sm"
-                      >
+                      <Table striped bordered hover variant="secondary" size="sm">
                         <thead>
                           <tr>
                             <th>Detalle</th>
