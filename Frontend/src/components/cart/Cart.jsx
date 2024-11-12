@@ -15,12 +15,22 @@ import {
 import axios from "axios";
 
 const Cart = () => {
+  const [validatedButtonShop, setValidatedButtonShop] = useState(false);
   const { cart, removeFromCart, clearCart } = useAPI();
   const { userId } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false); // Nuevo estado para el modal de éxito
   const [showErrorModal, setShowErrorModal] = useState(false); // Nuevo estado para el modal de error
+
+  // Estado de los Forms
+  const [cardType, setCardType] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [expiration, setExpiration] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [validated, setValidated] = useState(false);
 
   const handlePurchaseClick = () => {
     if (!userId) {
@@ -30,7 +40,17 @@ const Cart = () => {
     }
   };
 
-  const handleConfirmPurchase = async () => {
+  const handleConfirmPurchase = async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    // Set form as validated if all fields pass the validation
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+      setValidated(true);
+      return;
+    }
+
     const orderLines = cart.map((product) => ({
       ProductId: product.code,
       Amount: product.quantity,
@@ -209,7 +229,7 @@ const Cart = () => {
         </Modal.Body>
         {/* Formulario de pago */}
         <div className="px-3 p-0 bg-dark d-flex flex-column justify-content-center align-items-center">
-          <Container className=" py-3 px-4 mb-5 rounded">
+          <Container className="py-3 px-4 mb-5 rounded">
             <Row className="mb-4 p-0 text-center">
               <Col xs={12} md={12}>
                 <Image
@@ -222,45 +242,124 @@ const Cart = () => {
               <h5 className="text-white my-1">Completa los datos para pagar</h5>
             </Row>
 
-            <Form>
-              <Form.Select className="my-3">
-                <option>Seleccione el tipo de tarjeta</option>
-                <option value="1">Debito</option>
-                <option value="2">Credito</option>
-              </Form.Select>
+            <Form
+              noValidate
+              validated={validated}
+              onSubmit={handleConfirmPurchase}
+            >
+              <Form.Group controlId="formCardType" className="my-3">
+                <Form.Select
+                  required
+                  value={cardType}
+                  onChange={(e) => setCardType(e.target.value)}
+                >
+                  <option value="">Seleccione el tipo de tarjeta</option>
+                  <option value="1">Debito</option>
+                  <option value="2">Credito</option>
+                </Form.Select>
+                {/* Error*/}
+                <Form.Control.Feedback type="invalid">
+                  Seleccione el tipo de tarjeta.
+                </Form.Control.Feedback>
+              </Form.Group>
+
               <Form.Group controlId="formCardNumber" className="py-3">
-                <Form.Control type="text" placeholder="Número de tarjeta" />
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="Número de tarjeta"
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  Ingrese el número de tarjeta.
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="formName" className="py-3">
-                <Form.Control type="text" placeholder="Nombre y apellido" />
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="Nombre y apellido"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  Ingrese su nombre y apellido.
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="formAddress" className="py-3">
-                <Form.Control type="text" placeholder="Dirección de entrega" />
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="Dirección de entrega"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <Form.Control.Feedback type="invalid">
+                  Ingrese la dirección de entrega.
+                </Form.Control.Feedback>
               </Form.Group>
 
-              <Form.Group controlId="formExpiration" className="py-3">
-                <Form.Control type="text" placeholder="MM/AA" />
-              </Form.Group>
+              <Row>
+                <Col xs={6} className="py-3">
+                  <Form.Group controlId="formExpiration">
+                    <Form.Control
+                      required
+                      type="text"
+                      placeholder="MM/AA"
+                      value={expiration}
+                      onChange={(e) => setExpiration(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese la fecha de expiración.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
 
-              <Form.Group controlId="formCVV" className="py-3">
-                <Form.Control type="password" placeholder="CVV" />
-              </Form.Group>
+                <Col xs={6} className="py-3">
+                  <Form.Group controlId="formCVV">
+                    <Form.Control
+                      required
+                      type="password"
+                      placeholder="CVV"
+                      value={cvv}
+                      onChange={(e) => setCvv(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese el CVV.
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
+              </Row>
+
+              <Button variant="info" type="submit">
+                Confirmar compra
+              </Button>
+              <Button
+                variant="outline-danger"
+                className="m-3 my-2"
+                onClick={handleCloseOrderModal}
+              >
+                Cancelar
+              </Button>
             </Form>
           </Container>
         </div>
-        {/* Fin de pago */}
+      </Modal>
+      {/* Fin de pago */}
 
-        <Modal.Footer className="bg-dark text-light">
-          <Button variant="outline-danger" onClick={handleCloseOrderModal}>
-            Cancelar
-          </Button>
-          <Button variant="success" onClick={handleConfirmPurchase}>
+      {/*}  <Modal.Footer className="bg-dark text-light">
+          <Button
+         variant="success"
+            type="submit"
+            onClick={handleConfirmPurchase}
+          >
             Confirmar compra
           </Button>
-        </Modal.Footer>
-      </Modal>
+        </Modal.Footer> 
+      </Modal>v
 
       {/* Modal de éxito de compra */}
       <Modal show={showSuccessModal} onHide={handleCloseSuccessModal}>

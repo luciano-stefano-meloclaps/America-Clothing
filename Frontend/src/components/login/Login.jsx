@@ -144,13 +144,13 @@ function Login() {
             )}
         </Form>
 
-        <Form>
+        {/*}  <Form>
           {message && (
             <Alert variant="danger" className="mx-4">
               {message}
             </Alert>
-          )}
-        </Form>
+          )} 
+        </Form> */}
         <div className="text-center mt-3 text-light">
           ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
         </div>
