@@ -159,7 +159,7 @@ const Cart = () => {
         </>
       ) : (
         //Mensaje de no hay prod
-        <h1 className="text-white">No hay productos en el carrito</h1>
+        <h1 className="text-white">No hay productos en el carrito :( </h1>
       )}
 
       {/* Modal de alerta de inicio de sesión */}
