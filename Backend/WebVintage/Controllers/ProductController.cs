@@ -104,7 +104,7 @@ namespace WebVintage.Controllers
         }
 
         [HttpPut("{code}")]
-        public async Task<IActionResult> UpdateProduct([FromRoute] int code, [FromForm] ProductDto request, IFormFile file)
+        public async Task<IActionResult> UpdateProduct([FromRoute] int code, [FromForm] ProductDto request, IFormFile? file)
         {
             var existingProduct = _service.Get(code);
             if (existingProduct == null)
@@ -112,7 +112,7 @@ namespace WebVintage.Controllers
                 return NotFound($"No se encontró ningún producto con el código: {code}");
             }
 
-            
+            // Solo sube la imagen si `file` no es nulo
             if (file != null && file.Length > 0)
             {
                 var uploadParams = new ImageUploadParams
@@ -128,7 +128,8 @@ namespace WebVintage.Controllers
                     {
                         return StatusCode(StatusCodes.Status500InternalServerError, "Error uploading file to Cloudinary");
                     }
-                    
+
+
                     request.Image = uploadResult.SecureUrl.ToString();
                 }
                 catch (Exception ex)
@@ -137,10 +138,12 @@ namespace WebVintage.Controllers
                 }
             }
 
-            
+
             _service.UpdateProduct(code, request);
             return Ok($"Producto con código: {code} actualizado correctamente");
         }
+
+
 
     }
 
