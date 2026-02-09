@@ -19,7 +19,7 @@ namespace Infrastructure.Data
 
         public User? GetUserByEmail(string email)
         {
-            return _context.Users.SingleOrDefault(x => x.Email == email);
+            return _context.Users.FirstOrDefault(x => x.Email == email);
         }
     }
 }

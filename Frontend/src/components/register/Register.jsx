@@ -80,7 +80,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://localhost:7091/api/User",
+        "/api/User",
         userData
       );
       console.log("Usuario registrado:", response.data);

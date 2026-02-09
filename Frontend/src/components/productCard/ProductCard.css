@@ -1,33 +1,45 @@
 /* ProductCard.css */
 
 .product-card {
-  width: 26rem;
-
-  background: burlywood;
+  width: 18rem;
+  /* Reducido de 26rem para ser más compacto */
+  background: #fff3cd;
+  /* Amarillo leve estilo "warning" (Bootstrap-like) */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   padding: 0;
   margin: 0;
-  border: 0;
+  border: 1px solid #e0e0e0;
+  /* Borde sutil */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  /* Sombra suave */
+  transition: all 0.3s ease;
 }
 
-.img-rounded {
-  padding: 0;
-  margin: 0;
-  height: auto;
-  border-radius: 0;
+.product-card .card-img-top {
+  height: 300px;
+  /* Altura fija para uniformidad vertical */
+  object-fit: cover;
+  /* Evita deformación de imagen */
+  width: 100%;
 }
 
 .title-card {
-  font-weight: 900;
-  font-family: "Caveat", cursive;
+  font-weight: 700;
+  /* font-family: "Caveat", cursive; REMOVED cursive font */
+  font-size: 1.3rem !important;
+  /* Reduced size */
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
 }
 
+
 .card-hover:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+  transform: translateY(-5px);
+  /* Elevación sutil en lugar de escala agresiva */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-hover:hover {
@@ -37,19 +49,39 @@
 }
 
 .btn-full-width {
-  width: calc(100% - 2rem);
-  margin: 1rem;
-  padding: 0.5rem;
+  width: 100%;
+  margin: 0.5rem 0 0 0;
+  /* Margen reducido */
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .body-text {
-  font-size: 20px;
+  font-size: 12px;
+  /* Reducido para que sea más discreto */
   font-weight: 500;
-  color: rgb(46, 44, 44);
+  color: #4a4a4a;
+  margin-bottom: 0.2rem !important;
 }
+
 .body-category {
-  font-size: 20px;
-  font-weight: 500;
-  color: rgba(245, 245, 245, 0.67);
-  font-style: italic;
+  font-size: 0.9rem;
+  /* Reduced font size */
+  font-weight: 400;
+  /* Lighter weight */
+  color: #555;
+  margin-bottom: 1rem !important;
+
+  /* Truncation logic */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 4.2em;
+  /* Ensure consistent height for short descriptions */
 }

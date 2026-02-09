@@ -35,7 +35,7 @@ const UserUpdate = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          `https://localhost:7091/api/User/${userId}`
+          `/api/User/${userId}`
         );
         setFormData(response.data);
       } catch (error) {
@@ -65,7 +65,7 @@ const UserUpdate = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`https://localhost:7091/api/User/${userId}`, formData, {
+      await axios.put(`/api/User/${userId}`, formData, {
         headers: { "Content-Type": "application/json" },
       });
       setShowModal(true);

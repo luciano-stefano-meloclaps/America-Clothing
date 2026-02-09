@@ -64,7 +64,7 @@ const ProductAdd = () => {
 
     try {
       const response = await axios.post(
-        "https://localhost:7091/api/Product",
+        "/api/Product",
         data,
         {
           headers: {

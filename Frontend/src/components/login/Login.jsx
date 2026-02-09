@@ -49,7 +49,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "https://localhost:7091/api/authenticate/authenticate",
+        "/api/authenticate/authenticate",
         { email, password }
       );
 

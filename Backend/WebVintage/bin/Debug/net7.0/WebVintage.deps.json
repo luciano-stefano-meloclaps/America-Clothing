@@ -778,12 +778,18 @@
           "Domain": "1.0.0"
         },
         "runtime": {
-          "Application.dll": {}
+          "Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Domain/1.0.0": {
         "runtime": {
-          "Domain.dll": {}
+          "Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Infrastructure/1.0.0": {
@@ -797,7 +803,10 @@
           "System.IdentityModel.Tokens.Jwt": "7.7.1"
         },
         "runtime": {
-          "Infrastructure.dll": {}
+          "Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

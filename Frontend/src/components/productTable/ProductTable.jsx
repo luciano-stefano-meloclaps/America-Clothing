@@ -24,7 +24,7 @@ const ProductTable = () => {
   // Fetch products from API (solo se ejecuta una vez cuando el componente se monta)
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://localhost:7091/api/Product");
+      const response = await axios.get("/api/Product");
       if (Array.isArray(response.data)) {
         setProducts(response.data);
         setFilteredProducts(response.data); // Inicializar productos filtrados

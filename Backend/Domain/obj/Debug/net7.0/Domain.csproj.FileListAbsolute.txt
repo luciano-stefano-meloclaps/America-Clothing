@@ -56,3 +56,15 @@ C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.dll
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.deps.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\bin\Debug\net7.0\Domain.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.sourcelink.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\refint\Domain.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\Domain.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Domain\obj\Debug\net7.0\ref\Domain.dll

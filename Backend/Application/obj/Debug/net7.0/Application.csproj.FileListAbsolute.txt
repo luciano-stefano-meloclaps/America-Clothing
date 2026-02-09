@@ -76,3 +76,19 @@ C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Applic
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\refint\Application.dll
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.pdb
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\ref\Application.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\bin\Debug\net7.0\Application.deps.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\bin\Debug\net7.0\Application.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\bin\Debug\net7.0\Application.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\bin\Debug\net7.0\Domain.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\bin\Debug\net7.0\Domain.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.csproj.AssemblyReference.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.AssemblyInfoInputs.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.AssemblyInfo.cs
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.csproj.CoreCompileInputs.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.sourcelink.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Applicat.44B5EDA2.Up2Date
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\refint\Application.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\Application.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Application\obj\Debug\net7.0\ref\Application.dll

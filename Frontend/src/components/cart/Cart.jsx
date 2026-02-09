@@ -58,7 +58,7 @@ const Cart = () => {
 
     try {
       const response = await axios.post(
-        "https://localhost:7091/api/SaleOrder",
+        "/api/SaleOrder",
         {
           userId: Number(userId),
           orderLines,

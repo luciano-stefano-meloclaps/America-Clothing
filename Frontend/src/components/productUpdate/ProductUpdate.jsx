@@ -89,7 +89,7 @@ const ProductUpdate = () => {
 
     try {
       const response = await axios.put(
-        `https://localhost:7091/api/Product/${id}`,
+        `/api/Product/${id}`,
         formDataToSend,
         {
           headers: {

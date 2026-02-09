@@ -18,7 +18,7 @@ const Product = () => {
     const fetchProduct = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`https://localhost:7091/api/Product/${productId}`);
+        const response = await axios.get(`/api/Product/${productId}`);
         setProduct(response.data);
       } catch (error) {
         console.error("Error al cargar el producto:", error);

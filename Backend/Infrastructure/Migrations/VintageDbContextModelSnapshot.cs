@@ -36,8 +36,8 @@ namespace Infrastructure.Migrations
                         .HasColumnName("category");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)")
                         .HasColumnName("description");
 
                     b.Property<string>("Image")
@@ -47,8 +47,8 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("varchar(45)")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
                         .HasColumnName("name");
 
                     b.Property<decimal>("Price")

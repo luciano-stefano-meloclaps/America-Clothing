@@ -24,7 +24,7 @@ import ProductAdd from "./components/productAdd/ProductAdd";
 import ProductUpdate from "./components/productUpdate/ProductUpdate";
 import Purchases from "./components/purchases/Purchases";
 import UserAdd from "./components/userAdd/UserAdd";
-import UserUpdate from "./components/userUpdate/userUpdate";
+import UserUpdate from "./components/userUpdate/UserUpdate";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import NotFound from "./components/notFound/NotFound";
@@ -46,7 +46,8 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://localhost:7091/api/Product"); // TODO ESTO SE PODRIA EVITAR CON UN CONTEXT.
+        // Usamos ruta relativa para que funcione tanto en Docker (con Nginx proxy) como en desarrollo (con Vite proxy)
+        const response = await axios.get("/api/Product"); 
         if (Array.isArray(response.data)) {
           setProducts(response.data);
         } else {
@@ -68,30 +69,54 @@ function App() {
           <NavbarMain />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/dashboard"element={<ProtectedRoute requiredRole="admin">
-              <Dashboard />
-              </ProtectedRoute>}/>
-              <Route
-                path="/add-product"
-                element={<ProtectedRoute requiredRole="admin"><ProductAdd /></ProtectedRoute>}
-              />
-              <Route
-                path="/update-product"
-                element={<ProtectedRoute requiredRole="admin"><ProductUpdate /></ProtectedRoute>}
-              />
-      
-              <Route
-                path="/my-purchases"
-                element={<ProtectedRoute requiredRole="client"><Purchases /></ProtectedRoute>}
-              />
-              <Route
-                path="/add-user"
-                element={<ProtectedRoute requiredRole="admin"><UserAdd /></ProtectedRoute>}
-              />
-              <Route
-                path="/update-user/:userId"
-                element={<ProtectedRoute requiredRole="admin"><UserUpdate /></ProtectedRoute>}
-              />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/add-product"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <ProductAdd />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/update-product"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <ProductUpdate />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/my-purchases"
+              element={
+                <ProtectedRoute requiredRole="client">
+                  <Purchases />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/add-user"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <UserAdd />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/update-user/:userId"
+              element={
+                <ProtectedRoute requiredRole="admin">
+                  <UserUpdate />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/productos"
               element={<ProductList products={products} />}

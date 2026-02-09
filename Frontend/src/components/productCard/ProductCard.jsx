@@ -20,19 +20,24 @@ const ProductCard = ({
   return (
     <Card className="card-hover product-card">
       {/* Usa la URL de la imagen del producto o una de respaldo si no existe */}
-      <Card.Img variant="top" src={img || modelIMG} />
+      <Card.Img variant="top" src={img || modelIMG} className="card-img-top" />
       <Card.Body className="d-flex flex-column p-3">
-        <div>
-          <Card.Title className="fs-1 title-card">{title}</Card.Title>
-          <Card.Text className="mb-1 body-category">{text}</Card.Text>
-          <Card.Text className="mb-1 body-text">Size: {size}</Card.Text>
-          <Card.Text className="mb-1 body-text">Stock: {stock}</Card.Text>
-          <Card.Text className="mb-3 body-text">Price: ${price}</Card.Text>
-          <Link to={`/productos/detalle/${code}`}>
-            <button className="btn btn-dark btn-hover btn-full-width">
-              Ver producto <FontAwesomeIcon icon={faAnglesRight} />
-            </button>
-          </Link>
+        <div className="d-flex flex-column h-100">
+          <Card.Title className="title-card">{title}</Card.Title>
+          <Card.Text className="body-category">{text}</Card.Text>
+          
+          <div className="mt-auto">
+            <div className="d-flex justify-content-between align-items-center mb-2">
+               <Card.Text className="body-text">Talle: {size}</Card.Text>
+               <Card.Text className="body-text font-weight-bold" style={{fontSize: '1.1rem'}}>${price}</Card.Text>
+            </div>
+            
+            <Link to={`/productos/detalle/${code}`} style={{ textDecoration: 'none' }}>
+              <button className="btn btn-dark btn-hover btn-full-width">
+                VER DETALLE
+              </button>
+            </Link>
+          </div>
         </div>
       </Card.Body>
     </Card>

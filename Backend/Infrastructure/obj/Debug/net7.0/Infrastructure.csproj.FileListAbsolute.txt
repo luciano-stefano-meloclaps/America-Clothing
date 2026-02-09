@@ -96,3 +96,23 @@ C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Dom
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
 C:\Luisina TUP\PPS\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Application.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Domain.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Application.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\bin\Debug\net7.0\Domain.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.sourcelink.json
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
+D:\Proyectos\America\ecommerce-vintage\Backend\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll

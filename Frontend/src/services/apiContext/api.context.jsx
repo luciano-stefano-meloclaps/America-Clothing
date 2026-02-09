@@ -28,7 +28,7 @@ export const APIContextProvider = ({ children }) => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('https://localhost:7091/api/User'); // Endpoint de usuarios
+        const response = await axios.get('/api/User'); // Endpoint de usuarios
         setUsers(response.data); // Asigna la respuesta al estado de usuarios
         setIsLoading(false);
       } catch (error) {
@@ -45,7 +45,7 @@ export const APIContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://localhost:7091/api/Product");
+        const response = await axios.get("/api/Product");
         if (Array.isArray(response.data)) {
           setProducts(response.data); // Guardamos los productos en el estado
         } else {
@@ -65,7 +65,7 @@ useEffect(() => {
   const fetchSaleOrders = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines"); // Endpoint de SaleOrders
+      const response = await axios.get("/api/SaleOrder/GetSaleOrdersWithLines"); // Endpoint de SaleOrders
       setSaleOrders(response.data); // Guardamos las órdenes de venta en el estado
       setIsLoading(false);
     } catch (error) {

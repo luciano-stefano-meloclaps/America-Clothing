@@ -75,7 +75,7 @@ const SaleOrderTable = () => {
     const fetchSaleOrders = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get("https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines");
+        const response = await axios.get("/api/SaleOrder/GetSaleOrdersWithLines");
         setSaleOrders(response.data);
         setIsLoading(false);
       } catch (error) {

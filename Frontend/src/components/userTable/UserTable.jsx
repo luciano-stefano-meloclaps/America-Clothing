@@ -42,7 +42,7 @@ const UserTable = () => {
   // Fetch users from API
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("https://localhost:7091/api/User");
+      const response = await axios.get("/api/User");
       if (Array.isArray(response.data)) {
         setUsers(response.data);
         setFilteredUsers(response.data); // Inicializar los usuarios filtrados

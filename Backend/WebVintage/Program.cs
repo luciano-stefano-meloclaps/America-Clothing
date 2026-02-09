@@ -20,8 +20,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("http://localhost:5173") // Verifica que esta URL sea la correcta
-                   .AllowAnyMethod()
+            builder.WithOrigins("http://localhost:3000", "http://localhost:5173", "https://localhost:5173")  // Verifica que esta URL sea la correcta
+                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials(); // Solo necesario si envas cookies
         });
@@ -36,7 +36,7 @@ builder.Services.AddSwaggerGen(setupAction =>
     {
         Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
-        Description = "Acá pegar el token generado al loguearse."
+        Description = "Acï¿½ pegar el token generado al loguearse."
     });
 
     setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -47,7 +47,7 @@ builder.Services.AddSwaggerGen(setupAction =>
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
-                    Id = "Ecommerce-VintageApiBearerAuth" } //Tiene que coincidir con el id seteado arriba en la definición
+                    Id = "Ecommerce-VintageApiBearerAuth" } //Tiene que coincidir con el id seteado arriba en la definiciï¿½n
                 }, new List<string>() }
     });
 });
@@ -55,8 +55,8 @@ builder.Services.AddSwaggerGen(setupAction =>
 builder.Services.AddDbContext<VintageDbContext>(options =>
 options.UseMySql(builder.Configuration.GetConnectionString("connection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.15-mysql")));
 
-builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticación que tenemos que elegir después en PostMan para pasarle el token
-    .AddJwtBearer(options => //Acá definimos la configuración de la autenticación. Le decimos qué cosas queremos comprobar. La fecha de expiración se valida por defecto.
+builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticaciï¿½n que tenemos que elegir despuï¿½s en PostMan para pasarle el token
+    .AddJwtBearer(options => //Acï¿½ definimos la configuraciï¿½n de la autenticaciï¿½n. Le decimos quï¿½ cosas queremos comprobar. La fecha de expiraciï¿½n se valida por defecto.
     {
         options.TokenValidationParameters = new()
         {
@@ -97,7 +97,6 @@ builder.Services.AddScoped<ISaleOrderRepository, SaleOrderRepository>();
 builder.Services.AddScoped<ISaleOrderLineRepository, SaleOrderLineRepository>();
 #endregion
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -109,13 +108,29 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Usar la política CORS antes de los otros middlewares
-app.UseCors("AllowReactApp"); // Aplica la política de CORS
+// Usar la polï¿½tica CORS antes de los otros middlewares
+app.UseCors("AllowReactApp"); // Aplica la polï¿½tica de CORS
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Apply migrations automatically
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<VintageDbContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
+}
 
 app.Run();

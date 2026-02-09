@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://localhost:7091/api/Product"); // TODO ESTO SE PODRIA EVITAR CON UN CONTEXT.
+        const response = await axios.get("/api/Product"); // TODO ESTO SE PODRIA EVITAR CON UN CONTEXT.
         if (Array.isArray(response.data)) {
           setProducts(response.data);
         } else {

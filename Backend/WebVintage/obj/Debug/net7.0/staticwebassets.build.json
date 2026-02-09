@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "2Bf7bxYLTvrIW0knAffA58Vf2izRJQsJHNChFoQTiWI=",
-  "Source": "WebVintage",
-  "BasePath": "_content/WebVintage",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"Maar5iwhbqhyouzWYVver6ElcDqTXi7zu0Vd29rpn5o=","Source":"WebVintage","BasePath":"_content/WebVintage","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

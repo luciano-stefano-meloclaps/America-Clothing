@@ -49,7 +49,7 @@ const UserAdd = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://localhost:7091/api/User/admin",
+        "/api/User/admin",
         formData
       );
       console.log("Usuario registrado:", response.data);

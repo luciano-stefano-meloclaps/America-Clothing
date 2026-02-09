@@ -17,7 +17,7 @@ const Purchases = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://localhost:7091/api/SaleOrder/GetSaleOrdersWithLines",
+          "/api/SaleOrder/GetSaleOrdersWithLines",
           {
             headers: {
               Authorization: `Bearer ${token}`,
