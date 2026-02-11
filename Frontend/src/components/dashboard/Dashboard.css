@@ -1,0 +1,118 @@
+/* Dashboard.css */
+
+.dashboard-wrapper {
+    background-color: #0d0d0d;
+    min-height: 100vh;
+    padding-top: 2rem;
+}
+
+.dashboard-sidebar-container {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 1.5rem;
+    height: calc(100vh - 4rem);
+    position: sticky;
+    top: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+}
+
+.dashboard-main-content {
+    padding-left: 2rem;
+}
+
+.dashboard-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    letter-spacing: -1px;
+}
+
+/* Stat Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #4a4a4a;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.stat-label {
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    color: #0dcaf0;
+    /* Cyan-ish like text-info */
+}
+
+.stat-value {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* Data Table Container */
+.management-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.management-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #333;
+    background: #222;
+}
+
+.management-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+}
+
+.management-body {
+    padding: 0;
+    /* Let tables fill */
+}
+
+@media (max-width: 991px) {
+    .dashboard-sidebar-container {
+        height: auto;
+        position: static;
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-main-content {
+        padding-left: 0;
+    }
+}

@@ -6,6 +6,11 @@ import axios from "axios";
 import { useAPI } from "../../services/apiContext/api.context";
 import modelIMG from "../../assets/modelIMG.jpg";
 
+import { faCreditCard, faCalendarDays, faMoneyBillWave, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./Product.css";
+
 const Product = () => {
   const { productId } = useParams();
   const { addToCart } = useAPI();
@@ -43,42 +48,69 @@ const Product = () => {
   const handleCloseErrorModal = () => setShowErrorModal(false);
 
   if (isLoading) {
-    return <div>Cargando producto...</div>;
+    return <Container className="min-vh-100 d-flex justify-content-center align-items-center bg-dark text-light">Cargando producto...</Container>;
   }
 
   if (!product) {
-    return <div>Producto no encontrado</div>;
+    return <Container className="min-vh-100 d-flex justify-content-center align-items-center bg-dark text-light">Producto no encontrado</Container>;
   }
 
   return (
-    <Container
-      fluid
-      className="min-vh-100 bg-dark d-flex flex-column justify-content-center align-items-center text-light"
-    >
-      <Row>
-        <Col md={6} className="text-center">
-          <Card.Img src={product.image || modelIMG} className="img-fluid rounded" />
-        </Col>
+    <div className="product-detail-container min-vh-100">
+      <Container>
+        <Row className="gy-4">
+          <Col lg={5} md={6}>
+            <div className="product-image-box h-100">
+              <img 
+                src={product.image || modelIMG} 
+                alt={product.name}
+                className="img-fluid rounded" 
+                style={{ maxHeight: '600px', width: 'auto', objectFit: 'contain' }} 
+              />
+            </div>
+          </Col>
 
-        <Col md={6} className="mt-5">
-          <h2 className="fw-bold">{product.name}</h2>
-          <p className="mb-3">{product.description}</p>
-          <h3 className="fw-bold">$ {product.price.toLocaleString()}</h3>
+          <Col lg={7} md={6}>
+            <div className="product-info-card">
+              <h1 className="product-title">{product.name}</h1>
+              <p className="product-description">{product.description}</p>
+              
+              <div className="product-price">
+                {product.price.toLocaleString()}
+              </div>
 
-          <p className="mb-3 mt-5">Hasta <strong>3 cuotas SIN interés</strong> con tarjeta de DÉBITO</p>
-          <p className="mb-3">12 cuotas sin interés de <strong>${(product.price / 12).toFixed(2)}</strong></p>
-          <p className="mb-3"><strong>10% de descuento</strong> pagando con Transferencia</p>
-          <h4 className="fw-bold mt-5">Talle: {product.size}</h4>
+              <div className="payment-info">
+                <p>
+                  <FontAwesomeIcon icon={faCreditCard} className="me-2 text-primary" />
+                  Hasta <strong>3 cuotas SIN interés</strong> con tarjeta de DÉBITO
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faCalendarDays} className="me-2 text-info" />
+                  12 cuotas sin interés de <strong>${(product.price / 12).toFixed(2)}</strong>
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faMoneyBillWave} className="me-2 text-success" />
+                  <strong>10% de descuento</strong> pagando con Transferencia
+                </p>
+                
+                <div className="size-badge">
+                  <FontAwesomeIcon icon={faCircleCheck} className="me-2 text-dark" />
+                  Talle: {product.size}
+                </div>
+              </div>
 
-          <Button
-            variant="light"
-            className="w-50 py-2 my-3 fw-bold mt-5"
-            onClick={handleAddToCart}
-          >
-            AGREGAR AL CARRITO
-          </Button>
-        </Col>
-      </Row>
+              <Button
+                variant="dark"
+                className="add-to-cart-btn"
+                onClick={handleAddToCart}
+              >
+                AGREGAR AL CARRITO
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
@@ -107,7 +139,7 @@ const Product = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Container>
+    </div>
   );
 };
 

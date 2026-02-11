@@ -1,8 +1,9 @@
 /* ProductCard.css */
 
 .product-card {
-  width: 18rem;
-  /* Reducido de 26rem para ser más compacto */
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   background: #fff3cd;
   /* Amarillo leve estilo "warning" (Bootstrap-like) */
   display: flex;

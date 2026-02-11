@@ -1,104 +1,128 @@
 import React, { useState } from "react";
 
-const ProductFilter = ({ products, onSizeChange, onPriceChange }) => {
+import "./ProductFilter.css";
+
+const ProductFilter = ({ products, onSizeChange, onPriceChange, onCategoryChange, currentCategory }) => {
   const [sizeFilter, setSizeFilter] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState(currentCategory || "");
   const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
   const [tempPriceRange, setTempPriceRange] = useState({
-    min: 0,
-    max: Infinity,
-  }); // Valores temporales para el precio
+    min: "",
+    max: "",
+  });
+
+  const categories = ["Camperas", "Jeans", "Buzos", "Camisas", "Bermudas", "Vestidos"];
+
+  const handleCategoryChange = (cat) => {
+    const newCategory = categoryFilter === cat ? "" : cat;
+    setCategoryFilter(newCategory);
+    onCategoryChange(newCategory);
+  };
 
   const handleSizeChange = (size) => {
-    setSizeFilter((prev) =>
-      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
-    );
-    onSizeChange(
-      sizeFilter.includes(size)
-        ? sizeFilter.filter((s) => s !== size)
-        : [...sizeFilter, size]
-    );
+    const newFilters = sizeFilter.includes(size)
+      ? sizeFilter.filter((s) => s !== size)
+      : [...sizeFilter, size];
+    
+    setSizeFilter(newFilters);
+    onSizeChange(newFilters);
   };
 
   const handlePriceChange = () => {
-    setPriceRange(tempPriceRange); // Aplicar el rango de precio temporal
-    onPriceChange(tempPriceRange); // Enviar el nuevo rango al padre
-  };
-
-  const calculatePriceRange = () => {
-    if (products.length === 0) return { min: 0, max: 0 };
-    const prices = products.map((product) => product.price);
-    return {
-      min: Math.min(...prices),
-      max: Math.max(...prices),
+    const formattedRange = {
+      min: tempPriceRange.min === "" ? 0 : Number(tempPriceRange.min),
+      max: tempPriceRange.max === "" ? Infinity : Number(tempPriceRange.max),
     };
+    setPriceRange(formattedRange);
+    onPriceChange(formattedRange);
   };
 
   const resetFilters = () => {
     setSizeFilter([]);
+    setCategoryFilter("");
     setPriceRange({ min: 0, max: Infinity });
-    setTempPriceRange({ min: 0, max: Infinity }); // Reiniciar valores temporales
-    onSizeChange([]); // Limpiar el filtro de tallas
-    onPriceChange({ min: 0, max: Infinity }); // Limpiar el filtro de precios
+    setTempPriceRange({ min: "", max: "" });
+    onSizeChange([]);
+    onCategoryChange("");
+    onPriceChange({ min: 0, max: Infinity });
   };
 
-  const { min, max } = calculatePriceRange();
-
   return (
-    <div>
-      <div>
-        <h3>Talle</h3>
-        {["S", "M", "L", "XL", "XXL"].map((size) => (
-          <button
-            key={size}
-            onClick={() => handleSizeChange(size)}
-            style={{
-              margin: "5px",
-              padding: "10px",
-              backgroundColor: sizeFilter.includes(size) ? "black" : "white",
-              color: sizeFilter.includes(size) ? "white" : "black",
-              border: "1px solid black",
-              borderRadius: "5px",
-            }}
-          >
-            {size} {sizeFilter.includes(size) ? "✓" : ""}
-          </button>
-        ))}
+    <div className="filter-section">
+      <div className="filter-group">
+        <h3 className="filter-title">Filtrar por Categoría</h3>
+        <div className="size-grid mb-4">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => handleCategoryChange(cat)}
+              className={`size-option-btn ${categoryFilter === cat ? "active" : ""}`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div style={{ marginTop: "20px" }}>
-        <h3>Precio</h3>
-        <input
-          type="number"
-          placeholder="Desde"
-          value={tempPriceRange.min}
-          onChange={(e) =>
-            setTempPriceRange({ ...tempPriceRange, min: e.target.value })
-          }
-          style={{ marginRight: "10px", padding: "5px" }}
-        />
-        <input
-          type="number"
-          placeholder="Hasta"
-          value={tempPriceRange.max}
-          onChange={(e) =>
-            setTempPriceRange({ ...tempPriceRange, max: e.target.value })
-          }
-          style={{ padding: "5px" }}
-        />
-        <button
-          onClick={handlePriceChange}
-          style={{ marginLeft: "2px", marginTop: "10px" }}
-        >
-          Aplicar Rango
-        </button>
+      <div className="filter-group">
+        <h3 className="filter-title">Filtrar por Talle</h3>
+        <div className="size-grid">
+          {["S", "M", "L", "XL", "XXL"].map((size) => (
+            <button
+              key={size}
+              onClick={() => handleSizeChange(size)}
+              className={`size-option-btn ${sizeFilter.includes(size) ? "active" : ""}`}
+            >
+              {size}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <button
-        onClick={resetFilters}
-        style={{ marginLeft: "2px", marginTop: "10px" }}
-      >
-        Limpiar
-      </button>
+      <div className="filter-group">
+        <h3 className="filter-title">Rango de Precio</h3>
+        <div className="price-range-inputs">
+          <div className="input-wrapper">
+            <span className="input-prefix">$</span>
+            <input
+              type="number"
+              placeholder="Min"
+              value={tempPriceRange.min}
+              className="filter-input"
+              onChange={(e) =>
+                setTempPriceRange({ ...tempPriceRange, min: e.target.value })
+              }
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-prefix">$</span>
+            <input
+              type="number"
+              placeholder="Max"
+              value={tempPriceRange.max}
+              className="filter-input"
+              onChange={(e) =>
+                setTempPriceRange({ ...tempPriceRange, max: e.target.value })
+              }
+            />
+          </div>
+          
+          <div className="filter-actions">
+            <button
+              onClick={handlePriceChange}
+              className="apply-btn"
+            >
+              Aplicar Filtro
+            </button>
+            <button
+              onClick={resetFilters}
+              className="reset-btn"
+            >
+              Limpiar Todo
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

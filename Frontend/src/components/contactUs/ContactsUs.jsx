@@ -25,13 +25,20 @@ const ContactUs = () => {
         Contactanos!
       </h1>
 
-      <Container className="contact-us-container py-5 my-5 rounded">
-        <Row className="m-3 m-md-5 px-3 px-md-5 justify-content-md-center">
+      <Container className="contact-us-container py-5 my-5 rounded shadow-lg">
+        <Row className="justify-content-center text-center">
           <Col xs={12} md={8}>
-            <Image src="public/game.png" width={40} fluid className="mb-2" />
-            <p className="text-light">
-              Gracias por ser parte de nuestra comunidad. ¡Esperamos que
-              disfrutes de tu experiencia de compra con nosotros!
+            <Image
+              src="/game.png"
+              width={40}
+              className="mb-3 shadow-sm rounded-circle shadow-accent"
+              alt="American Vintage Logo"
+            />
+            <p className="text-light fs-4 fw-light px-3">
+              Gracias por ser parte de nuestra comunidad.
+            </p>
+            <p className="text-light-50 fs-6">
+               ¡Esperamos que disfrutes de tu experiencia de compra con nosotros!
             </p>
           </Col>
         </Row>

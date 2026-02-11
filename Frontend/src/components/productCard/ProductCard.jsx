@@ -34,7 +34,7 @@ const ProductCard = ({
             
             <Link to={`/productos/detalle/${code}`} style={{ textDecoration: 'none' }}>
               <button className="btn btn-dark btn-hover btn-full-width">
-                VER DETALLE
+                VER DETALLE <FontAwesomeIcon icon={faAnglesRight} className="ms-2" />
               </button>
             </Link>
           </div>

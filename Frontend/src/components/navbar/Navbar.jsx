@@ -33,7 +33,7 @@ function NavbarMain() {
 
   return (
     <>
-      <Alert className="m-0 p-1" variant="warning">
+      <Alert className="m-0 p-1 text-center" variant="warning">
         🛒😎 Envío gratis para todas las compras arriba de $30.000! 😎🛒
       </Alert>
       <Navbar
@@ -122,7 +122,7 @@ function NavbarMain() {
                   <FontAwesomeIcon icon={faShoppingBag} />
                 </Link>
               )}
-              {userRole === "admin" || userRole === "employee" && (
+              {(userRole === "admin" || userRole === "employee") && (
                 <Link to="/" className="text-white pt-1 mx-2 fs-4">
                   <FontAwesomeIcon icon={faSliders} />
                 </Link>

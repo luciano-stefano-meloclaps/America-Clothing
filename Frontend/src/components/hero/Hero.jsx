@@ -1,6 +1,5 @@
-// Hero.js
-
 import { Container, Row, Col } from "react-bootstrap";
+import heroImg from "../../assets/pexels-rachel-claire-5490198.jpg";
 import "./Hero.css";
 
 const Hero = () => {
@@ -14,7 +13,7 @@ const Hero = () => {
           <Col className="d-flex p-0 align-items-center justify-content-center">
             <div className="hero-image p-0 m-0">
               <img
-                src="src\assets\pexels-rachel-claire-5490198.jpg"
+                src={heroImg}
                 alt="Imagen del Hero"
                 style={{
                   width: "100%",

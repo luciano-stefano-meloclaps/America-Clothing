@@ -12,6 +12,8 @@ import {
   Image,
   Spinner,
 } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag, faFileLines, faDollarSign, faRuler, faLayerGroup, faImage, faSave, faBoxesStacked, faToggleOn, faCheckDouble } from "@fortawesome/free-solid-svg-icons";
 
 const ProductUpdate = () => {
   const location = useLocation();
@@ -126,7 +128,7 @@ const ProductUpdate = () => {
       >
         <Row className="align-items-center justify-content-center text-center">
           <Col xs="auto" className="pe-1">
-            <Image src="public/game.png" width={50} fluid />
+            <Image src="/game.png" width={50} fluid />
           </Col>
           <Col xs="auto">
             <h1
@@ -148,7 +150,7 @@ const ProductUpdate = () => {
           <Row className="mb-4">
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Nombre</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faTag} className="me-2" /> Nombre</Form.Label>
                 <Form.Control
                   type="text"
                   name="name"
@@ -160,7 +162,7 @@ const ProductUpdate = () => {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Descripción</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faFileLines} className="me-2" /> Descripción</Form.Label>
                 <Form.Control
                   type="text"
                   name="description"
@@ -172,7 +174,7 @@ const ProductUpdate = () => {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Precio</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faDollarSign} className="me-2" /> Precio</Form.Label>
                 <Form.Control
                   type="number"
                   name="price"
@@ -187,7 +189,7 @@ const ProductUpdate = () => {
           <Row className="mb-4">
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Stock</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faBoxesStacked} className="me-2" /> Stock</Form.Label>
                 <Form.Control
                   type="number"
                   name="stock"
@@ -199,7 +201,7 @@ const ProductUpdate = () => {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Tamaño</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faRuler} className="me-2" /> Tamaño</Form.Label>
                 <Form.Select
                   name="size"
                   value={formData.size}
@@ -219,7 +221,7 @@ const ProductUpdate = () => {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Categoría</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faLayerGroup} className="me-2" /> Categoría</Form.Label>
                 <Form.Select
                   name="category"
                   value={formData.category}
@@ -243,7 +245,7 @@ const ProductUpdate = () => {
           <Row className="mb-4">
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Estado</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faToggleOn} className="me-2" /> Estado</Form.Label>
                 <Form.Select
                   name="state"
                   value={formData.state}
@@ -257,7 +259,7 @@ const ProductUpdate = () => {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Vendido</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faCheckDouble} className="me-2" /> Vendido</Form.Label>
                 <Form.Select
                   name="sold"
                   value={formData.sold}
@@ -271,7 +273,7 @@ const ProductUpdate = () => {
             </Col>
             <Col>
               <Form.Group>
-                <Form.Label className="text-light">Imagen</Form.Label>
+                <Form.Label className="text-light"><FontAwesomeIcon icon={faImage} className="me-2" /> Imagen</Form.Label>
                 <Form.Control
                   type="file"
                   name="image"
@@ -299,7 +301,9 @@ const ProductUpdate = () => {
                 Actualizando...
               </>
             ) : (
-              "Actualizar Producto"
+              <>
+                <FontAwesomeIcon icon={faSave} className="me-2" /> Actualizar Producto
+              </>
             )}
           </Button>
         </Form>

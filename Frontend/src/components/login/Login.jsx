@@ -86,7 +86,7 @@ function Login() {
       >
         <Row className="align-items-center justify-content-center text-center my-4">
           <Col xs="auto" className="pe-1">
-            <Image src="public/game.png" width={50} fluid />
+            <Image src="/game.png" width={50} fluid />
           </Col>
           <Col xs="auto">
             <h1

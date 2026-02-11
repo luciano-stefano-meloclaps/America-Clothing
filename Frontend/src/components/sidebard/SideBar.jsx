@@ -1,28 +1,31 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 
+import { faUsers, faShirt, faBoxesStacked } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./SideBar.css";
+
 const Sidebar = ({ setView, userRole }) => {
   return (
-    <Nav className="col-md-12 p-0 m-0 d-none d-md-block bg-secondary rounded min-vh-100 sidebar">
+    <Nav className="flex-column sidebar-nav mt-4">
       <div className="sidebar-sticky"></div>
       {userRole === "admin" && (
         <>
           <Nav.Item>
             <Nav.Link
-              href="#dashboard"
-              className="text-white"
+              className="sidebar-link"
               onClick={() => setView("users")}
             >
-              Usuarios
+              <FontAwesomeIcon icon={faUsers} className="me-2" /> Usuarios
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              href="#products"
-              className="text-white"
+              className="sidebar-link"
               onClick={() => setView("products")}
             >
-              Productos
+              <FontAwesomeIcon icon={faShirt} className="me-2" /> Productos
             </Nav.Link>
           </Nav.Item>
         </>
@@ -31,25 +34,24 @@ const Sidebar = ({ setView, userRole }) => {
         <>
           <Nav.Item>
             <Nav.Link
-              href="#products"
-              className="text-white"
+              className="sidebar-link"
               onClick={() => setView("products")}
             >
-              Productos
+              <FontAwesomeIcon icon={faShirt} className="me-2" /> Productos
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              href="#sales"
-              className="text-white"
+              className="sidebar-link"
               onClick={() => setView("sales")}
             >
-              Ventas
+              <FontAwesomeIcon icon={faBoxesStacked} className="me-2" /> Ventas
             </Nav.Link>
           </Nav.Item>
         </>
       )}
     </Nav>
+
   );
 };
 

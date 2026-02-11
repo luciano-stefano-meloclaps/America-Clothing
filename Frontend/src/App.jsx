@@ -65,88 +65,87 @@ function App() {
     <APIContextProvider>
       <AuthProvider>
         <Router>
-          <ScrollToTop />
-          <NavbarMain />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/add-product"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <ProductAdd />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/update-product"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <ProductUpdate />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/my-purchases"
-              element={
-                <ProtectedRoute requiredRole="client">
-                  <Purchases />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/add-user"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <UserAdd />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/update-user/:userId"
-              element={
-                <ProtectedRoute requiredRole="admin">
-                  <UserUpdate />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/productos"
-              element={<ProductList products={products} />}
-            />{" "}
-            {/* Pasar productos */}
-            <Route
-              path="/productos/detalle/:productId"
-              element={<Product products={products} />}
-            />{" "}
-            {/* Pasamos los productos */}
-            <Route
-              path="/productos/:category"
-              element={<ProductList products={products} />}
-            />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart />} />{" "}
-            {/* Ruta para el carrito */}
-            <Route path="/aboutUs" element={<AboutUs />} />{" "}
-            {/* Ruta para Sobre Nosotros */}
-            <Route path="/contactUs" element={<ContactUs />} />{" "}
-            {/* Ruta para el formulario */}
-            {/* <Route path="/add-product" element={<ProductAdd />} />
-            <Route path="/update-product" element={<ProductUpdate />} />
-            <Route path="/my-purchases" element={<Purchases />} />
-            <Route path="/add-user" element={<UserAdd />} />
-            <Route path="/update-user/:userId" element={<UserUpdate />} /> */}
-          </Routes>
-          <Footer />
+          <div className="d-flex flex-column min-vh-100 bg-dark text-light">
+            <ScrollToTop />
+            <NavbarMain />
+            <main className="flex-grow-1">
+              <Routes>
+                <Route path="/" element={<MainPage />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/add-product"
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <ProductAdd />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/update-product"
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <ProductUpdate />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/my-purchases"
+                  element={
+                    <ProtectedRoute requiredRole="client">
+                      <Purchases />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/add-user"
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <UserAdd />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/update-user/:userId"
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <UserUpdate />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/productos"
+                  element={<ProductList products={products} />}
+                />{" "}
+                {/* Pasar productos */}
+                <Route
+                  path="/productos/detalle/:productId"
+                  element={<Product products={products} />}
+                />{" "}
+                {/* Pasamos los productos */}
+                <Route
+                  path="/productos/:category"
+                  element={<ProductList products={products} />}
+                />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/cart" element={<Cart />} />{" "}
+                {/* Ruta para el carrito */}
+                <Route path="/aboutUs" element={<AboutUs />} />{" "}
+                {/* Ruta para Sobre Nosotros */}
+                <Route path="/contactUs" element={<ContactUs />} />{" "}
+                {/* Ruta para el formulario */}
+              </Routes>
+            </main>
+            <Footer />
+          </div>
         </Router>
       </AuthProvider>
     </APIContextProvider>

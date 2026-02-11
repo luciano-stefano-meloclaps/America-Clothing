@@ -13,7 +13,8 @@ import "./AboutUs.css";
 
 const AboutUs = () => {
   return (
-    <Container fluid className="about-us-section bg-dark text-light py-5">
+    <div className="about-us-wrapper flex-grow-1">
+      <Container className="about-us-section">
       <Row className="justify-content-center mb-4 ">
         <Col md={8} className="text-center">
           <h1 className="mb-4 text-uppercase ">Sobre Nosotros</h1>
@@ -103,6 +104,7 @@ const AboutUs = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 
