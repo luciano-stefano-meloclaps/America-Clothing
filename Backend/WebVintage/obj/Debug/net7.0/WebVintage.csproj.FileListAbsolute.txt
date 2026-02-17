@@ -346,3 +346,4 @@ D:\Proyectos\America\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\refin
 D:\Proyectos\America\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\WebVintage.pdb
 D:\Proyectos\America\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\WebVintage.genruntimeconfig.cache
 D:\Proyectos\America\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\ref\WebVintage.dll
+D:\Proyectos\America\ecommerce-vintage\Backend\WebVintage\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt

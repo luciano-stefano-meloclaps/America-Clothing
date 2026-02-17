@@ -134,19 +134,22 @@ function NavbarMain() {
 
       {/* Modal de confirmación */}
       <Modal
-        className="modal-custom"
         show={showModal}
         onHide={handleCloseModal}
+        contentClassName="bg-dark text-light border-secondary"
+        centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton variant="white" className="border-secondary">
           <Modal.Title>Confirmar cierre de sesión</Modal.Title>
         </Modal.Header>
-        <Modal.Body>¿Estás seguro de que deseas cerrar sesión?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="dark" onClick={handleCloseModal}>
+        <Modal.Body className="py-4 text-center">
+          <p className="mb-0">¿Estás seguro de que deseas cerrar sesión?</p>
+        </Modal.Body>
+        <Modal.Footer className="border-secondary justify-content-center">
+          <Button variant="outline-light" onClick={handleCloseModal} className="px-4">
             Cancelar
           </Button>
-          <Button variant="outline-danger" onClick={confirmLogout}>
+          <Button variant="danger" onClick={confirmLogout} className="px-4">
             Cerrar sesión
           </Button>
         </Modal.Footer>

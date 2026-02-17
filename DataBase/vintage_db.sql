@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `vintage_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `vintage_db`;
+CREATE DATABASE  IF NOT EXISTS `VintageDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+USE `VintageDB`;
 -- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vintage_db
@@ -136,7 +136,7 @@ LOCK TABLES `user` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'vintage_db'
+-- Dumping routines for database 'VintageDB'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -149,4 +149,6 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-10-27 17:55:59
+
+select * from user;
 

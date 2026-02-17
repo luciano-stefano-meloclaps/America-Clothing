@@ -74,8 +74,7 @@ const ProductTable = () => {
   const currentEnd = Math.min(indexOfLastProduct, filteredProducts.length);
 
   return (
-    <div>
-      <h2 className="text-info mb-5">Productos</h2>
+    <div className="table-responsive p-3">
 
       {userRole !== "employee" && (
         <div className="mb-3">
@@ -98,10 +97,10 @@ const ProductTable = () => {
             Mostrando productos del {currentStart} al {currentEnd} &nbsp; &nbsp;
             Total: {filteredProducts.length}
           </h5>
-          <Table striped bordered hover variant="dark">
+          <Table striped bordered hover variant="dark" className="align-middle">
             <thead>
               <tr>
-                <th>#</th>
+                <th>Imagen</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Talla</th>
@@ -115,9 +114,41 @@ const ProductTable = () => {
             <tbody>
               {currentProducts.map((product, index) => (
                 <tr key={`${product.code}-${index}`}>
-                  <td>{indexOfFirstProduct + index + 1}</td>
+                  <td>
+                    <img 
+                      src={product.image} 
+                      alt={product.name} 
+                      style={{ 
+                        width: '50px', 
+                        height: '50px', 
+                        objectFit: 'cover', 
+                        borderRadius: '4px',
+                        transition: 'transform 0.2s ease',
+                        cursor: 'pointer'
+                      }}
+                      onMouseEnter={(e) => e.target.style.transform = 'scale(1.8)'}
+                      onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                      onError={(e) => { e.target.src = '/game.png'; }}
+                    />
+                  </td>
                   <td>{product.name}</td>
-                  <td>{product.description}</td>
+                  <td>
+                    <div 
+                      title={product.description}
+                      style={{
+                        maxWidth: '300px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitLineClamp: '2',
+                        WebkitBoxOrient: 'vertical',
+                        lineHeight: '1.4em',
+                        maxHeight: '2.8em'
+                      }}
+                    >
+                      {product.description}
+                    </div>
+                  </td>
                   <td>{product.size}</td>
                   <td>${product.price}</td>
                   <td>{product.category}</td>

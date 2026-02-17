@@ -91,9 +91,7 @@ const UserTable = () => {
   const currentEnd = Math.min(indexOfLastUser, filteredUsers.length);
 
   return (
-    <div>
-      <h2 className="text-info mb-5">Usuarios</h2>
-
+    <div className="table-responsive p-3">
       <div className="mb-3">
         <Button variant="primary" onClick={onClickAddUser}>
           Añadir Usuario
@@ -112,7 +110,7 @@ const UserTable = () => {
             Mostrando usuarios del {currentStart} al {currentEnd} &nbsp; &nbsp;
             Total: {filteredUsers.length}
           </h5>
-          <Table striped bordered hover variant="dark">
+          <Table striped bordered hover variant="dark" className="align-middle">
             <thead>
               <tr>
                 <th>#</th>

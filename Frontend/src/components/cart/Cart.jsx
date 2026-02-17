@@ -163,26 +163,37 @@ const Cart = () => {
       )}
 
       {/* Modal de alerta de inicio de sesión */}
-      <Modal show={showAuthModal} onHide={handleCloseAuthModal}>
-        <Modal.Header closeButton>
+      <Modal 
+        show={showAuthModal} 
+        onHide={handleCloseAuthModal}
+        contentClassName="bg-dark text-light border-secondary"
+        centered
+      >
+        <Modal.Header closeButton variant="white" className="border-secondary">
           <Modal.Title>Inicia sesión</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="py-4">
           Por favor, inicia sesión para completar tu compra.
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="dark" onClick={handleCloseAuthModal}>
+        <Modal.Footer className="border-secondary">
+          <Button variant="outline-light" onClick={handleCloseAuthModal} className="px-4">
             Cerrar
           </Button>
         </Modal.Footer>
       </Modal>
 
       {/* Modal de confirmación de compra */}
-      <Modal show={showOrderModal} onHide={handleCloseOrderModal}>
-        <Modal.Header closeButton className="bg-dark text-light">
+      <Modal 
+        show={showOrderModal} 
+        onHide={handleCloseOrderModal}
+        size="lg"
+        contentClassName="bg-dark text-light border-secondary"
+        centered
+      >
+        <Modal.Header closeButton variant="white" className="border-secondary">
           <Modal.Title>Confirmación de la Orden</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark text-light">
+        <Modal.Body className="p-4">
           <h5>Resumen de la compra:</h5>
           <Table
             striped
@@ -362,28 +373,40 @@ const Cart = () => {
       </Modal>v
 
       {/* Modal de éxito de compra */}
-      <Modal show={showSuccessModal} onHide={handleCloseSuccessModal}>
-        <Modal.Header closeButton>
+      <Modal 
+        show={showSuccessModal} 
+        onHide={handleCloseSuccessModal}
+        contentClassName="bg-dark text-light border-success"
+        centered
+      >
+        <Modal.Header closeButton variant="white" className="border-success text-success">
           <Modal.Title>Compra realizada con éxito</Modal.Title>
         </Modal.Header>
-        <Modal.Body>¡Tu compra ha sido realizada exitosamente!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="success" onClick={handleCloseSuccessModal}>
+        <Modal.Body className="py-4 font-weight-bold">
+          ¡Tu compra ha sido realizada exitosamente!
+        </Modal.Body>
+        <Modal.Footer className="border-success">
+          <Button variant="outline-success" onClick={handleCloseSuccessModal} className="px-4">
             Cerrar
           </Button>
         </Modal.Footer>
       </Modal>
 
       {/* Modal de error de compra */}
-      <Modal show={showErrorModal} onHide={handleCloseErrorModal}>
-        <Modal.Header closeButton>
+      <Modal 
+        show={showErrorModal} 
+        onHide={handleCloseErrorModal}
+        contentClassName="bg-dark text-light border-danger"
+        centered
+      >
+        <Modal.Header closeButton variant="white" className="border-danger text-danger">
           <Modal.Title>Error en la compra</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="py-4">
           Hubo un problema al realizar la compra. Inténtalo de nuevo.
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleCloseErrorModal}>
+        <Modal.Footer className="border-danger">
+          <Button variant="outline-danger" onClick={handleCloseErrorModal} className="px-4">
             Cerrar
           </Button>
         </Modal.Footer>

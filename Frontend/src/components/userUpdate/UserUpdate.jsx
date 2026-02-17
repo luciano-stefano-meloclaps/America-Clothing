@@ -260,13 +260,20 @@ const UserUpdate = () => {
         </Form>
 
         {/* Modal de confirmación */}
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
+        <Modal 
+          show={showModal} 
+          onHide={handleCloseModal}
+          contentClassName="bg-dark text-light border-secondary"
+          centered
+        >
+          <Modal.Header closeButton variant="white" className="border-secondary">
             <Modal.Title>Usuario actualizado</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Usuario actualizado exitosamente</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleCloseModal}>
+          <Modal.Body className="py-4">
+            Usuario actualizado exitosamente.
+          </Modal.Body>
+          <Modal.Footer className="border-secondary">
+            <Button variant="outline-light" onClick={handleCloseModal} className="px-4">
               Aceptar
             </Button>
           </Modal.Footer>

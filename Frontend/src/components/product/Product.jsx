@@ -112,29 +112,39 @@ const Product = () => {
       </Container>
 
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+      <Modal 
+        show={showModal} 
+        onHide={handleCloseModal}
+        contentClassName="bg-dark text-light border-secondary"
+        centered
+      >
+        <Modal.Header closeButton variant="white" className="border-secondary">
           <Modal.Title>Producto agregado 🛒</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="py-4">
           El producto <strong>{product.description}</strong> ha sido agregado a tu carrito.
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="dark" onClick={handleCloseModal}>
+        <Modal.Footer className="border-secondary">
+          <Button variant="outline-light" onClick={handleCloseModal} className="px-4">
             Cerrar
           </Button>
         </Modal.Footer>
       </Modal>
 
-      <Modal show={showErrorModal} onHide={handleCloseErrorModal}>
-        <Modal.Header closeButton className="bg-danger text-light">
+      <Modal 
+        show={showErrorModal} 
+        onHide={handleCloseErrorModal}
+        contentClassName="bg-dark text-light border-danger"
+        centered
+      >
+        <Modal.Header closeButton variant="white" className="border-danger text-danger">
           <Modal.Title>Error al agregar producto</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-danger text-light">
+        <Modal.Body className="py-4">
           Este producto ya está en el carrito. Cada prenda es única, por lo que no se puede agregar más de una vez.
         </Modal.Body>
-        <Modal.Footer className="bg-danger">
-          <Button variant="dark" onClick={handleCloseErrorModal}>
+        <Modal.Footer className="border-danger">
+          <Button variant="outline-danger" onClick={handleCloseErrorModal} className="px-4">
             Cerrar
           </Button>
         </Modal.Footer>

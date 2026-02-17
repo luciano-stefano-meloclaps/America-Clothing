@@ -4,6 +4,8 @@
     background-color: #0d0d0d;
     min-height: 100vh;
     padding-top: 2rem;
+    padding-bottom: 4rem;
+    /* Space for footer */
 }
 
 .dashboard-sidebar-container {

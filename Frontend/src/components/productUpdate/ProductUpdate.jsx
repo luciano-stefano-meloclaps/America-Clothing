@@ -308,16 +308,21 @@ const ProductUpdate = () => {
           </Button>
         </Form>
 
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
+        <Modal 
+          show={showModal} 
+          onHide={handleCloseModal}
+          contentClassName="bg-dark text-light border-secondary"
+          centered
+        >
+          <Modal.Header closeButton variant="white" className="border-secondary">
             <Modal.Title>Producto actualizado</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="py-4">
             El producto se actualizó correctamente.
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              Cerrar
+          <Modal.Footer className="border-secondary">
+            <Button variant="outline-light" onClick={handleCloseModal} className="px-4">
+              Aceptar
             </Button>
           </Modal.Footer>
         </Modal>

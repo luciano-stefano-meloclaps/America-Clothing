@@ -90,9 +90,8 @@ const SaleOrderTable = () => {
   }, []);
 
   return (
-    <div>
-      <h2 className="text-info mb-4">Órdenes de Venta</h2>
-      <Table striped bordered hover variant="dark">
+    <div className="table-responsive p-3">
+      <Table striped bordered hover variant="dark" className="align-middle">
         <thead>
           <tr>
             <th>Nro Orden</th>
@@ -111,7 +110,7 @@ const SaleOrderTable = () => {
 
             return (
               <React.Fragment key={order.saleOrderId}>
-                <tr onClick={() => toggleRow(order.saleOrderId)}>
+                <tr onClick={() => toggleRow(order.saleOrderId)} style={{ cursor: "pointer" }}>
                   <td>{order.saleOrderId}</td>
                   <td>{formatDate(order.date)}</td>
                   <td>{order.userId}</td>
@@ -136,29 +135,31 @@ const SaleOrderTable = () => {
                 </tr>
                 {expandedRows.includes(order.saleOrderId) && (
                   <tr>
-                    <td colSpan="6">
-                      <Table striped bordered hover variant="secondary" size="sm">
-                        <thead>
-                          <tr>
-                            <th>Detalle</th>
-                            <th>Cod Producto</th>
-                            <th>Nombre producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {order.lines.map((line) => (
-                            <tr key={line.saleOrderLineId}>
-                              <td>{line.saleOrderLineId}</td>
-                              <td>{line.productId}</td>
-                              <td>{getProductName(line.productId)}</td>
-                              <td>{line.amount}</td>
-                              <td>{line.unitPrice}</td>
+                    <td colSpan="6" className="p-0">
+                      <div className="bg-secondary p-3">
+                        <Table striped bordered hover variant="light" size="sm" className="m-0 align-middle">
+                          <thead>
+                            <tr>
+                              <th>Detalle</th>
+                              <th>Cod Producto</th>
+                              <th>Nombre producto</th>
+                              <th>Cantidad</th>
+                              <th>Precio Unitario</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </Table>
+                          </thead>
+                          <tbody>
+                            {order.lines.map((line) => (
+                              <tr key={line.saleOrderLineId}>
+                                <td>{line.saleOrderLineId}</td>
+                                <td>{line.productId}</td>
+                                <td>{getProductName(line.productId)}</td>
+                                <td>{line.amount}</td>
+                                <td>${line.unitPrice}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      </div>
                     </td>
                   </tr>
                 )}

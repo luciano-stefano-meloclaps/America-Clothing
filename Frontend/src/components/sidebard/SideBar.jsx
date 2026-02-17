@@ -6,15 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./SideBar.css";
 
-const Sidebar = ({ setView, userRole }) => {
+const Sidebar = ({ setView, userRole, currentView }) => {
   return (
     <Nav className="flex-column sidebar-nav mt-4">
       <div className="sidebar-sticky"></div>
-      {userRole === "admin" && (
+      {(userRole?.toLowerCase() === "admin" || userRole?.toLowerCase() === "employee") && (
         <>
           <Nav.Item>
             <Nav.Link
-              className="sidebar-link"
+              className={`sidebar-link ${currentView === "users" ? "active-link" : ""}`}
               onClick={() => setView("users")}
             >
               <FontAwesomeIcon icon={faUsers} className="me-2" /> Usuarios
@@ -22,19 +22,7 @@ const Sidebar = ({ setView, userRole }) => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              className="sidebar-link"
-              onClick={() => setView("products")}
-            >
-              <FontAwesomeIcon icon={faShirt} className="me-2" /> Productos
-            </Nav.Link>
-          </Nav.Item>
-        </>
-      )}
-      {userRole === "employee" && (
-        <>
-          <Nav.Item>
-            <Nav.Link
-              className="sidebar-link"
+              className={`sidebar-link ${currentView === "products" ? "active-link" : ""}`}
               onClick={() => setView("products")}
             >
               <FontAwesomeIcon icon={faShirt} className="me-2" /> Productos
@@ -42,7 +30,7 @@ const Sidebar = ({ setView, userRole }) => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link
-              className="sidebar-link"
+              className={`sidebar-link ${currentView === "sales" ? "active-link" : ""}`}
               onClick={() => setView("sales")}
             >
               <FontAwesomeIcon icon={faBoxesStacked} className="me-2" /> Ventas
