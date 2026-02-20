@@ -81,6 +81,9 @@ function NavbarMain() {
               <Nav.Link as={Link} to="/ContactUs" className="text-light">
                 Contactanos
               </Nav.Link>
+              <Nav.Link as={Link} to="/faq" className="text-light">
+                FAQ
+              </Nav.Link>
             </Nav>
             <div className="d-flex flex-column flex-lg-row align-items-center">
               {!isAuthenticated ? (

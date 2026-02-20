@@ -4,10 +4,15 @@ import ProductList from "../productList/ProductList";
 import AboutUs from "../aboutUs/AboutUs";
 import ContactUs from "../contactUs/ContactsUs";
 import Dashboard from "../dashboard/Dashboard";
+import FAQ from "../faq/FAQ";
+import Testimonials from "../testimonials/Testimonials";
+import CategoryBanner from "../categoryBanner/CategoryBanner";
+
+
 import { useAuth } from "../../context/AuthContext";
 
 
-const MainPage = () => {
+const MainPage = ({ products }) => {
   const {userRole} = useAuth();
  // console.log("UserType:", userRole);
   return (
@@ -19,9 +24,15 @@ const MainPage = () => {
         // Si es cliente, mostramos los demás componentes
         <>
           <Hero />
-          <ProductList />
+          <CategoryBanner />
+          <ProductList products={products} />
+
+          <Testimonials />
           <AboutUs />
+
+          <FAQ />
           <ContactUs />
+
         </>
       )}
     </div>

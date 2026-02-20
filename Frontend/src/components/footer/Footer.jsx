@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCcVisa,
@@ -32,18 +33,18 @@ const Footer = () => {
         <Row className="mb-3">
           <Col md={3} className="text-center">
             <h5 className="text-secondary">Inicio</h5>
-            <a href="#" className="text-white d-block">
+            <Link to="/productos" className="text-white d-block">
               Shop
-            </a>
-            <a href="#" className="text-white d-block">
+            </Link>
+            <Link to="/aboutUs" className="text-white d-block">
               Nosotros
-            </a>
-            <a href="#" className="text-white d-block">
+            </Link>
+            <Link to="/contactUs" className="text-white d-block">
               Contacto
-            </a>
-            <a href="#" className="text-white d-block">
-              Política de Envío
-            </a>
+            </Link>
+            <Link to="/faq" className="text-white d-block">
+              Preguntas Frecuentes
+            </Link>
           </Col>
           <Col md={3} className="text-center" id="quienes-somos">
             <h5 className="text-secondary">Contacto</h5>
@@ -94,7 +95,7 @@ const Footer = () => {
         <Row className="text-center">
           <Col>
             <p className="text-secondary">
-              © 2024 Empresa. Todos los derechos reservados.
+              © {new Date().getFullYear()} American Clothing. Todos los derechos reservados.
             </p>
             <div>
               <FontAwesomeIcon
@@ -130,3 +131,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

@@ -28,6 +28,8 @@ import UserUpdate from "./components/userUpdate/UserUpdate";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import NotFound from "./components/notFound/NotFound";
+import FAQ from "./components/faq/FAQ";
+
 
 function ScrollToTop() {
   const location = useLocation();
@@ -70,7 +72,7 @@ function App() {
             <NavbarMain />
             <main className="flex-grow-1">
               <Routes>
-                <Route path="/" element={<MainPage />} />
+                <Route path="/" element={<MainPage products={products} />} />
                 <Route
                   path="/dashboard"
                   element={
@@ -142,7 +144,10 @@ function App() {
                 {/* Ruta para Sobre Nosotros */}
                 <Route path="/contactUs" element={<ContactUs />} />{" "}
                 {/* Ruta para el formulario */}
+                <Route path="/faq" element={<FAQ />} />{" "}
+                {/* Ruta para FAQ */}
               </Routes>
+
             </main>
             <Footer />
           </div>

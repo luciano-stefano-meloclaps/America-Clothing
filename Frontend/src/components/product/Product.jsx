@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Button, Modal, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal, Card, Toast, ToastContainer } from "react-bootstrap";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useAPI } from "../../services/apiContext/api.context";
@@ -112,24 +113,24 @@ const Product = () => {
       </Container>
 
 
-      <Modal 
-        show={showModal} 
-        onHide={handleCloseModal}
-        contentClassName="bg-dark text-light border-secondary"
-        centered
-      >
-        <Modal.Header closeButton variant="white" className="border-secondary">
-          <Modal.Title>Producto agregado 🛒</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="py-4">
-          El producto <strong>{product.description}</strong> ha sido agregado a tu carrito.
-        </Modal.Body>
-        <Modal.Footer className="border-secondary">
-          <Button variant="outline-light" onClick={handleCloseModal} className="px-4">
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1050 }}>
+        <Toast 
+          show={showModal} 
+          onClose={handleCloseModal} 
+          delay={3000} 
+          autohide 
+          bg="success"
+          className="text-white"
+        >
+          <Toast.Header closeButton={true} className="bg-success text-white border-bottom-0">
+            <strong className="me-auto">¡Agregado! 🛒</strong>
+          </Toast.Header>
+          <Toast.Body>
+            El producto <strong>{product.name}</strong> ha sido agregado a tu carrito.
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
 
       <Modal 
         show={showErrorModal} 

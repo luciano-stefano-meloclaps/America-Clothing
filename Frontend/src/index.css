@@ -64,7 +64,81 @@ button:hover {
   border-color: #ffc107;
 }
 
+/* CUSTOM PAGINATION STYLING - ARCHITECT ENFORCED */
+.pagination-btn-custom {
+  background-color: transparent !important;
+  border-color: #d4a373 !important;
+  color: #d4a373 !important;
+  transition: all 0.3s ease;
+  font-weight: 600 !important;
+}
+
+.pagination-btn-custom:hover {
+  background-color: #d4a373 !important;
+  color: #212529 !important;
+  border-color: #d4a373 !important;
+}
+
+.pagination-btn-custom.active {
+  background-color: #d4a373 !important;
+  color: #212529 !important;
+  border-color: #d4a373 !important;
+  box-shadow: 0 0 15px rgba(212, 163, 115, 0.5);
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* EMPTY STATE UI - ARCHITECT DESIGNED */
+.empty-state-container {
+  padding: 80px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 20px !important;
+  border: 1px dashed rgba(212, 163, 115, 0.2) !important;
+  margin-top: 40px !important;
+  animation: fadeIn 0.8s ease-out !important;
+  width: 100% !important;
+}
+
+.empty-state-icon {
+  font-size: 5rem !important;
+  color: #d4a373 !important;
+  margin-bottom: 25px !important;
+  opacity: 0.8 !important;
+  filter: drop-shadow(0 0 10px rgba(212, 163, 115, 0.3)) !important;
+}
+
+.empty-state-title {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin-bottom: 15px !important;
+  letter-spacing: 1px !important;
+}
+
+.empty-state-text {
+  font-size: 1.1rem !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  max-width: 500px !important;
+  line-height: 1.6 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

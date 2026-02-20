@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductCard from "../productCard/ProductCard";
@@ -8,13 +8,13 @@ import ProductFilter from "../productFilter/ProductFilter";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faSearchMinus, faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 
 import Container from "react-bootstrap/Container";
 
-  const ProductList = () => {
+  const ProductList = ({ products = [] }) => {
   const { category } = useParams(); 
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]); // REMOVED: Using props now
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
@@ -30,35 +30,25 @@ import Container from "react-bootstrap/Container";
 
   const handleCategoryUpdate = (newCategory) => {
     setCategoryFilter(newCategory);
+    setCurrentPage(1); // Explicit reset on user interaction
   };
 
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get("/api/Product");
-      if (Array.isArray(response.data)) {
-        const availableProducts = response.data.filter(
-          (product) => product.state === 1
-        );
-        setProducts(availableProducts);
-        setFilteredProducts(availableProducts);
-      } else {
-        throw new Error("La respuesta no es un array");
-      }
-    } catch (error) {
-      console.error("Disculpe, no se pudieron cargar los productos.", error);
-      setError(error.message);
-    }
+  const handleSizeChange = (newSize) => {
+    setSizeFilter(newSize);
+    setCurrentPage(1); // Explicit reset on user interaction
   };
 
-  useEffect(() => {
-    fetchProducts();
-    const intervalId = setInterval(fetchProducts, 5000);
+  const handlePriceChange = (newPrice) => {
+    setPriceRange(newPrice);
+    setCurrentPage(1); // Explicit reset on user interaction
+  };
 
-    return () => clearInterval(intervalId);
-  }, []);
+  // REMOVED: fetchProducts and its useEffect. 
+  // Data is now passed via props from App.jsx (Single Source of Truth)
 
   useEffect(() => {
-    let filtered = products;
+    // Filter active products from props first
+    let filtered = products.filter(p => p.state === 1);
 
     // Usamos el filtro de categoría interno, o el de la URL si el interno está vacío
     const activeCategory = categoryFilter || category;
@@ -79,8 +69,10 @@ import Container from "react-bootstrap/Container";
     );
 
     setFilteredProducts(filtered);
-    setCurrentPage(1);
   }, [sizeFilter, priceRange, products, category, categoryFilter]);
+
+  // ARCHITECTURAL FIX: Removed implicit useEffect reset.
+  // Pagination now only resets in the explicit handlers above.
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -123,8 +115,8 @@ import Container from "react-bootstrap/Container";
           <Offcanvas.Body>
             <ProductFilter
               products={products}
-              onSizeChange={setSizeFilter}
-              onPriceChange={setPriceRange}
+              onSizeChange={handleSizeChange}
+              onPriceChange={handlePriceChange}
               onCategoryChange={handleCategoryUpdate}
               currentCategory={categoryFilter}
             />
@@ -132,12 +124,27 @@ import Container from "react-bootstrap/Container";
         </Offcanvas>
 
         {products.length === 0 ? (
-          <p className="mt-4">No hay productos disponibles en este momento.</p>
+          // Solo mostramos el estado de "Preparación" si estamos en una categoría específica.
+          // En el Home, si products está vacío, es probable que esté cargando o el catálogo esté vacío.
+          category && (
+            <div className="empty-state-container">
+              <FontAwesomeIcon icon={faBoxOpen} className="empty-state-icon" />
+              <h2 className="empty-state-title">Catálogo en Preparación</h2>
+              <p className="empty-state-text">
+                Estamos curando las mejores prendas vintage para esta sección. 
+                Vuelve pronto para descubrir tesoros únicos.
+              </p>
+            </div>
+          )
         ) : filteredProducts.length === 0 ? (
-          <p className="mt-4">
-            No tenemos resultados para tu búsqueda. Por favor, intentá con otros
-            filtros.
-          </p>
+          <div className="empty-state-container">
+            <FontAwesomeIcon icon={faSearchMinus} className="empty-state-icon" />
+            <h2 className="empty-state-title">Sin Resultados</h2>
+            <p className="empty-state-text">
+              No hemos encontrado prendas que coincidan con tus filtros. 
+              Prueba ajustando el rango de precio o seleccionando otro talle.
+            </p>
+          </div>
         ) : (
           <>
             <Row xs={1} md={2} lg={4} className="g-5 p-5 m-5">
@@ -159,11 +166,12 @@ import Container from "react-bootstrap/Container";
               {Array.from({ length: totalPages }, (_, index) => (
                 <Button
                   key={index + 1}
-                  variant={
-                    currentPage === index + 1 ? "primary" : "outline-primary"
-                  }
+                  variant="link"
+                  className={`mx-1 pagination-btn-custom ${
+                    currentPage === index + 1 ? "active" : ""
+                  }`}
                   onClick={() => setCurrentPage(index + 1)}
-                  className="mx-1"
+                  style={{ textDecoration: 'none' }}
                 >
                   {index + 1}
                 </Button>
