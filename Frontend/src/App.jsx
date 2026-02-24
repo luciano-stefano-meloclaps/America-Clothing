@@ -19,7 +19,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { APIContextProvider } from "./services/apiContext/api.context"; // Importa el provider
 import Cart from "./components/cart/Cart"; // Importa el componente Cart
 import AboutUs from "./components/aboutUs/AboutUs";
-import ContactUs from "./components/contactUs/ContactsUs";
+import ContactUs from "./components/contactUs/ContactUs";
 import ProductAdd from "./components/productAdd/ProductAdd";
 import ProductUpdate from "./components/productUpdate/ProductUpdate";
 import Purchases from "./components/purchases/Purchases";
