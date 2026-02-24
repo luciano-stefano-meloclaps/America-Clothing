@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBullseye,
@@ -8,102 +8,119 @@ import {
   faHistory,
   faTruck,
   faCreditCard,
+  faRecycle,
+  faShieldHalved,
 } from "@fortawesome/free-solid-svg-icons";
 import "./AboutUs.css";
 
+const values = [
+  {
+    icon: faBullseye,
+    variant: "mission",
+    title: "Misión",
+    text: "Curar las mejores prendas vintage americanas, garantizando autenticidad y un estilo que trasciende décadas.",
+  },
+  {
+    icon: faEye,
+    variant: "vision",
+    title: "Visión",
+    text: "Ser la referencia en moda vintage de Argentina, conectando la historia de cada prenda con quien la lleva.",
+  },
+  {
+    icon: faUsers,
+    variant: "team",
+    title: "Equipo",
+    text: "Apasionados por la moda y la sostenibilidad. Cada pieza que seleccionamos refleja nuestro compromiso con vos.",
+  },
+  {
+    icon: faHistory,
+    variant: "history",
+    title: "Historia",
+    text: "Nacimos con la idea de que la mejor ropa ya fue hecha. Desde entonces, rescatamos tesoros de otra época para vos.",
+  },
+];
+
+const features = [
+  {
+    icon: faTruck,
+    title: "Envío Gratis",
+    text: "En compras superiores a $30.000, el envío corre por nuestra cuenta a todo el país.",
+  },
+  {
+    icon: faCreditCard,
+    title: "Cuotas sin Interés",
+    text: "Hasta 6 cuotas sin interés con todas las tarjetas de crédito.",
+  },
+  {
+    icon: faRecycle,
+    title: "Moda Sustentable",
+    text: "Cada compra vintage es un acto consciente. Reutilizar es la forma más elegante de cuidar el planeta.",
+  },
+  {
+    icon: faShieldHalved,
+    title: "100% Auténtico",
+    text: "Verificamos cada prenda para asegurar su autenticidad y calidad original.",
+  },
+];
+
 const AboutUs = () => {
   return (
-    <div className="about-us-wrapper flex-grow-1">
-      <Container className="about-us-section">
-      <Row className="justify-content-center mb-4 ">
-        <Col md={8} className="text-center">
-          <h1 className="mb-4 text-uppercase ">Sobre Nosotros</h1>
-          <p className="lead ">
-            ¡Hey! Bienvenidos a{" "}
-            <span className="brand-name">American Clothing</span>, tu tienda de
-            ropa favorita. Nos encanta ofrecerte prendas únicas y de alta
-            calidad que cuentan una historia.
-          </p>
-        </Col>
-      </Row>
-      <Row className="justify-content-center mb-5">
-        <Col md={5} className="d-flex align-items-stretch mb-4 ">
-          <Card className="bg-secondary bg-dark text-light card-hover ">
-            <Card.Body>
-              <Card.Title>
-                <FontAwesomeIcon icon={faBullseye} /> Misión
-              </Card.Title>
-              <Card.Text>
-                Nos encanta ofrecerte productos de alta calidad. Cada prenda es
-                seleccionada con mucho cuidado para asegurar su autenticidad y
-                estilo único
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={5} className="d-flex align-items-stretch mb-4">
-          <Card className="bg-secondary bg-dark text-light card-hover">
-            <Card.Body>
-              <Card.Title>
-                <FontAwesomeIcon icon={faEye} /> Visión
-              </Card.Title>
-              <Card.Text>
-                Queremos ser tu tienda online favorita, siempre a la vanguardia
-                y con la mejor onda. Cuando pienses en moda vintage, piensa en
-                nosotros.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row className="justify-content-center mb-5">
-        <Col md={5} className="d-flex align-items-stretch mb-4">
-          <Card className="bg-secondary bg-dark text-light card-hover">
-            <Card.Body>
-              <Card.Title>
-                <FontAwesomeIcon icon={faUsers} /> Equipo
-              </Card.Title>
-              <Card.Text>
-                Somos un equipo apasionado. Nos esforzamos al máximo para
-                ofrecerte una experiencia de compra que no encontrarás en ningún
-                otro lugar.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={5} className="d-flex align-items-stretch mb-4">
-          <Card className="bg-dark text-light card-hover">
-            <Card.Body>
-              <Card.Title>
-                <FontAwesomeIcon icon={faHistory} /> Historia
-              </Card.Title>
-              <Card.Text>
-                Desde el día uno, hemos crecido gracias a tu confianza y apoyo.
-                Cada prenda que ofrecemos tiene su propia historia única.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row className="justify-content-center mb-5">
-        <Col md={5} className="text-center mb-4 text-secondary">
-          <FontAwesomeIcon icon={faTruck} size="3x" className="mb-3" />
-          <h3>Envíos Gratis</h3>
-          <p>
-            A partir de $30.000 en compras, disfruta de envíos gratis a todo el
-            país.
-          </p>
-        </Col>
-        <Col md={5} className="text-center mb-4 text-secondary">
-          <FontAwesomeIcon icon={faCreditCard} size="3x" className="mb-3" />
-          <h3>Cuotas sin Interés</h3>
-          <p>
-            Aprovecha nuestras opciones de pago en 3 y 6 cuotas sin interés, y
-            hasta 30 cuotas con tarjeta de crédito.
-          </p>
-        </Col>
-      </Row>
-    </Container>
+    <div className="about-wrapper">
+      <Container>
+        {/* Header */}
+        <Row className="justify-content-center text-center mb-5">
+          <Col lg={8}>
+            <h1 className="about-section-title text-uppercase mb-4 about-fade-up">
+              Sobre Nosotros
+            </h1>
+            <hr className="about-divider mb-4 about-fade-up" />
+            <p className="about-subtitle about-fade-up">
+              Bienvenidos a{" "}
+              <span className="about-brand-highlight">American Clothing</span>,
+              tu destino de moda vintage americana. Cada prenda que ofrecemos
+              tiene una historia, un carácter y un estilo que no encontrás en
+              ningún otro lugar.
+            </p>
+          </Col>
+        </Row>
+
+        {/* Value Cards */}
+        <Row className="g-4 mb-5">
+          {values.map((item, index) => (
+            <Col
+              key={item.title}
+              md={6}
+              lg={3}
+              className={`about-fade-up about-fade-up-delay-${index + 1}`}
+            >
+              <div className="about-glass-card">
+                <div className={`about-card-icon ${item.variant}`}>
+                  <FontAwesomeIcon icon={item.icon} />
+                </div>
+                <h3 className="about-card-title">{item.title}</h3>
+                <p className="about-card-text">{item.text}</p>
+              </div>
+            </Col>
+          ))}
+        </Row>
+
+        {/* Features Strip */}
+        <div className="about-features-strip about-fade-up">
+          <Row className="justify-content-center">
+            {features.map((feat) => (
+              <Col key={feat.title} sm={6} lg={3} className="mb-4 mb-lg-0">
+                <div className="about-feature-item">
+                  <div className="about-feature-icon">
+                    <FontAwesomeIcon icon={feat.icon} />
+                  </div>
+                  <h4 className="about-feature-title">{feat.title}</h4>
+                  <p className="about-feature-text">{feat.text}</p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </Container>
     </div>
   );
 };
