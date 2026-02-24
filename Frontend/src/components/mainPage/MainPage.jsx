@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "../hero/Hero";
 import ProductList from "../productList/ProductList";
 import AboutUs from "../aboutUs/AboutUs";
-import ContactUs from "../contactUs/ContactsUs";
+import ContactUs from "../contactUs/ContactUs";
 import Dashboard from "../dashboard/Dashboard";
 import FAQ from "../faq/FAQ";
 import Testimonials from "../testimonials/Testimonials";

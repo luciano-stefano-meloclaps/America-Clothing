@@ -1,58 +1,196 @@
 .contact-us-wrapper {
-  flex: 1;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #212529 0%, #1a1e21 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-us-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.05) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.contact-us-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 3rem !important;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-glass-container {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 0.8s ease-out forwards;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info-panel {
+  background: rgba(255, 193, 7, 0.02);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.contact-form-panel {
+  padding: 40px;
+}
+
+.info-item {
+  display: flex;
   align-items: center;
-  background-color: rgb(78, 53, 46);
-  padding: 6rem 0;
-  width: 100%;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateX(10px);
+}
+
+.info-icon-box {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+  color: #ffc107;
+  font-size: 1.25rem;
+}
+
+.info-text h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #ffc107;
+}
+
+.info-text p {
   margin: 0;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-
-.shadow-accent {
-  filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.4));
+/* Material Floating Labels Overrides */
+.form-floating>.form-control,
+.form-floating>.form-control:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 12px;
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
 }
 
-.contact-us-container {
-  background-color: rgba(78, 53, 46, 0.778);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.298);
-  transition: transform 0.3s ease-in-out;
-  width: 100%;
-  max-width: 45rem;
+.form-floating>label {
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.contact-us-container:hover {
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+  color: #ffc107;
+  opacity: 0.8;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.15);
+  border-color: #ffc107 !important;
+}
+
+.btn-premium {
+  background: #ffc107;
+  color: #212529;
+  border: none;
+  font-weight: 700;
+  height: 56px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-premium:hover {
+  background: #ffca2c;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+}
+
+/* WhatsApp Widget */
+.whatsapp-minimal {
+  background: rgba(25, 135, 84, 0.1);
+  border: 1px solid rgba(25, 135, 84, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.whatsapp-minimal:hover {
+  background: rgba(25, 135, 84, 0.2);
+  border-color: #198754;
   transform: scale(1.02);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.412);
 }
 
-.contact-us-container .form-control {
-  background-color: rgba(255, 255, 255, 0.693);
-  margin-bottom: 15px;
+.whatsapp-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.contact-us-container .form-control:focus {
-  background-color: rgb(33, 37, 41);
-  color: white;
-  border-color: white;
-  box-shadow: none;
+.whatsapp-icon {
+  font-size: 2rem;
+  color: #198754;
 }
 
-.section-title {
-  color: #f8f9fa;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.whatsapp-text span {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
 }
 
-.main-wp:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.412);
-  transition: transform 0.2s ease-in-out;
+.whatsapp-text b {
+  color: #fff;
+  font-size: 1rem;
 }
 
-.icon-wp {
-  height: 60px;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .contact-info-panel {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
 }
