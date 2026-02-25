@@ -1,62 +1,238 @@
+/* ═══════════════════════════════════════════
+   FAQ — Premium Glassmorphism Theme
+   ═══════════════════════════════════════════ */
+
 .faq-wrapper {
-    background: linear-gradient(180deg, #3e2723 0%, #212529 100%);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 6rem 0;
-}
-
-.faq-section {
-    color: #f8f9fa;
-    flex: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.custom-accordion .accordion-item {
-    background-color: #2b2b2e;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #f8f9fa;
-    border-radius: 8px !important;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #212529 0%, #1a1e21 100%);
+    position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease;
 }
 
-.custom-accordion .accordion-item:hover {
-    transform: scale(1.01);
+.faq-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -8%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.04) 0%, transparent 70%);
+    z-index: 0;
 }
 
-.custom-accordion .accordion-button {
-    background-color: #2b2b2e;
-    color: #f8f9fa;
+.faq-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -5%;
+    right: -5%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(212, 163, 115, 0.04) 0%, transparent 70%);
+    z-index: 0;
+}
+
+/* ── Section Header ── */
+.faq-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.faq-subtitle {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ffc107, #d4a373);
+    border-radius: 3px;
+    margin: 0 auto;
     border: none;
-    font-weight: 500;
+    opacity: 1;
 }
 
-.custom-accordion .accordion-button:not(.collapsed) {
-    background-color: #4e352e;
+/* ── Category Labels ── */
+.faq-category-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffc107;
+    margin-bottom: 1.25rem;
+    padding-left: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-category-label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background: #ffc107;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* ── Glassmorphism Accordion ── */
+.faq-glass-accordion {
+    position: relative;
+    z-index: 1;
+}
+
+.faq-glass-accordion .accordion-item {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px !important;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-glass-accordion .accordion-item:hover {
+    border-color: rgba(255, 193, 7, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.faq-glass-accordion .accordion-button {
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 18px 24px;
+    border: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.faq-glass-accordion .accordion-button:not(.collapsed) {
+    background: rgba(255, 193, 7, 0.05);
     color: #ffc107;
     box-shadow: none;
 }
 
-.custom-accordion .accordion-button:focus {
+.faq-glass-accordion .accordion-button:focus {
     box-shadow: none;
-    border-color: rgba(255, 193, 7, 0.5);
 }
 
-.custom-accordion .accordion-button::after {
+.faq-glass-accordion .accordion-button::after {
     filter: invert(1);
+    transition: transform 0.3s ease;
 }
 
-.custom-accordion .accordion-body {
-    background-color: #1a1a1c;
-    color: rgba(248, 249, 250, 0.8);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+.faq-glass-accordion .accordion-button:not(.collapsed)::after {
+    filter: invert(0.7) sepia(1) saturate(5) hue-rotate(10deg);
+}
+
+.faq-glass-accordion .accordion-body {
+    background: rgba(0, 0, 0, 0.15);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 16px 24px 20px;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.faq-glass-accordion .accordion-body strong {
+    color: #ffc107;
+}
+
+/* ── CTA Banner ── */
+.faq-cta-banner {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-cta-text h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.faq-cta-text p {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.faq-cta-btn {
+    background: #ffc107;
+    color: #212529;
+    border: none;
+    font-weight: 700;
+    padding: 12px 32px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+}
+
+.faq-cta-btn:hover {
+    background: #ffca2c;
+    color: #212529;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+}
+
+/* ── Animations ── */
+.faq-fade-up {
+    animation: faqFadeUp 0.7s ease-out forwards;
+}
+
+.faq-fade-up-delay {
+    animation-delay: 0.15s;
+    opacity: 0;
+}
+
+@keyframes faqFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+    .faq-cta-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .faq-section {
-        padding: 0 20px;
+    .faq-wrapper {
+        padding: 50px 15px;
     }
 }
