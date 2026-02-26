@@ -14,6 +14,10 @@
 *.csproj.user
 *.nuget.g.props
 
+# Archivos de logs de API
+api_full_logs.txt
+api_logs.txt
+
 # Ignorar paquetes NuGet descargados
 packages/
 

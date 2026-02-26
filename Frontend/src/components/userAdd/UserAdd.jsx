@@ -52,7 +52,7 @@ const UserAdd = () => {
         "/api/User/admin",
         formData
       );
-      console.log("Usuario registrado:", response.data);
+
       setSuccess(true);
       setShowModal(true);
     } catch (error) {

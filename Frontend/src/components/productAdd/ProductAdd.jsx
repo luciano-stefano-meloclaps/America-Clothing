@@ -74,7 +74,7 @@ const ProductAdd = () => {
           },
         }
       );
-      console.log("Producto registrado:", response.data);
+
       setSuccess(true);
       setShowModal(true);
     } catch (error) {

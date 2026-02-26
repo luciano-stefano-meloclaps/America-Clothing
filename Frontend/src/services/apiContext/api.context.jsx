@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { mockProducts, mockUsers, mockSaleOrders } from "../../data/mockData";
 
 const APIContext = createContext();
 
@@ -18,6 +19,7 @@ export const APIContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(cartValue ? cartValue : []);
   const [purchaseHistory, setPurchaseHistory] = useState([]);
+  const [isDemoMode, setIsDemoMode] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -28,17 +30,19 @@ export const APIContextProvider = ({ children }) => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('/api/User'); // Endpoint de usuarios
-        setUsers(response.data); // Asigna la respuesta al estado de usuarios
+        const response = await axios.get('/api/User');
+        setUsers(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.error("Error al cargar los usuarios", error);
+        console.error("Error al cargar los usuarios — usando mock data", error);
+        setUsers(mockUsers);
+        setIsDemoMode(true);
         setIsLoading(false);
       }
     };
 
     fetchUsers();
-  }, []); // Este efecto se ejecuta una vez al montar el componente
+  }, []);
 
 
   // Carga de productos
@@ -47,12 +51,14 @@ export const APIContextProvider = ({ children }) => {
       try {
         const response = await axios.get("/api/Product");
         if (Array.isArray(response.data)) {
-          setProducts(response.data); // Guardamos los productos en el estado
+          setProducts(response.data);
         } else {
           throw new Error("La respuesta no es un array");
         }
       } catch (error) {
-        console.error("Error al cargar los productos", error);
+        console.error("Error al cargar los productos — usando mock data", error);
+        setProducts(mockProducts);
+        setIsDemoMode(true);
       }
     };
 
@@ -65,11 +71,13 @@ useEffect(() => {
   const fetchSaleOrders = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("/api/SaleOrder/GetSaleOrdersWithLines"); // Endpoint de SaleOrders
-      setSaleOrders(response.data); // Guardamos las órdenes de venta en el estado
+      const response = await axios.get("/api/SaleOrder/GetSaleOrdersWithLines");
+      setSaleOrders(response.data);
       setIsLoading(false);
     } catch (error) {
-      console.error("Error al cargar las órdenes de venta", error);
+      console.error("Error al cargar las órdenes de venta — usando mock data", error);
+      setSaleOrders(mockSaleOrders);
+      setIsDemoMode(true);
       setIsLoading(false);
     }
   };
@@ -85,11 +93,11 @@ useEffect(() => {
   const addToCart = (product) => {
     const existingProduct = cart.find((p) => p.code === product.code);
     if (existingProduct) {
-      return false; // Devuelve false si el producto ya existe
+      return false;
     }
   
-    setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]); // Agrega el nuevo producto
-    return true; // Devuelve true si el producto fue agregado
+    setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
+    return true;
   };
   
   const removeFromCart = (code) => {
@@ -97,7 +105,7 @@ useEffect(() => {
   };
 
   const clearCart = () => {
-    setCart([]); // Vacía el carrito
+    setCart([]);
   };
 
   const putProduct = (product, token) => {
@@ -122,6 +130,7 @@ useEffect(() => {
         removeFromCart,
         clearCart,
         putProduct,
+        isDemoMode,
       }}
     >
       {children}
