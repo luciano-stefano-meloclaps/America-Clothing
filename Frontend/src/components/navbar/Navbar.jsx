@@ -75,10 +75,10 @@ function NavbarMain() {
                   Vestidos
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={Link} to="/AboutUs" className="nav-item text-light">
+              <Nav.Link as={Link} to="/aboutUs" className="nav-item text-light">
                 Quienes somos
               </Nav.Link>
-              <Nav.Link as={Link} to="/ContactUs" className="text-light">
+              <Nav.Link as={Link} to="/contactUs" className="text-light">
                 Contactanos
               </Nav.Link>
               <Nav.Link as={Link} to="/faq" className="text-light">

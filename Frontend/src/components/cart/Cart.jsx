@@ -244,7 +244,7 @@ const Cart = () => {
             <Row className="mb-4 p-0 text-center">
               <Col xs={12} md={12}>
                 <Image
-                  src="public/game.png"
+                  src="/game.png"
                   width={40}
                   fluid
                   className="mb-2 text-center"

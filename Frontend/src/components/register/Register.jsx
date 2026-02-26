@@ -83,7 +83,7 @@ const Register = () => {
         "/api/User",
         userData
       );
-      console.log("Usuario registrado:", response.data);
+
       setSuccess("Usuario registrado con éxito");
       setError(null);
       setShowModal(true); // Muestra el modal al registrar exitosamente
