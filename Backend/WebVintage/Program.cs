@@ -20,10 +20,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000", "http://localhost:5173", "https://localhost:5173")  // Verifica que esta URL sea la correcta
-                    .AllowAnyMethod()
-                   .AllowAnyHeader()
-                   .AllowCredentials(); // Solo necesario si envas cookies
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
         });
 });
 
