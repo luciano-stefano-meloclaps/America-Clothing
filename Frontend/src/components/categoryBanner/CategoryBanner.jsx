@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import "./CategoryBanner.css";
 
 const categories = [
-  { name: "Camperas", image: "https://images.pexels.com/photos/16170664/pexels-photo-16170664/free-photo-of-manos-chaqueta-denim-vaquero.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", path: "/productos/Camperas" },
-  { name: "Jeans", image: "https://images.pexels.com/photos/1082528/pexels-photo-1082528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", path: "/productos/Jeans" },
-  { name: "Buzos", image: "https://images.pexels.com/photos/702350/pexels-photo-702350.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", path: "/productos/Buzos" },
-  { name: "Camisas", image: "https://images.pexels.com/photos/769749/pexels-photo-769749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", path: "/productos/Camisas" },
-  { name: "Bermudas", image: "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", path: "/productos/Bermudas" },
-  { name: "Vestidos", image: "https://images.pexels.com/photos/19090602/pexels-photo-19090602/free-photo-of-vintage-boutique.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", path: "/productos/Vestidos" },
+  { name: "Camperas", image: "https://acdn-us.mitiendanube.com/stores/001/048/003/products/1003417198-56d89892e497ed94b217590974469099-1024-1024.webp", path: "/productos/Camperas" },
+  { name: "Jeans", image: "https://http2.mlstatic.com/D_NQ_NP_2X_870011-MLA107597022863_022026-F.webp", path: "/productos/Jeans" },
+  { name: "Buzos", image: "https://acdn-us.mitiendanube.com/stores/001/048/003/products/1004021579-267741caffd62de6d917695450905292-1024-1024.webp", path: "/productos/Buzos" },
+  { name: "Camisas", image: "https://http2.mlstatic.com/D_NQ_NP_2X_943981-CBT107541321145_022026-F.webp", path: "/productos/Camisas" },
+  { name: "Shorts", image: "https://acdn-us.mitiendanube.com/stores/001/048/003/products/1003860312-fc9e44b8aa35a9ecdc17668792780243-1024-1024.webp", path: "/productos/Shorts" },
+  { name: "Vestidos", image: "https://http2.mlstatic.com/D_NQ_NP_2X_897254-MLA105856817222_022026-F.webp", path: "/productos/Vestidos" },
 ];
 
 const CategoryBanner = () => {
