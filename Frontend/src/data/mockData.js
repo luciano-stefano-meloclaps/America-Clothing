@@ -267,7 +267,7 @@ export const mockProducts = [
     code: 901,
     name: "Archival Raw Denim Bermudas",
     description: "Pieza esencial de los 90 con corte relaxed. Denim rígido de alto gramaje y teñido índigo profundo.",
-    category: "Bermudas",
+    category: "Shorts",
     price: 155000,
     size: "L",
     stock: 2,
@@ -279,7 +279,7 @@ export const mockProducts = [
     code: 903,
     name: "Classic Tailored Chino Bermudas",
     description: "La elegancia del estilo prep en un corte sastrero clásico. Gabardina premium.",
-    category: "Bermudas",
+    category: "Shorts",
     price: 135000,
     size: "M",
     stock: 2,
@@ -291,7 +291,7 @@ export const mockProducts = [
     code: 906,
     name: "Rugged Distressed Vintage Denim",
     description: "Denim auténtico con lavado a la piedra y detalles de desgaste natural. Silueta noventera oversize.",
-    category: "Bermudas",
+    category: "Shorts",
     price: 175000,
     size: "L",
     stock: 1,
@@ -300,43 +300,7 @@ export const mockProducts = [
     image: "https://acdn-us.mitiendanube.com/stores/001/048/003/products/1003975092-1ae8c8205718f8b6d317694709752424-1024-1024.webp"
   },
 
-  // Vestidos
-  {
-    code: 802,
-    name: "Victorian Revival Tea Dress",
-    description: "Rescatado de los años 70, este vestido camisero destaca por su algodón ligero y detalles de encaje calado.",
-    category: "Vestidos",
-    price: 145000,
-    size: "S/M",
-    stock: 1,
-    sold: 0,
-    state: 1,
-    image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?w=800&q=80"
-  },
-  {
-    code: 803,
-    name: "Golden Era Silk Slip",
-    description: "Una joya del Old Hollywood. Slip de seda en tono champagne con brillo nacarado y escote drapeado exquisito.",
-    category: "Vestidos",
-    price: 235000,
-    size: "S/M",
-    stock: 2,
-    sold: 0,
-    state: 1,
-    image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80"
-  },
-  {
-    code: 807,
-    name: "Parisian Promenade Sketch Dress",
-    description: "Vestido camisero en algodón premium con estampa tipográfica inspirada en las calles de París.",
-    category: "Vestidos",
-    price: 165000,
-    size: "M",
-    stock: 2,
-    sold: 0,
-    state: 1,
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80"
-  },
+  // Vestidos - Removidos para mostrar 'Catálogo en Preparación'
 
   // Pantalones
   {

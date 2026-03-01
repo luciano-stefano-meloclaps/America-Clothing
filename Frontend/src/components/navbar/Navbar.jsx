@@ -68,8 +68,8 @@ function NavbarMain() {
                 <NavDropdown.Item as={Link} to="/productos/Camisas">
                   Camisas
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/productos/Bermudas">
-                  Bermudas
+                <NavDropdown.Item as={Link} to="/productos/Shorts">
+                  Shorts
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/productos/Vestidos">
                   Vestidos

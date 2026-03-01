@@ -123,27 +123,26 @@ import Container from "react-bootstrap/Container";
           </Offcanvas.Body>
         </Offcanvas>
 
-        {products.length === 0 ? (
-          // Solo mostramos el estado de "Preparación" si estamos en una categoría específica.
-          // En el Home, si products está vacío, es probable que esté cargando o el catálogo esté vacío.
-          category && (
-            <div className="empty-state-container">
-              <FontAwesomeIcon icon={faBoxOpen} className="empty-state-icon" />
-              <h2 className="empty-state-title">Catálogo en Preparación</h2>
-              <p className="empty-state-text">
-                Estamos curando las mejores prendas vintage para esta sección. 
-                Vuelve pronto para descubrir tesoros únicos.
-              </p>
-            </div>
-          )
-        ) : filteredProducts.length === 0 ? (
+        {filteredProducts.length === 0 ? (
           <div className="empty-state-container">
-            <FontAwesomeIcon icon={faSearchMinus} className="empty-state-icon" />
-            <h2 className="empty-state-title">Sin Resultados</h2>
-            <p className="empty-state-text">
-              No hemos encontrado prendas que coincidan con tus filtros. 
-              Prueba ajustando el rango de precio o seleccionando otro talle.
-            </p>
+            <FontAwesomeIcon icon={faBoxOpen} className="empty-state-icon" />
+            {category || categoryFilter ? (
+              <>
+                <h2 className="empty-state-title">Catálogo en Preparación</h2>
+                <p className="empty-state-text">
+                  Estamos seleccionando las mejores joyas vintage para esta categoría. 
+                  Vuelve pronto para descubrir prendas únicas con historia.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="empty-state-title">Sin Disponibilidad</h2>
+                <p className="empty-state-text">
+                  No hemos encontrado tesoros que coincidan con tus filtros actuales. 
+                  Intenta ajustando el talle o el rango de precio para explorar más opciones.
+                </p>
+              </>
+            )}
           </div>
         ) : (
           <>

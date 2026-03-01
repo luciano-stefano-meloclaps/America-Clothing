@@ -2,6 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { mockProducts, mockUsers, mockSaleOrders } from "../../data/mockData";
 
+// Configuración de la URL base dinámica para Producción (Railway) o Local
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || "";
+
 const APIContext = createContext();
 
 const cartValue = JSON.parse(localStorage.getItem("cart"));
