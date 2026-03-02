@@ -187,9 +187,7 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("varchar(45)")
-                        .HasColumnName("username");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Usertype")
                         .IsRequired()
@@ -200,6 +198,34 @@ namespace Infrastructure.Migrations
                         .HasName("PRIMARY");
 
                     b.ToTable("user", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 9998,
+                            Address = "Demo Address",
+                            Email = "admin@demo.com",
+                            LastName = "Admin",
+                            Name = "Demo",
+                            Password = "admin123",
+                            PhoneNumber = "1234567890",
+                            State = true,
+                            Username = "demoadmin",
+                            Usertype = "admin"
+                        },
+                        new
+                        {
+                            Id = 9999,
+                            Address = "Demo Address",
+                            Email = "client@demo.com",
+                            LastName = "Client",
+                            Name = "Demo",
+                            Password = "client123",
+                            PhoneNumber = "1234567890",
+                            State = true,
+                            Username = "democlient",
+                            Usertype = "client"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Saleorder", b =>

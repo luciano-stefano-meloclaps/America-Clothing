@@ -23,8 +23,6 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    address: "",
-    phoneNumber: "",
   });
 
   const [error, setError] = useState(null);
@@ -74,8 +72,6 @@ const Register = () => {
       username: formData.username,
       email: formData.email,
       password: formData.password,
-      address: formData.address,
-      phoneNumber: formData.phoneNumber,
     };
 
     try {
@@ -103,7 +99,7 @@ const Register = () => {
         className="contact-us-container p-5 my-5 rounded"
         style={{ maxWidth: "600px" }}
       >
-        <Row className="align-items-center justify-content-center text-center">
+        <Row className="align-items-center justify-content-center text-center mb-5">
           <Col xs="auto" className="pe-1">
             <Image src="/game.png" width={50} fluid />
           </Col>
@@ -116,15 +112,16 @@ const Register = () => {
             </h1>
           </Col>
         </Row>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit} className="d-flex flex-column gap-3 px-4 pb-4">
           {success && (
-            <Alert variant="success" className="mt-3">
+            <Alert variant="success" className="mb-0">
               {success}
             </Alert>
           )}
-          <Form.Group className="pt-5 mb-4">
+          <Form.Group className="pt-2">
             <Form.Control
               type="text"
+              size="lg"
               placeholder="Nombre"
               name="name"
               value={formData.name}
@@ -136,9 +133,10 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4">
+          <Form.Group>
             <Form.Control
               type="text"
+              size="lg"
               placeholder="Apellido"
               name="lastName"
               value={formData.lastName}
@@ -150,9 +148,10 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4">
+          <Form.Group>
             <Form.Control
               type="text"
+              size="lg"
               placeholder="Usuario"
               name="username"
               value={formData.username}
@@ -164,9 +163,10 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4">
+          <Form.Group>
             <Form.Control
               type="email"
+              size="lg"
               placeholder="Email"
               name="email"
               value={formData.email}
@@ -178,9 +178,10 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4">
+          <Form.Group>
             <Form.Control
               type="password"
+              size="lg"
               placeholder="Contraseña"
               name="password"
               value={formData.password}
@@ -192,9 +193,10 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4">
+          <Form.Group>
             <Form.Control
               type="password"
+              size="lg"
               placeholder="Confirme su contraseña"
               name="confirmPassword"
               value={formData.confirmPassword}
@@ -206,41 +208,93 @@ const Register = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4">
-            <Form.Control
-              type="text"
-              placeholder="Dirección"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Por favor, ingresa tu dirección.
-            </Form.Control.Feedback>
-          </Form.Group>
 
-          <Form.Group className="mb-4">
-            <Form.Control
-              type="text"
-              placeholder="Teléfono"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Por favor, ingresa tu número de teléfono.
-            </Form.Control.Feedback>
-          </Form.Group>
 
           <Button
-            variant="light"
+            size="lg"
             type="submit"
-            className="shadow rounded w-100"
+            className="w-100 fw-bold mt-4 border-0 text-dark"
+            style={{
+              borderRadius: "8px",
+              padding: "14px",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              backgroundColor: "#ffc107",
+              boxShadow: "0 4px 10px rgba(255, 193, 7, 0.3)",
+              letterSpacing: "1px"
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 6px 15px rgba(255, 193, 7, 0.5)";
+              e.currentTarget.style.backgroundColor = "#ffcd39";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 10px rgba(255, 193, 7, 0.3)";
+              e.currentTarget.style.backgroundColor = "#ffc107";
+            }}
           >
-            Crear cuenta
+            CREAR CUENTA
           </Button>
+
+          <div className="d-flex flex-column gap-3 mt-4 pt-4 border-top border-secondary">
+            <p className="text-center text-secondary mb-2 fw-semibold" style={{ fontSize: "0.85rem", letterSpacing: "1.5px" }}>ACCESOS RÁPIDOS DEMO</p>
+            <Button
+              size="lg"
+              type="button"
+              className="w-100 fw-bold"
+              style={{
+                borderRadius: "8px",
+                padding: "12px",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                backgroundColor: "rgba(13, 202, 240, 0.08)",
+                color: "#17a2b8",
+                border: "1px solid rgba(13, 202, 240, 0.4)"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(13, 202, 240, 0.15)";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(13, 202, 240, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(13, 202, 240, 0.08)";
+                e.currentTarget.style.color = "#17a2b8";
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+              onClick={() => navigate("/login")}
+            >
+              Log in como Admin
+            </Button>
+            <Button
+              size="lg"
+              type="button"
+              className="w-100 fw-bold"
+              style={{
+                borderRadius: "8px",
+                padding: "12px",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                backgroundColor: "rgba(32, 201, 151, 0.08)",
+                color: "#20c997",
+                border: "1px solid rgba(32, 201, 151, 0.4)"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(32, 201, 151, 0.15)";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(32, 201, 151, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(32, 201, 151, 0.08)";
+                e.currentTarget.style.color = "#20c997";
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+              onClick={() => navigate("/login")}
+            >
+              Log in como Cliente
+            </Button>
+          </div>
           {error && (
             <Alert variant="danger" className="mt-3">
               {error}
