@@ -86,8 +86,36 @@ public partial class VintageDbContext : DbContext
             entity.Property(e => e.Password).HasMaxLength(45).HasColumnName("password");
             entity.Property(e => e.PhoneNumber).HasMaxLength(45).HasColumnName("phone_number");
             entity.Property(e => e.State).HasColumnName("state");
-            entity.Property(e => e.Username).HasMaxLength(45).HasColumnName("username");
             entity.Property(e => e.Usertype).HasColumnType("enum('admin','employee','client','cadet')").HasColumnName("usertype");
+
+            entity.HasData(
+                new User
+                {
+                    Id = 9998,
+                    Name = "Demo",
+                    LastName = "Admin",
+                    Email = "admin@demo.com",
+                    Password = "admin123",
+                    Username = "demoadmin",
+                    Address = "Demo Address",
+                    PhoneNumber = "1234567890",
+                    State = true,
+                    Usertype = "admin"
+                },
+                new User
+                {
+                    Id = 9999,
+                    Name = "Demo",
+                    LastName = "Client",
+                    Email = "client@demo.com",
+                    Password = "client123",
+                    Username = "democlient",
+                    Address = "Demo Address",
+                    PhoneNumber = "1234567890",
+                    State = true,
+                    Usertype = "client"
+                }
+            );
         });
 
         // QUITAMOS LA LÍNEA DEL MÉTODO PARCIAL QUE DABA ERROR
