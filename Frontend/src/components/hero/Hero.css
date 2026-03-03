@@ -17,6 +17,37 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: whitesmoke;
+  width: auto;
+  min-width: 300px;
+}
+
+.glass-morphism {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.reveal-text {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: reveal 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.reveal-subtext {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-overlay h1 {

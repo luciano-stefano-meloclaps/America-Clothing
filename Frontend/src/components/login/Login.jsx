@@ -84,6 +84,11 @@ function Login() {
     setValidated(true);
     setLoading(true);
 
+    // Mock tokens para fallback offline (Portfolio ready)
+    const adminToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGVtbyBBZG1pbiIsInJvbGUiOiJhZG1pbiIsInN1YiI6Ijk5OTgiLCJleHAiOjE5OTk4ODg3Nzd9.fake_signature";
+    const clientToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGVtbyBDbGllbnQiLCJyb2xlIjoiY2xpZW50Iiwic3ViIjoiOTk5OSIsImV4cCI6MTk5OTg4ODc3N30.fake_signature";
+    const selectedToken = demoEmail.includes("admin") ? adminToken : clientToken;
+
     try {
       const response = await axios.post(
         "/api/authenticate/authenticate",
@@ -91,18 +96,22 @@ function Login() {
       );
 
       const token = response.data;
-      login(token); // Usar el método login de AuthContext
+      login(token); 
       setVariant("success");
       setMessage("Inicio de sesión exitoso.");
       navigate("/");
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        setVariant("danger");
-        setMessage("Email y/o contraseña incorrectas. Por favor intente de nuevo.");
-      } else {
-        setVariant("danger");
-        setMessage("Ocurrió un error al intentar iniciar sesión. Por favor, intenta de nuevo más tarde.");
-      }
+      console.warn("API fallida para demo login, usando fallback local...", error);
+      
+      // Fallback local para que el portfolio siempre funcione
+      login(selectedToken);
+      setVariant("success");
+      setMessage("Modo Demo: Inicio de sesión exitoso (Sesión local).");
+      
+      // Pequeño delay para UX
+      setTimeout(() => {
+        navigate("/");
+      }, 800);
     } finally {
       setLoading(false);
     }
