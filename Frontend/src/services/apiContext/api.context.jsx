@@ -5,6 +5,20 @@ import { mockProducts, mockUsers, mockSaleOrders } from "../../data/mockData";
 // Configuración de la URL base dinámica para Producción (Railway) o Local
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || "";
 
+// Configuración de interceptor para enviar el token JWT automáticamente
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 const APIContext = createContext();
 
 const cartValue = JSON.parse(localStorage.getItem("cart"));
