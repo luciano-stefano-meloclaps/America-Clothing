@@ -2,19 +2,33 @@ import React, { useState } from "react";
 
 import "./ProductFilter.css";
 
-const ProductFilter = ({ products, onSizeChange, onPriceChange, onCategoryChange, currentCategory }) => {
-  const [sizeFilter, setSizeFilter] = useState([]);
+const ProductFilter = ({ 
+  products, 
+  onSizeChange, 
+  onPriceChange, 
+  onCategoryChange, 
+  currentCategory,
+  initialSizeFilter = [],
+  initialPriceRange = { min: 0, max: Infinity }
+}) => {
+  const [sizeFilter, setSizeFilter] = useState(initialSizeFilter);
   const [categoryFilter, setCategoryFilter] = useState(currentCategory || "");
-  const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
+  const [priceRange, setPriceRange] = useState(initialPriceRange);
   const [tempPriceRange, setTempPriceRange] = useState({
-    min: "",
-    max: "",
+    min: initialPriceRange.min === 0 ? "" : initialPriceRange.min.toString(),
+    max: initialPriceRange.max === Infinity ? "" : initialPriceRange.max.toString(),
   });
 
-  // Architect Fix: Keep filter state in sync with URL/Parent category
+  // Architect Fix: Keep filter state in sync with URL/Parent category and global filters
   React.useEffect(() => {
     setCategoryFilter(currentCategory || "");
-  }, [currentCategory]);
+    setSizeFilter(initialSizeFilter);
+    setPriceRange(initialPriceRange);
+    setTempPriceRange({
+      min: initialPriceRange.min === 0 ? "" : initialPriceRange.min.toString(),
+      max: initialPriceRange.max === Infinity ? "" : initialPriceRange.max.toString(),
+    });
+  }, [currentCategory, initialSizeFilter, initialPriceRange]);
 
   const categories = ["Camperas", "Jeans", "Buzos", "Camisas", "Shorts", "Vestidos"];
 

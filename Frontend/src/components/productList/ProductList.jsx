@@ -53,6 +53,14 @@ import "./ProductList.css";
     setCurrentPage(1); // Explicit reset on user interaction
   };
 
+  const resetAllFilters = () => {
+    setCategoryFilter("");
+    setSizeFilter([]);
+    setPriceRange({ min: 0, max: Infinity });
+    setCurrentPage(1);
+    if (category) navigate("/productos");
+  };
+
   // REMOVED: fetchProducts and its useEffect. 
   // Data is now passed via props from App.jsx (Single Source of Truth)
 
@@ -131,6 +139,36 @@ import "./ProductList.css";
           </Button>
         </div>
 
+        {/* Visual Filter Summary (Architectural Polish) */}
+        {(categoryFilter || sizeFilter.length > 0 || priceRange.min > 0 || priceRange.max !== Infinity) && (
+          <div className="filter-summary-container mt-3 mb-4 d-flex align-items-center flex-wrap gap-2">
+            <span className="text-secondary small text-uppercase fw-bold me-2">Filtros Activos:</span>
+            {categoryFilter && (
+              <span className="filter-badge">
+                Categoría: {categoryFilter}
+              </span>
+            )}
+            {sizeFilter.length > 0 && (
+              <span className="filter-badge">
+                Talles: {sizeFilter.join(", ")}
+              </span>
+            )}
+            {(priceRange.min > 0 || priceRange.max !== Infinity) && (
+              <span className="filter-badge">
+                Precio: ${priceRange.min.toLocaleString()} - {priceRange.max === Infinity ? "Max" : `$${priceRange.max.toLocaleString()}`}
+              </span>
+            )}
+            <Button 
+              variant="link" 
+              className="text-accent-user p-0 ms-2 small fw-bold" 
+              onClick={resetAllFilters}
+              style={{ fontSize: '0.85rem', textDecoration: 'none' }}
+            >
+              LIMPIAR TODO
+            </Button>
+          </div>
+        )}
+
         <Offcanvas show={showFilters} onHide={handleCloseFilters}>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Filtrar Productos</Offcanvas.Title>
@@ -142,6 +180,8 @@ import "./ProductList.css";
               onPriceChange={handlePriceChange}
               onCategoryChange={handleCategoryUpdate}
               currentCategory={categoryFilter}
+              initialSizeFilter={sizeFilter}
+              initialPriceRange={priceRange}
             />
           </Offcanvas.Body>
         </Offcanvas>

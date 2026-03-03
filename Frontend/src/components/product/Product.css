@@ -3,11 +3,46 @@
 .product-detail-container {
     min-height: calc(100vh - 80px);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Architect Fix: Align to top-left for consistent back button placement */
+    justify-content: flex-start;
+    padding: 2rem 0;
     background-color: #121212;
-    /* Deep dark background */
+}
+
+.product-detail-header {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+    /* Matches container padding */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.back-button-custom-detail {
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 400 !important;
+    font-size: 0.85rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 16px !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0.8;
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.back-button-custom-detail:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateX(-4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .product-image-box {
