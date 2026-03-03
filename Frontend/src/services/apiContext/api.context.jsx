@@ -52,6 +52,7 @@ export const APIContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setIsLoading(true);
         const response = await axios.get("/api/Product");
         if (Array.isArray(response.data)) {
           setProducts(response.data);
@@ -62,6 +63,8 @@ export const APIContextProvider = ({ children }) => {
         console.error("Error al cargar los productos — usando mock data", error);
         setProducts(mockProducts);
         setIsDemoMode(true);
+      } finally {
+        setIsLoading(false);
       }
     };
 
