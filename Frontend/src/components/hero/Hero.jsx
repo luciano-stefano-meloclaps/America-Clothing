@@ -21,9 +21,9 @@ const Hero = () => {
                   opacity: 0.9,
                 }}
               />
-              <div className="hero-overlay">
-                <h1>American Clothing</h1>
-                <p>Donde la moda se encuentra con la nostalgia</p>
+              <div className="hero-overlay glass-morphism">
+                <h1 className="reveal-text">American Clothing</h1>
+                <p className="reveal-subtext">Donde la moda se encuentra con la nostalgia</p>
               </div>
             </div>
           </Col>

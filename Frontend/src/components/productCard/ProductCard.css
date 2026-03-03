@@ -4,19 +4,18 @@
   width: 100%;
   max-width: 320px;
   margin: 0 auto;
-  background: #fff3cd;
-  /* Amarillo leve estilo "warning" (Bootstrap-like) */
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
   padding: 0;
   margin: 0;
-  border: 1px solid #e0e0e0;
-  /* Borde sutil */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  /* Sombra suave */
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .product-card .card-img-top {
@@ -38,9 +37,15 @@
 
 
 .card-hover:hover {
-  transform: translateY(-5px);
-  /* Elevación sutil en lugar de escala agresiva */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.btn-hover {
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-hover:hover {

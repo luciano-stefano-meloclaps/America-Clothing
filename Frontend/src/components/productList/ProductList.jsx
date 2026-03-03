@@ -8,13 +8,16 @@ import ProductFilter from "../productFilter/ProductFilter";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faSearchMinus, faBoxOpen } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faSearchMinus, faBoxOpen, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
+import "./ProductList.css";
 
   const ProductList = ({ products = [] }) => {
-  const { category } = useParams(); 
-  // const [products, setProducts] = useState([]); // REMOVED: Using props now
+  const { category } = useParams();
+  const navigate = useNavigate();
+  
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
@@ -28,9 +31,16 @@ import Container from "react-bootstrap/Container";
   const handleCloseFilters = () => setShowFilters(false);
   const handleShowFilters = () => setShowFilters(true);
 
+  // FIX: Sync internal state with URL parameter when it changes (expert fix)
+  useEffect(() => {
+    setCategoryFilter(category || "");
+    setCurrentPage(1);
+    handleCloseFilters(); // Close filters if they are open
+  }, [category]);
+
   const handleCategoryUpdate = (newCategory) => {
     setCategoryFilter(newCategory);
-    setCurrentPage(1); // Explicit reset on user interaction
+    setCurrentPage(1);
   };
 
   const handleSizeChange = (newSize) => {
@@ -93,16 +103,29 @@ import Container from "react-bootstrap/Container";
       id="gridcards"
     >
       <Container>
-        <h1 className="my-5 color-accent-user font-tile text-center">
-          American Clothing
-        </h1>
+        <div className="product-list-header mt-4">
+          {category && (
+            <div className="back-btn-container">
+              <Button 
+                variant="link" 
+                onClick={() => navigate("/")} 
+                className="back-button-custom"
+              >
+                <FontAwesomeIcon icon={faArrowLeft} /> Volver a Inicio
+              </Button>
+            </div>
+          )}
+          
+          <h1 className="color-accent-user font-tile text-center mb-4">
+            American Clothing
+          </h1>
 
-        <div className="d-flex justify-content-center mb-4">
           <Button
             variant="light"
             size="lg"
-            className="px-3"
+            className="px-4 py-2"
             onClick={handleShowFilters}
+            style={{ borderRadius: '50px', fontWeight: '600' }}
           >
             Filtrar <FontAwesomeIcon icon={faFilter} className="ms-2" />
           </Button>

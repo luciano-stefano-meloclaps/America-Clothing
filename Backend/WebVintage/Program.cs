@@ -2,6 +2,7 @@ using Application.Interfaces;
 using Application.Services;
 using CloudinaryDotNet;
 using Domain.Interfaces;
+using Domain.Entities;
 using Infrastructure.ApplicationDbContext;
 using Infrastructure.Data;
 using Infrastructure.Services;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.IO;
 using static Infrastructure.Services.AuthenticateService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -124,6 +126,28 @@ using (var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<VintageDbContext>();
         context.Database.Migrate();
+
+        // Manual Data Seeding for Demo (Senior Architect Approach: Read from SQL file)
+        if (!context.Products.Any())
+        {
+            var seedFilePath = Path.Combine(AppContext.BaseDirectory, "SeedData", "_seed_data.sql");
+            
+            // In Docker, it's mapped to /app/SeedData/_seed_data.sql
+            // Fallback for local development or if AppContext.BaseDirectory is different
+            if (!File.Exists(seedFilePath)) 
+            {
+                seedFilePath = "/app/SeedData/_seed_data.sql";
+            }
+
+            if (File.Exists(seedFilePath))
+            {
+                var sql = File.ReadAllText(seedFilePath);
+                
+                // Split by ';' to execute in chunks if needed, or just execute raw if the driver supports it
+                // For MySQL, multiple statements are usually allowed if configured in connection string
+                context.Database.ExecuteSqlRaw(sql);
+            }
+        }
     }
     catch (Exception ex)
     {

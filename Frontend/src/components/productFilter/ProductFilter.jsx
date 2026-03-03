@@ -11,7 +11,12 @@ const ProductFilter = ({ products, onSizeChange, onPriceChange, onCategoryChange
     max: "",
   });
 
-  const categories = ["Camperas", "Jeans", "Buzos", "Camisas", "Bermudas", "Vestidos"];
+  // Architect Fix: Keep filter state in sync with URL/Parent category
+  React.useEffect(() => {
+    setCategoryFilter(currentCategory || "");
+  }, [currentCategory]);
+
+  const categories = ["Camperas", "Jeans", "Buzos", "Camisas", "Shorts", "Vestidos"];
 
   const handleCategoryChange = (cat) => {
     const newCategory = categoryFilter === cat ? "" : cat;

@@ -33,9 +33,9 @@ function NavbarMain() {
 
   return (
     <>
-      <Alert className="m-0 p-1 text-center" variant="warning">
-        🛒😎 Envío gratis para todas las compras arriba de $30.000! 😎🛒
-      </Alert>
+      <div className="navbar-promo-banner">
+        <span>🛒 <strong>ENVÍO GRATIS</strong> PARA COMPRAS SUPERIORES A $30.000 🛒</span>
+      </div>
       <Navbar
         expand="lg"
         variant="dark"
