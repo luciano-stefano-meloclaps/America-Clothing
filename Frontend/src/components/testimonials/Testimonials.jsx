@@ -36,7 +36,7 @@ const Testimonials = () => {
     <div className="testimonials-wrapper">
       <Container className="testimonials-section">
         <h1 className="text-center mb-5 text-uppercase">Lo que dicen nuestros clientes</h1>
-        <Carousel indicators={true} className="testimonials-carousel" interval={5000} fade>
+        <Carousel indicators={true} className="testimonials-carousel" interval={5000}>
           {testimonials.map((t, index) => (
             <Carousel.Item key={index}>
               <div className="testimonial-card text-center">

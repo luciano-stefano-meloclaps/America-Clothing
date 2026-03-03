@@ -7,14 +7,16 @@ import axios from "axios";
 import { useAPI } from "../../services/apiContext/api.context";
 import modelIMG from "../../assets/modelIMG.jpg";
 
-import { faCreditCard, faCalendarDays, faMoneyBillWave, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCreditCard, faCalendarDays, faMoneyBillWave, faCircleCheck, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 import "./Product.css";
 
 const Product = () => {
   const { productId } = useParams();
   const { addToCart } = useAPI();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -49,16 +51,43 @@ const Product = () => {
   const handleCloseErrorModal = () => setShowErrorModal(false);
 
   if (isLoading) {
-    return <Container className="min-vh-100 d-flex justify-content-center align-items-center bg-dark text-light">Cargando producto...</Container>;
+    return (
+      <div className="product-detail-container min-vh-100 bg-dark text-light p-5">
+        <Container>
+           <Button variant="link" onClick={() => navigate(-1)} className="back-button-custom-detail mb-5">
+            <FontAwesomeIcon icon={faArrowLeft} /> Volver
+          </Button>
+          <div className="text-center mt-5">Cargando producto...</div>
+        </Container>
+      </div>
+    );
   }
 
   if (!product) {
-    return <Container className="min-vh-100 d-flex justify-content-center align-items-center bg-dark text-light">Producto no encontrado</Container>;
+    return (
+      <div className="product-detail-container min-vh-100 bg-dark text-light p-5">
+        <Container>
+          <Button variant="link" onClick={() => navigate(-1)} className="back-button-custom-detail mb-5">
+            <FontAwesomeIcon icon={faArrowLeft} /> Volver
+          </Button>
+          <div className="text-center mt-5">Producto no encontrado</div>
+        </Container>
+      </div>
+    );
   }
 
   return (
     <div className="product-detail-container min-vh-100">
       <Container>
+        <div className="product-detail-header mb-4">
+          <Button 
+            variant="link" 
+            onClick={() => navigate(-1)} 
+            className="back-button-custom-detail"
+          >
+            <FontAwesomeIcon icon={faArrowLeft} /> Volver
+          </Button>
+        </div>
         <Row className="gy-4">
           <Col lg={5} md={6}>
             <div className="product-image-box h-100">
