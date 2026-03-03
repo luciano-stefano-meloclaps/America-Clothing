@@ -15,28 +15,15 @@ import "./Product.css";
 
 const Product = () => {
   const { productId } = useParams();
-  const { addToCart } = useAPI();
+  const { products, isLoading: isGlobalLoading, addToCart } = useAPI();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  
   const [showModal, setShowModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(`/api/Product/${productId}`);
-        setProduct(response.data);
-      } catch (error) {
-        console.error("Error al cargar el producto:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [productId]);
+  // Senior Architect Fix: "Single Source of Truth" pattern.
+  // Instead of a direct API call, we use the already resilient list from Context.
+  const product = products.find(p => String(p.code) === String(productId));
 
   const handleAddToCart = () => {
     const success = addToCart(product);
@@ -50,7 +37,7 @@ const Product = () => {
   const handleCloseModal = () => setShowModal(false);
   const handleCloseErrorModal = () => setShowErrorModal(false);
 
-  if (isLoading) {
+  if (isGlobalLoading) {
     return (
       <div className="product-detail-container min-vh-100 bg-dark text-light p-5">
         <Container>
