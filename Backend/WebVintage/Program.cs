@@ -92,12 +92,33 @@ builder.Services.Configure<AuthenticateServiceOptions>(
 builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 #endregion
 
+#endregion
+
+// Database Configuration (Lead Architect Choice: SQLite for portability and low-cost demo)
+var connectionString = builder.Configuration.GetConnectionString("connection");
+
+// Ensure Data directory exists for persistence
+var dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
+if (!Directory.Exists(dataFolder)) Directory.CreateDirectory(dataFolder);
+
+if (string.IsNullOrEmpty(connectionString) || connectionString.Contains("Server="))
+{
+    // Path robusto para Docker y Local
+    var dbPath = Path.Combine(dataFolder, "vintage.db");
+    connectionString = $"Data Source={dbPath}";
+    Console.WriteLine($"ℹ️ Using SQLite database at: {dbPath}");
+}
+
+builder.Services.AddDbContext<VintageDbContext>(options =>
+    options.UseSqlite(connectionString));
+
 #region Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ISaleOrderRepository, SaleOrderRepository>();
 builder.Services.AddScoped<ISaleOrderLineRepository, SaleOrderLineRepository>();
 #endregion
+
 
 var app = builder.Build();
 
@@ -127,22 +148,21 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<VintageDbContext>();
-        context.Database.EnsureCreated();
+        context.Database.EnsureCreated(); 
 
-        // Senior Architect Approach: Robust, Transactional Data Seeding with SQLite support
         if (!context.Products.Any())
         {
+            Console.WriteLine("🔍 No products found. Starting seeding process...");
             var seedFilePath = Path.Combine(AppContext.BaseDirectory, "SeedData", "02-seed-data.sql");
             if (!File.Exists(seedFilePath)) seedFilePath = "/app/SeedData/02-seed-data.sql";
 
             if (File.Exists(seedFilePath))
             {
+                Console.WriteLine($"📖 Reading seed file from: {seedFilePath}");
                 using var transaction = context.Database.BeginTransaction();
                 try
                 {
                     var sql = File.ReadAllText(seedFilePath);
-                    
-                    // Adapt MySQL script to SQLite on the fly (Lead Architect Trick)
                     sql = sql.Replace("SET FOREIGN_KEY_CHECKS = 0;", "PRAGMA foreign_keys = OFF;");
                     sql = sql.Replace("SET FOREIGN_KEY_CHECKS = 1;", "PRAGMA foreign_keys = ON;");
                     sql = sql.Replace("TRUNCATE TABLE", "DELETE FROM");
@@ -157,17 +177,20 @@ using (var scope = app.Services.CreateScope())
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "❌ CRITICAL: Error during database seeding.");
+                    Console.WriteLine($"❌ ERROR during seeding: {ex.Message}");
                 }
             }
+            else
+            {
+                Console.WriteLine($"⚠️ Seed file NOT FOUND at: {seedFilePath}");
+            }
+        }
+        else 
+        {
+            Console.WriteLine("ℹ️ Products already exist in database. Skipping seed.");
         }
     }
     catch (Exception ex)
     {
-        var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while migrating the database.");
-    }
-}
 
 app.Run();
