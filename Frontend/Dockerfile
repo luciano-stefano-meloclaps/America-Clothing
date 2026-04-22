@@ -1,22 +1,19 @@
-# Etapa 1: Construcción
+# Etapa de construcción
 FROM node:18-alpine AS build
 WORKDIR /app
 
-# Copiamos archivos de dependencias
+# Copiar package.json e instalar dependencias
 COPY package*.json ./
 RUN npm install
 
-# Copiamos el resto del código y construimos
+# Copiar código y construir
 COPY . .
+# Asegurarse de que el build use la URL relativa /api para que pase por Nginx
 RUN npm run build
 
-# Etapa 2: Servidor de producción (Nginx)
+# Etapa de producción
 FROM nginx:stable-alpine
-
-# Copiamos los archivos construidos de Vite (carpeta dist) a Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copiamos una configuración de Nginx para que el Router de React funcione
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

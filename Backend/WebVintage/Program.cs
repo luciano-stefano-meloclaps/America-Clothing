@@ -132,13 +132,12 @@ using (var scope = app.Services.CreateScope())
         // Manual Data Seeding for Demo (Senior Architect Approach: Read from SQL file)
         if (!context.Products.Any())
         {
-            var seedFilePath = Path.Combine(AppContext.BaseDirectory, "SeedData", "_seed_data.sql");
+            var seedFilePath = Path.Combine(AppContext.BaseDirectory, "SeedData", "02-seed-data.sql");
             
-            // In Docker, it's mapped to /app/SeedData/_seed_data.sql
-            // Fallback for local development or if AppContext.BaseDirectory is different
+            // In Docker, it's mapped to /app/SeedData/02-seed-data.sql
             if (!File.Exists(seedFilePath)) 
             {
-                seedFilePath = "/app/SeedData/_seed_data.sql";
+                seedFilePath = "/app/SeedData/02-seed-data.sql";
             }
 
             if (File.Exists(seedFilePath))
