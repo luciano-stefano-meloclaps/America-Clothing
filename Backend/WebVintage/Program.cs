@@ -58,7 +58,8 @@ builder.Services.AddSwaggerGen(setupAction =>
 });
 
 // --- Database Configuration (SQLite) ---
-var connectionString = builder.Configuration.GetConnectionString("connection");
+var connectionString = builder.Configuration.GetConnectionString("connection") 
+                      ?? builder.Configuration["CONNECTION_STRING"];
 var dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
 if (!Directory.Exists(dataFolder)) Directory.CreateDirectory(dataFolder);
 
