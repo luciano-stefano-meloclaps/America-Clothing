@@ -20,11 +20,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
-        builder =>
+        policy =>
         {
-            builder.AllowAnyOrigin()
+            policy.WithOrigins("https://america-clothing.vercel.app", "http://localhost:3000")
                    .AllowAnyMethod()
-                   .AllowAnyHeader();
+                   .AllowAnyHeader()
+                   .AllowCredentials();
         });
 });
 
@@ -107,10 +108,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors("AllowReactApp");
 
-// Usar la pol�tica CORS antes de los otros middlewares
-app.UseCors("AllowReactApp"); // Aplica la pol�tica de CORS
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
