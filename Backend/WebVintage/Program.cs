@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using System.IO;
 using static Infrastructure.Services.AuthenticateService;
+using Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
