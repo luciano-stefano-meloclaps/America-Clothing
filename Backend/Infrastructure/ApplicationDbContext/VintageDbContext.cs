@@ -48,7 +48,7 @@ public partial class VintageDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.ToTable("saleorder");
-            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
             entity.Property(e => e.Date).HasDefaultValueSql("CURRENT_TIMESTAMP").HasColumnName("date");
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.HasOne(d => d.User).WithMany(p => p.Saleorders).HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("saleorder_user_useridfk");
@@ -58,7 +58,7 @@ public partial class VintageDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.ToTable("saleorderline");
-            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Id).ValueGeneratedOnAdd().HasColumnName("id");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.ProductCode).HasColumnName("product_code");
             entity.Property(e => e.SaleorderId).HasColumnName("saleorder_id");
