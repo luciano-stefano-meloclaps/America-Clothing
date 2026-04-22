@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("https://america-clothing.vercel.app", "https://america-clothing.vercel.app/", "http://localhost:3000")
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host.EndsWith("vercel.app") || origin == "http://localhost:3000")
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();
