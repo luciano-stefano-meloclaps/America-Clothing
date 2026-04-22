@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host.EndsWith("vercel.app") || origin == "http://localhost:3000")
+            policy.WithOrigins("https://america-clothing.vercel.app", "https://america-clothing.vercel.app/", "http://localhost:3000")
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();
@@ -81,9 +81,10 @@ builder.Services.AddAuthentication("Bearer")
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["AuthenticateService:Issuer"],
-            ValidAudience = builder.Configuration["AuthenticateService:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["AuthenticateService:SecretForKey"]))
+            ValidIssuer = builder.Configuration["JWT_ISSUER"] ?? builder.Configuration["AuthenticateService:Issuer"],
+            ValidAudience = builder.Configuration["JWT_AUDIENCE"] ?? builder.Configuration["AuthenticateService:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
+                builder.Configuration["JWT_SECRET"] ?? builder.Configuration["AuthenticateService:SecretForKey"] ?? "super_secret_key_for_demo_purposes_only_123"))
         };
     });
 
