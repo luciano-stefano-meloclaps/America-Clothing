@@ -55,7 +55,7 @@ builder.Services.AddSwaggerGen(setupAction =>
 });
 
 builder.Services.AddDbContext<VintageDbContext>(options =>
-options.UseMySql(builder.Configuration.GetConnectionString("connection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.15-mysql")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("connection") ?? "Data Source=vintage.db"));
 
 builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticaci�n que tenemos que elegir despu�s en PostMan para pasarle el token
     .AddJwtBearer(options => //Ac� definimos la configuraci�n de la autenticaci�n. Le decimos qu� cosas queremos comprobar. La fecha de expiraci�n se valida por defecto.
@@ -127,26 +127,39 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<VintageDbContext>();
-        context.Database.Migrate();
+        context.Database.EnsureCreated();
 
-        // Manual Data Seeding for Demo (Senior Architect Approach: Read from SQL file)
+        // Senior Architect Approach: Robust, Transactional Data Seeding with SQLite support
         if (!context.Products.Any())
         {
             var seedFilePath = Path.Combine(AppContext.BaseDirectory, "SeedData", "02-seed-data.sql");
-            
-            // In Docker, it's mapped to /app/SeedData/02-seed-data.sql
-            if (!File.Exists(seedFilePath)) 
-            {
-                seedFilePath = "/app/SeedData/02-seed-data.sql";
-            }
+            if (!File.Exists(seedFilePath)) seedFilePath = "/app/SeedData/02-seed-data.sql";
 
             if (File.Exists(seedFilePath))
             {
-                var sql = File.ReadAllText(seedFilePath);
-                
-                // Split by ';' to execute in chunks if needed, or just execute raw if the driver supports it
-                // For MySQL, multiple statements are usually allowed if configured in connection string
-                context.Database.ExecuteSqlRaw(sql);
+                using var transaction = context.Database.BeginTransaction();
+                try
+                {
+                    var sql = File.ReadAllText(seedFilePath);
+                    
+                    // Adapt MySQL script to SQLite on the fly (Lead Architect Trick)
+                    sql = sql.Replace("SET FOREIGN_KEY_CHECKS = 0;", "PRAGMA foreign_keys = OFF;");
+                    sql = sql.Replace("SET FOREIGN_KEY_CHECKS = 1;", "PRAGMA foreign_keys = ON;");
+                    sql = sql.Replace("TRUNCATE TABLE", "DELETE FROM");
+                    
+                    context.Database.ExecuteSqlRaw("PRAGMA foreign_keys = OFF;");
+                    context.Database.ExecuteSqlRaw(sql);
+                    context.Database.ExecuteSqlRaw("PRAGMA foreign_keys = ON;");
+                    
+                    transaction.Commit();
+                    Console.WriteLine("✅ Database seeded successfully into SQLite");
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "❌ CRITICAL: Error during database seeding.");
+                }
             }
         }
     }

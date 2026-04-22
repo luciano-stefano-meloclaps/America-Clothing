@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -28,34 +28,29 @@ public partial class VintageDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder
-            .UseCollation("utf8mb4_0900_ai_ci")
-            .HasCharSet("utf8mb4");
-
         modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.Code).HasName("PRIMARY");
             entity.ToTable("product");
-            entity.Property(e => e.Code).HasColumnType("int(11)").HasColumnName("code");
+            entity.Property(e => e.Code).HasColumnName("code");
             entity.Property(e => e.Category).HasMaxLength(45).HasColumnName("category");
             entity.Property(e => e.Description).HasMaxLength(1000).HasColumnName("description");
             entity.Property(e => e.Image).HasMaxLength(500).HasColumnName("image");
             entity.Property(e => e.Name).HasMaxLength(100).HasColumnName("name");
-            entity.Property(e => e.Price).HasPrecision(10, 2).HasColumnName("price");
+            entity.Property(e => e.Price).HasColumnName("price");
             entity.Property(e => e.Size).HasMaxLength(45).HasColumnName("size");
-            entity.Property(e => e.State).HasColumnType("tinyint(4)").HasColumnName("state");
-            entity.Property(e => e.Stock).HasColumnType("int(11)").HasColumnName("stock");
-            entity.Property(e => e.Sold).HasColumnType("tinyint(1)").HasDefaultValue(false).HasColumnName("sold");
+            entity.Property(e => e.State).HasColumnName("state");
+            entity.Property(e => e.Stock).HasColumnName("stock");
+            entity.Property(e => e.Sold).HasDefaultValue(false).HasColumnName("sold");
         });
 
         modelBuilder.Entity<Saleorder>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.ToTable("saleorder");
-            entity.HasIndex(e => e.UserId, "saleorder_user_userid_idx");
-            entity.Property(e => e.Id).HasColumnType("int(11)").HasColumnName("id");
-            entity.Property(e => e.Date).HasDefaultValueSql("CURRENT_TIMESTAMP").HasColumnType("datetime").HasColumnName("date");
-            entity.Property(e => e.UserId).HasColumnType("int(11)").HasColumnName("user_id");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Date).HasDefaultValueSql("CURRENT_TIMESTAMP").HasColumnName("date");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.HasOne(d => d.User).WithMany(p => p.Saleorders).HasForeignKey(d => d.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("saleorder_user_useridfk");
         });
 
@@ -63,13 +58,11 @@ public partial class VintageDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.ToTable("saleorderline");
-            entity.HasIndex(e => e.ProductCode, "saleorderline_product_productcodefk_idx");
-            entity.HasIndex(e => e.SaleorderId, "saleorderline_saleorder_saleorderidfk_idx");
-            entity.Property(e => e.Id).HasColumnType("int(11)").HasColumnName("id");
-            entity.Property(e => e.Amount).HasColumnType("int(11)").HasColumnName("amount");
-            entity.Property(e => e.ProductCode).HasColumnType("int(11)").HasColumnName("product_code");
-            entity.Property(e => e.SaleorderId).HasColumnType("int(11)").HasColumnName("saleorder_id");
-            entity.Property(e => e.UnitPrice).HasPrecision(10, 2).HasColumnName("unit_price");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Amount).HasColumnName("amount");
+            entity.Property(e => e.ProductCode).HasColumnName("product_code");
+            entity.Property(e => e.SaleorderId).HasColumnName("saleorder_id");
+            entity.Property(e => e.UnitPrice).HasColumnName("unit_price");
             entity.HasOne(d => d.ProductCodeNavigation).WithMany(p => p.Saleorderlines).HasForeignKey(d => d.ProductCode).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("saleorderline_product_productcodefk");
             entity.HasOne(d => d.Saleorder).WithMany(p => p.Saleorderlines).HasForeignKey(d => d.SaleorderId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("saleorderline_saleorder_saleorderidfk");
         });
@@ -78,7 +71,7 @@ public partial class VintageDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.ToTable("user");
-            entity.Property(e => e.Id).HasColumnType("int(11)").HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Address).HasMaxLength(90).HasColumnName("address");
             entity.Property(e => e.Email).HasMaxLength(45).HasColumnName("email");
             entity.Property(e => e.LastName).HasMaxLength(45).HasColumnName("last_name");
@@ -86,7 +79,7 @@ public partial class VintageDbContext : DbContext
             entity.Property(e => e.Password).HasMaxLength(45).HasColumnName("password");
             entity.Property(e => e.PhoneNumber).HasMaxLength(45).HasColumnName("phone_number");
             entity.Property(e => e.State).HasColumnName("state");
-            entity.Property(e => e.Usertype).HasColumnType("enum('admin','employee','client','cadet')").HasColumnName("usertype");
+            entity.Property(e => e.Usertype).HasColumnName("usertype");
 
             entity.HasData(
                 new User
@@ -117,7 +110,5 @@ public partial class VintageDbContext : DbContext
                 }
             );
         });
-
-        // QUITAMOS LA LÍNEA DEL MÉTODO PARCIAL QUE DABA ERROR
     }
 }
