@@ -18,6 +18,7 @@ RUN dotnet publish "WebVintage.csproj" -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app/publish .
+COPY --from=build /src/WebVintage/SeedData ./SeedData
 
 # Exponer el puerto 80
 EXPOSE 80
